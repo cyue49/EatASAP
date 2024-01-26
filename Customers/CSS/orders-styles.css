@@ -1,16 +1,15 @@
 :root {
     --font-color: #2c2c2c;
-    --bg-color: #e3eaec;
-    --dark-green: #338309;
-    --light-green: #C9D46C;
+    --bg-color: #eaeaea;
+    --sections-bg: #dbdbdb;
+    --darker-grey: #bfbfbf;
     --dark-orange: #E48716;
+    --darker-orange: #d3801b;
     --light-orange: #FAAB01;
-    --pale-beige: #DFBCB2;
-    --light-red: #FF2E44;
-    --dark-red: #EC1853;
-    --light-blue: #19D7F9;
     --dark-blue: #0C89BF;
-    --bg-blue: #02E7D0;
+    --light-blue: #69e8dc;
+    --bg-blue: #183e62;
+    --dark-bg-blue: #061c31;
 }
 
 body {
@@ -19,6 +18,15 @@ body {
     margin: 0;
     color: var(--font-color);
     background-color: var(--bg-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    background-image: linear-gradient(var(--bg-blue), var(--dark-bg-blue));
 }
 
 /* Hide Scrollbar */
@@ -26,30 +34,30 @@ body::-webkit-scrollbar {
     display: none;
 }
 
-/* Top Navigation Bar */
+/* ======================== Top Navigation Bar ======================== */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     height: 6vmin;
-    background-color: var(--bg-blue);
+    background-image: linear-gradient(to right, var(--dark-blue), var(--light-blue));
     position: sticky;
     top: 0;
 }
 
-#navbarLeft {
+.navbarLeft {
     height: 100%;
     display: flex;
     align-items: center;
     flex: 1;
 }
 
-#navbarLeft a img {
+.navbarLeft a img {
     height: 100%;
 }
 
-#navbarRight {
+.navbarRight {
     height: 100%;
     display: flex;
     justify-content: flex-end;
@@ -57,12 +65,12 @@ body::-webkit-scrollbar {
     flex: 1;
 }
 
-#leftLogo {
+.leftLogo {
     height: 60%;
     padding: 0 1vw;
 }
 
-#leftLogo:hover {
+.leftLogo:hover {
     transform: scale(0.9);
     cursor: pointer;
 }
@@ -93,12 +101,12 @@ body::-webkit-scrollbar {
 }
 
 /* Language Selection Dropdown */
-#langIcon {
+.langIcon {
     height: 60%;
     padding: 0 1vw;
 }
 
-#langIcon:hover {
+.langIcon:hover {
     transform: scale(0.9);
     cursor: pointer;
 }
@@ -139,9 +147,109 @@ body::-webkit-scrollbar {
 }
 
 .dropdownContent a:active {
-    background-color: #d3801b;
+    background-color: var(--darker-orange);
 }
 
 .dropdown:hover .dropdownContent {
     display: block;
+}
+
+/* ======================== Main Content - Left Side ======================== */
+.leftContent {
+    width: 65vw;
+}
+
+/* Restaurant Logo and Name Section */
+.restaurantLogoName {
+    width: 90%;
+    margin: 2% 5%;
+    padding: 2%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    background-color: var(--sections-bg);
+}
+
+.restaurantLogoName img {
+    width: 10vmin;
+    margin: 0 3% 0 0;
+}
+
+.restaurantLogoName h1 {
+    font-size: 300%;
+    line-height: 0;
+    font-family: 'Times New Roman', Times, serif;
+    text-shadow: 2px 2px #a4a4a4;
+}
+
+/* Receipt Section */
+.orderSummary {
+    width: 90%;
+    margin: 2% 5%;
+    padding: 1% 3%;
+    box-sizing: border-box;
+    border-radius: 15px;
+    background-color: var(--sections-bg);
+}
+
+.orderSummary hr {
+    border: 2px solid var(--dark-blue);
+}
+
+.orderSummary table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2%;
+}
+
+.orderSummary table tr {
+    line-height: 3em;
+    border-radius: 25px;
+}
+
+.orderSummary table th, td {
+    padding: 0 1%;
+}
+
+.orderSummary table th {
+    text-align: left;
+    background-color: var(--darker-grey);
+}
+
+.orderSummary table .priceColumn {
+    text-align: right;
+}
+
+.orderSummary table .subtotal {
+    font-size: 18px;
+    font-weight: bold;
+    background-color: var(--darker-grey);
+}
+
+.orderSummary table .tax {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.orderSummary table .total {
+    font-size: 24px;
+    font-weight: bold;
+    background-color: var(--darker-grey);
+}
+
+/* ======================== Main Content - Right Side ======================== */
+.rightContent {
+    width: 35vw;
+}
+
+
+/* ======================== Footer ======================== */
+footer {
+    text-align: center;
+    padding: 0.3em;
+    min-height: 1vh;
+    background-image: linear-gradient(to right, var(--dark-blue), var(--light-blue));
+    display: none;
 }

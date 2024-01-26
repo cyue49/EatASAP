@@ -17,17 +17,17 @@
     <!-- Top Navigation Bar -->
     <div class="navbar">
         <!-- Left Side -->
-        <div id="navbarLeft">
-            <a id="leftLogo">
+        <div class="navbarLeft">
+            <a class="leftLogo">
                 <img src="Assets/Icons/ColorLogoImage.svg" alt="Logo Image">
                 <img src="Assets/Icons/ColorLogoText.svg" alt="Logo Text">
             </a>
         </div>
         <!-- Right Side -->
-        <div id="navbarRight">
+        <div class="navbarRight">
             <div class="dropdown">
                 <div class="centerAlign">
-                    <img id="langIcon" src="Assets/Icons/LanguageLogo.svg" alt="Language Button">
+                    <img class="langIcon" src="Assets/Icons/LanguageLogo.svg" alt="Language Button">
                 </div>
                 <div class="dropdownContent">
                     <a href="#">English</a>
@@ -37,6 +37,78 @@
             <button>Log In</button>
         </div>
     </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Left Side -->
+        <div class="leftContent">
+            <!-- Restaurant Logo & Name -->
+            <div class="restaurantLogoName">
+                <img src="Assets/Images/restaurant temp logo.png" alt="Restaurant Logo">
+                <h1>Restaurant</h1>
+            </div>
+            <!-- Order Summary -->
+            <div class="orderSummary">
+                <h1>My Orders</h1>
+                <hr>
+                <table>
+                    <tr>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th class="priceColumn">Price Per Unit</th>
+                    </tr>
+                    <tr>
+                        <td>Tomato Salad</td>
+                        <td>1</td>
+                        <td class="priceColumn">6.00$</td>
+                    </tr>
+                    <tr>
+                        <td>Chicken Noodle Soup</td>
+                        <td>1</td>
+                        <td class="priceColumn">6.00$</td>
+                    </tr>
+                    <tr>
+                        <td>Egg Sandwich</td>
+                        <td>1</td>
+                        <td class="priceColumn">7.00$</td>
+                    </tr>
+                    <tr>
+                        <td>Apple Juice</td>
+                        <td>2</td>
+                        <td class="priceColumn">2.50$</td>
+                    </tr>
+                    <tr>
+                        <td>Croissant</td>
+                        <td>4</td>
+                        <td class="priceColumn">4.50$</td>
+                    </tr>
+                    <tr class="subtotal">
+                        <td>Subtotal</td>
+                        <td></td>
+                        <td class="priceColumn">17.00$</td>
+                    </tr>
+                    <tr class="tax">
+                        <td>GST</td>
+                        <td></td>
+                        <td class="priceColumn">2.18$</td>
+                    </tr>
+                    <tr class="tax">
+                        <td>QST</td>
+                        <td></td>
+                        <td class="priceColumn">4.67$</td>
+                    </tr>
+                    <tr class="total">
+                        <td>Total</td>
+                        <td></td>
+                        <td class="priceColumn">24.56$</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <!-- Right Side -->
+        <div class="rightContent"></div>
+    </main>
+    <footer></footer>
 </body>
 
 </html>
