@@ -5,17 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Orders</title>
-    <!-- Icon (to be added) -->
-    <link rel="icon" type="image/x-icon" href="" />
+    <!-- Icon -->
+    <link rel="icon" type="image/x-icon" href="Assets/Icons/ColorLogoImage.svg" />
     <!-- JS -->
     <script src="JS/scripts.js" defer></script>
     <!-- CSS -->
     <link href="CSS/orders-styles.css" rel="stylesheet" />
-
 </head>
 
 <body>
-
+    <!-- Top Navigation Bar -->
+    <div class="navbar">
+        <!-- Left Side -->
+        <div id="navbarLeft">
+            <a id="leftLogo">
+                <img src="Assets/Icons/ColorLogoImage.svg" alt="Logo Image">
+                <img src="Assets/Icons/ColorLogoText.svg" alt="Logo Text">
+            </a>
+        </div>
+        <!-- Right Side -->
+        <div id="navbarRight">
+            <div class="dropdown">
+                <div class="centerAlign">
+                    <img id="langIcon" src="Assets/Icons/LanguageLogo.svg" alt="Language Button">
+                </div>
+                <div class="dropdownContent">
+                    <a href="#">English</a>
+                    <a href="#">French</a>
+                </div>
+            </div>
+            <button>Log In</button>
+        </div>
+    </div>
 </body>
 
 </html>
