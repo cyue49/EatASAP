@@ -7,10 +7,20 @@
     <title>My Orders</title>
     <!-- Icon -->
     <link rel="icon" type="image/x-icon" href="Assets/Icons/ColorLogoImage.svg" />
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js" defer></script>
+    <!-- Bootstrap stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"
+        defer></script>
+    <!-- CSS -->
+    <link href="CSS/common-styles.css" rel="stylesheet" />
+    <link href="CSS/orders-styles.css" rel="stylesheet" />
     <!-- JS -->
     <script src="JS/scripts.js" defer></script>
-    <!-- CSS -->
-    <link href="CSS/orders-styles.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -32,6 +42,7 @@
                 <div class="dropdownContent">
                     <a href="#">English</a>
                     <a href="#">French</a>
+                    <a href="#">More</a>
                 </div>
             </div>
             <button>Log In</button>
@@ -106,7 +117,101 @@
             </div>
         </div>
         <!-- Right Side -->
-        <div class="rightContent"></div>
+        <div class="rightContent">
+            <!-- Payment Accordion -->
+            <div class="accordion" id="paymentAccordion">
+                <!-- Payment Method -->
+                <div class="accordion-item">
+                    <a class="accordion-link collapsed" data-bs-toggle="collapse"
+                        data-bs-target="#collapsePaymentMethod" aria-expanded="false"
+                        aria-controls="collapsePaymentMethod">
+                        <h3 class="accordion-header" id="headingPaymentMethod">
+                            Select a Payment Method
+                        </h3>
+                    </a>
+                    <div id="collapsePaymentMethod" class="accordion-collapse collapse show"
+                        aria-labelledby="headingPaymentMethod" data-bs-parent="#paymentAccordion">
+                        <div class="accordion-body">
+                            <form action="">
+                                <input type="radio" name="paymentMethod" id="visa">
+                                <label for="visa">Visa</label><br>
+                                <input type="radio" name="paymentMethod" id="mastercard">
+                                <label for="mastercard">MasterCard</label><br>
+                                <input type="radio" name="paymentMethod" id="paypal">
+                                <label for="paypal">PayPal</label><br>
+                                <button type="submit">Next</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- Customer Information -->
+                <div class="accordion-item">
+                    <a class="accordion-link collapsed" data-bs-toggle="collapse"
+                        data-bs-target="#collapseCustomerInformation" aria-expanded="false"
+                        aria-controls="collapseCustomerInformation">
+                        <h3 class="accordion-header" id="headingCustomerInformation">
+                            Enter Your Information
+                        </h3>
+                    </a>
+                    <div id="collapseCustomerInformation" class="accordion-collapse collapse"
+                        aria-labelledby="headingCustomerInformation" data-bs-parent="#paymentAccordion">
+                        <div class="accordion-body">
+                            <form action="">
+                                <label for="customerInformation">First Name</label><br>
+                                <input type="text" name="customerInformation" id="firstName" maxlength="50"
+                                    required><br><br>
+                                <label for="customerInformation">Last Name</label><br>
+                                <input type="text" name="customerInformation" id="lastName" maxlength="50"
+                                    required><br><br>
+                                <label for="phoneNumber">Phone Number</label><br>
+                                <input type="tel" id="phoneNumber" name="customerInformation" placeholder="514-123-4567"
+                                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}"><br><br>
+                                <label for="emailAddress">Email</label><br>
+                                <input type="email" id="emailAddress" name="customerInformation"><br><br>
+                                <button type="submit">Next</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- Review and Confirm Order -->
+                <div class="accordion-item">
+                    <a class="accordion-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseReviewOrder"
+                        aria-expanded="false" aria-controls="collapseReviewOrder">
+                        <h3 class="accordion-header" id="headingReviewOrder">
+                            Review and Place Order
+                        </h3>
+                    </a>
+                    <div id="collapseReviewOrder" class="accordion-collapse collapse"
+                        aria-labelledby="headingReviewOrder" data-bs-parent="#paymentAccordion">
+                        <div class="accordion-body">
+                            Please confirm the following order summary, then click on <em>Confrim Payment</em> to place your order.
+                            <table>
+                                <caption>Order Summary</caption>
+                                <tr>
+                                    <td>Subtotal</td>
+                                    <td class="priceColumn">17.00$</td>
+                                </tr>
+                                <tr>
+                                    <td>GST</td>
+                                    <td class="priceColumn">2.18$</td>
+                                </tr>
+                                <tr>
+                                    <td>QST</td>
+                                    <td class="priceColumn">4.67$</td>
+                                </tr>
+                                <tr>
+                                    <td>Total</td>
+                                    <td class="priceColumn">24.56$</td>
+                                </tr>
+                            </table>
+                            <button>Confirm Payment</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Quick Checkout Button -->
+            <button id="quickOrder">Sign In for Quick Order</button>
+        </div>
     </main>
     <footer></footer>
 </body>
