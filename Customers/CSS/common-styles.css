@@ -1,0 +1,204 @@
+:root {
+    --font-color: #2c2c2c;
+    --bg-color: #eaeaea;
+    --sections-bg: #dbdbdb;
+    --darker-grey: #bfbfbf;
+    --dark-orange: #E48716;
+    --darker-orange: #d3801b;
+    --light-orange: #FAAB01;
+    --dark-blue: #0C89BF;
+    --light-blue: #69e8dc;
+    --bg-blue: #183e62;
+    --dark-bg-blue: #061c31;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    margin: 0;
+    color: var(--font-color);
+    background-color: var(--bg-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+    width: 100vw;
+    display: flex;
+    background-image: linear-gradient(var(--bg-blue), var(--dark-bg-blue));
+}
+
+
+/* Hide Scrollbar */
+body::-webkit-scrollbar {
+    display: none;
+}
+
+/* Buttons */
+button {
+    color: var(--font-color);
+    background-color: var(--light-orange);
+    box-shadow: 2px 2px 3px var(--dark-orange);
+    padding: 1%;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    text-align: center;
+}
+
+button:hover {
+    transform: scale(0.95);
+}
+
+button:active {
+    background-color: var(--dark-orange);
+}
+
+/* ======================== Top Navigation Bar ======================== */
+/* Navigation bar */
+.topNavbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 5vmin;
+    min-height: 50px;
+    background-image: linear-gradient(to right, var(--dark-blue), var(--light-blue));
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+/* Left and right side */
+.navbarLeft {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.navbarLeft a img {
+    height: 100%;
+}
+
+.navbarRight {
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex: 1;
+}
+
+.leftLogo {
+    height: 60%;
+    padding: 0 1vw;
+}
+
+.leftLogo:hover {
+    transform: scale(0.9);
+    cursor: pointer;
+}
+
+/* Center menu */
+.navSections {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.navItem {
+    text-decoration: none;
+    font-weight: bold;
+    height: 100%;
+    width: auto;
+    padding: 0 3vw;
+    display: flex;
+    align-items: center;
+    color: var(--font-color);
+    cursor: pointer;
+}
+
+.navItem:hover {
+    background-color: var(--dark-blue);
+}
+
+.navItem:active {
+    background-color: var(--bg-blue);
+}
+
+/* Login Button */
+.topNavbar button {
+    width: 10vmin;
+    height: 4vmin;
+    min-width: 80px;
+    min-height: 30px;
+    font-size: 14px;
+    margin-right: 2%;
+}
+
+/* Language Selection Dropdown */
+.langIcon {
+    height: 60%;
+    padding: 0 1vw;
+}
+
+.langIcon:hover {
+    transform: scale(0.9);
+    cursor: pointer;
+}
+
+.centerAlign {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Dropdown */
+.dropdown {
+    height: 100%;
+}
+
+.dropdownContent {
+    display: none;
+    position: absolute;
+    background-color: var(--light-orange);
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    z-index: 3;
+}
+
+.dropdownContent a {
+    color: var(--font-color);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdownContent a:hover {
+    background-color: var(--dark-orange);
+    border-radius: 8px;
+}
+
+.dropdownContent a:active {
+    background-color: var(--darker-orange);
+}
+
+.dropdown:hover .dropdownContent {
+    display: block;
+}
+
+/* ======================== Footer ======================== */
+footer {
+    text-align: center;
+    padding: 0.3em;
+    min-height: 1vh;
+    background-image: linear-gradient(to right, var(--dark-blue), var(--light-blue));
+    display: none;
+}

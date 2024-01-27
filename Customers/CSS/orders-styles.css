@@ -58,12 +58,12 @@ button:active {
 }
 
 /* ======================== Top Navigation Bar ======================== */
-.navbar {
+.topNavbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 6vmin;
+    height: 5vmin;
     min-height: 50px;
     background-image: linear-gradient(to right, var(--dark-blue), var(--light-blue));
     position: sticky;
@@ -100,8 +100,36 @@ button:active {
     cursor: pointer;
 }
 
+/* Center menu */
+.navSections {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.navItem {
+    text-decoration: none;
+    font-weight: bold;
+    height: 100%;
+    width: auto;
+    padding: 0 3vw;
+    display: flex;
+    align-items: center;
+    color: var(--font-color);
+    cursor: pointer;
+}
+
+.navItem:hover {
+    background-color: var(--dark-blue);
+}
+
+.navItem:active {
+    background-color: var(--bg-blue);
+}
+
 /* Login Button */
-.navbar button {
+.topNavbar button {
     width: 10vmin;
     height: 4vmin;
     min-width: 80px;
@@ -222,7 +250,8 @@ button:active {
     line-height: 3em;
 }
 
-.orderSummary table th, .orderSummary table td {
+.orderSummary table th,
+.orderSummary table td {
     padding: 0 1%;
 }
 
@@ -254,7 +283,7 @@ button:active {
 
 /* ======================== Main Content - Right Side ======================== */
 .rightContent {
-    width: 250px;
+    width: 300px;
     flex-grow: 4;
     display: flex;
     flex-flow: column wrap;
@@ -302,13 +331,13 @@ button:active {
 }
 
 /* Accordion Content */
-
 .accordion button {
-    width: 30%;
+    width: 40%;
     margin: 2vmin 0;
 }
 
-.accordion form, .accordion table {
+.accordion form,
+.accordion table {
     margin: 2%;
 }
 
@@ -321,8 +350,56 @@ button:active {
     line-height: 3em;
 }
 
-.accordion table td{
+.accordion table td {
     padding: 0 2%;
+}
+
+/* Forms */
+/* Payment Method Radio Form */
+#collapsePaymentMethod i {
+    font-size: 24px;
+    color: var(--dark-bg-blue);
+}
+
+#collapsePaymentMethod input[type=radio] {
+    margin: 0 2%;
+}
+
+/* Customer Infromation Form */
+#collapseCustomerInformation label {
+    color: var(--font-color);
+}
+
+#collapseCustomerInformation input {
+    width: 100%;
+    border: 1px solid var(--dark-bg-blue);
+    padding: 6px 15px;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+/* Removing arrows form number type input */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+fieldset {
+    background-color: var(--bg-color);
+    padding: 2%;
+    border-radius: 15px;
+    margin: 1%;
+}
+
+fieldset legend {
+    font-weight: bold;
 }
 
 /* Quick Order Button */

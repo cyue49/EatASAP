@@ -10,7 +10,7 @@ $('#headingPaymentMethod').click(function () {
         $('#headingPaymentMethod').addClass('currentAccordionSection');
         $('#headingCustomerInformation').removeClass('currentAccordionSection');
         $('#headingReviewOrder').removeClass('currentAccordionSection');
-        currentSection= 'payment'
+        currentSection= 'payment';
     }
 });
 
@@ -22,7 +22,7 @@ $('#headingCustomerInformation').click(function () {
         $('#headingCustomerInformation').addClass('currentAccordionSection');
         $('#headingPaymentMethod').removeClass('currentAccordionSection');
         $('#headingReviewOrder').removeClass('currentAccordionSection');
-        currentSection= 'info'
+        currentSection= 'info';
     }
 });
 
@@ -34,6 +34,32 @@ $('#headingReviewOrder').click(function () {
         $('#headingReviewOrder').addClass('currentAccordionSection');
         $('#headingPaymentMethod').removeClass('currentAccordionSection');
         $('#headingCustomerInformation').removeClass('currentAccordionSection');
-        currentSection= 'review'
+        currentSection= 'review';
     }
+});
+
+// Clicking the [Next] buttons of the accordion
+
+// Payment Method [Next] button
+$('#paymentSubmit').click(function(){
+    // show next section
+    $('#collapsePaymentMethod').collapse('hide');
+    $('#collapseCustomerInformation').collapse('show');
+
+    // updating headings highlights
+    currentSection = 'info';
+    $('#headingPaymentMethod').removeClass('currentAccordionSection');
+    $('#headingCustomerInformation').addClass('currentAccordionSection');
+});
+
+// Customer Information [Next] button
+$('#infoSubmit').click(function(){
+    // show next section
+    $('#collapseCustomerInformation').collapse('hide');
+    $('#collapseReviewOrder').collapse('show');
+
+    // updating headings highlights
+    currentSection = 'review';
+    $('#headingCustomerInformation').removeClass('currentAccordionSection');
+    $('#headingReviewOrder').addClass('currentAccordionSection');
 });

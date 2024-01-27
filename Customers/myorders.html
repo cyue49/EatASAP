@@ -16,6 +16,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"
         defer></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- CSS -->
     <link href="CSS/common-styles.css" rel="stylesheet" />
     <link href="CSS/orders-styles.css" rel="stylesheet" />
@@ -25,7 +27,7 @@
 
 <body>
     <!-- Top Navigation Bar -->
-    <div class="navbar">
+    <div class="topNavbar">
         <!-- Left Side -->
         <div class="navbarLeft">
             <a class="leftLogo">
@@ -45,7 +47,7 @@
                     <a href="#">More</a>
                 </div>
             </div>
-            <button>Log In</button>
+            <button onclick="window.location.href ='login.html'">Log In</button>
         </div>
     </div>
 
@@ -60,7 +62,7 @@
             </div>
             <!-- Order Summary -->
             <div class="orderSummary">
-                <h1>My Orders</h1>
+                <h1>My Order Summary</h1>
                 <hr>
                 <table>
                     <tr>
@@ -133,13 +135,16 @@
                         aria-labelledby="headingPaymentMethod" data-bs-parent="#paymentAccordion">
                         <div class="accordion-body">
                             <form action="">
+                                <i class="fa fa-cc-visa"></i>
                                 <input type="radio" name="paymentMethod" id="visa">
                                 <label for="visa">Visa</label><br>
+                                <i class="fa fa-cc-mastercard"></i>
                                 <input type="radio" name="paymentMethod" id="mastercard">
                                 <label for="mastercard">MasterCard</label><br>
+                                <i class="fa fa-cc-paypal"></i>
                                 <input type="radio" name="paymentMethod" id="paypal">
                                 <label for="paypal">PayPal</label><br>
-                                <button type="submit">Next</button>
+                                <button type="submit" id="paymentSubmit">Next</button>
                             </form>
                         </div>
                     </div>
@@ -157,18 +162,39 @@
                         aria-labelledby="headingCustomerInformation" data-bs-parent="#paymentAccordion">
                         <div class="accordion-body">
                             <form action="">
-                                <label for="customerInformation">First Name</label><br>
-                                <input type="text" name="customerInformation" id="firstName" maxlength="50"
-                                    required><br><br>
-                                <label for="customerInformation">Last Name</label><br>
-                                <input type="text" name="customerInformation" id="lastName" maxlength="50"
-                                    required><br><br>
-                                <label for="phoneNumber">Phone Number</label><br>
-                                <input type="tel" id="phoneNumber" name="customerInformation" placeholder="514-123-4567"
-                                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}"><br><br>
-                                <label for="emailAddress">Email</label><br>
-                                <input type="email" id="emailAddress" name="customerInformation"><br><br>
-                                <button type="submit">Next</button>
+                                <fieldset>
+                                    <legend>Customer Information</legend>
+                                    <!-- First Name -->
+                                    <label for="firstName">First Name</label><br>
+                                    <input type="text" name="firstname" id="first" maxlength="50" required><br><br>
+                                    <!-- Last Name -->
+                                    <label for="lastName">Last Name</label><br>
+                                    <input type="text" name="lastname" id="lastName" maxlength="50" required><br><br>
+                                    <!-- Phone Number -->
+                                    <label for="phoneNumber">Phone Number</label><br>
+                                    <input type="tel" id="phoneNumber" name="phonenumber" placeholder="514-123-4567"
+                                        pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}" required><br><br>
+                                    <!-- Email Address -->
+                                    <label for="emailAddress">Email</label><br>
+                                    <input type="email" id="emailAddress" name="emailaddress" maxlength="100"
+                                        required><br><br>
+                                </fieldset>
+                                <fieldset>
+                                    <legend>Payment Information</legend>
+                                    <!-- Card Number -->
+                                    <label for="cardNumber">Card Number</label><br>
+                                    <input type="number" id="cardNumber" name="cardnumber" maxlength="16"
+                                        onKeyPress="if(this.value.length==16) return false;" required><br><br>
+                                    <!-- CVV -->
+                                    <label for="cvv">CVV</label><br>
+                                    <input type="number" id="cvv" name="cvv" maxlength="3"
+                                        onKeyPress="if(this.value.length==3) return false;" required><br><br>
+                                    <!-- Expiration Date -->
+                                    <label for="expirationDate">Expiration Date</label><br>
+                                    <input type="month" id="expirationDate" name="expirationdate" required>
+                                </fieldset>
+                                <!-- Submit -->
+                                <button type="submit" id="infoSubmit">Next</button>
                             </form>
                         </div>
                     </div>
@@ -184,12 +210,12 @@
                     <div id="collapseReviewOrder" class="accordion-collapse collapse"
                         aria-labelledby="headingReviewOrder" data-bs-parent="#paymentAccordion">
                         <div class="accordion-body">
-                            Please confirm the following order summary, then click on <em>Confrim Payment</em> to place your order.
+                            Please confirm the following order summary, then click on <em>Confrim Order</em> to place
+                            your order.
                             <table>
-                                <caption>Order Summary</caption>
                                 <tr>
-                                    <td>Subtotal</td>
-                                    <td class="priceColumn">17.00$</td>
+                                    <td><b>Subtotal</b></td>
+                                    <td class="priceColumn"><b>17.00$</b></td>
                                 </tr>
                                 <tr>
                                     <td>GST</td>
@@ -200,17 +226,18 @@
                                     <td class="priceColumn">4.67$</td>
                                 </tr>
                                 <tr>
-                                    <td>Total</td>
-                                    <td class="priceColumn">24.56$</td>
+                                    <td><b>Total</b></td>
+                                    <td class="priceColumn"><b>24.56$</b></td>
                                 </tr>
                             </table>
-                            <button>Confirm Payment</button>
+                            <button id="confirmOrder" onclick="window.location.href ='ordercomplete.html'">Confirm
+                                Order</button>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- Quick Checkout Button -->
-            <button id="quickOrder">Sign In for Quick Order</button>
+            <button id="quickOrder" onclick="window.location.href ='login.html'">Log In for Quick Order</button>
         </div>
     </main>
     <footer></footer>
