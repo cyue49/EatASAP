@@ -68,10 +68,6 @@ p {
     cursor: pointer;
 }
 
-.navbarIcons:active {
-    transform: scale(0.95);
-}
-
 /* Left side */
 .navbarIcons img {
     height: 100%;
@@ -106,10 +102,6 @@ p {
     text-decoration: underline var(--main-orange) 2px;
 }
 
-.navItem:active {
-    transform: scale(0.95);
-}
-
 /* Buttons */
 button {
     padding: 0.7em 1.2em;
@@ -119,10 +111,6 @@ button {
     font-weight: bold;
     text-align: center;
     box-shadow: 5px 5px 10px rgba(69, 44, 30, 0.3);
-}
-
-button:active {
-    transform: scale(0.95);
 }
 
 /* Button: variation 1 */
