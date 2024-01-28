@@ -281,6 +281,36 @@ button:active {
     background-color: var(--darker-grey);
 }
 
+#modifyOrder {
+    margin: 2% 0;
+    background-color: var(--sections-bg);
+    box-shadow: none;
+    border: 2px solid var(--dark-bg-blue);
+}
+
+/* Order Complete Page Left Side */
+.orderSummary h3 {
+    text-align: center;
+    font-weight: bold;
+    color: var(--bg-blue);
+    margin-top: 2%;
+}
+
+.orderNotifs {
+    background-color: var(--darker-grey);
+    border-radius: 25px;
+    padding: 5%;
+    margin: 3% 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.orderNotifs h1 {
+    font-weight: bold;
+    color: var(--bg-blue);
+}
+
 /* ======================== Main Content - Right Side ======================== */
 .rightContent {
     width: 300px;
@@ -407,6 +437,31 @@ fieldset legend {
     width: 90%;
     margin: 3vmin 0;
     font-size: 100%;
+}
+
+/* Buttons on Order Complete page */
+.ordercompleteButtons {
+    width: 100%;
+    margin: 3vmin 0;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.ordercompleteButtons button {
+    width: 70%;
+    margin: 3% 0;
+    padding: 3% 0;
+}
+
+#allThree {
+    padding: 10% 0;
+}
+
+#orderCompleteThankYou {
+    color: var(--bg-color);
+    text-align: center;
 }
 
 /* ======================== Footer ======================== */
