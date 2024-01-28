@@ -52,7 +52,6 @@ p {
     z-index: 10;
 }
 
-/* Left side */
 .navbarLeft,
 .navbarRight {
     height: 100%;
@@ -64,6 +63,9 @@ p {
 .navbarIcons {
     height: 80%;
     padding: 0 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
 }
 
@@ -71,6 +73,7 @@ p {
     transform: scale(0.95);
 }
 
+/* Left side */
 .navbarIcons img {
     height: 100%;
 }
@@ -80,11 +83,8 @@ p {
     justify-content: flex-end;
 }
 
-.navbarRight .navbarIcons {
+.navbarRight .navbarIcons i {
     font-size: 2em;
-    display: flex;
-    align-items: center;
-    padding: 0 1em;
 }
 
 /* Center section */
