@@ -41,7 +41,8 @@ $('#headingReviewOrder').click(function () {
 // Clicking the [Next] buttons of the accordion
 
 // Payment Method [Next] button
-$('#paymentSubmit').click(function(){
+$('#paymentSubmit').click(function(e){
+    e.preventDefault();
     // show next section
     $('#collapsePaymentMethod').collapse('hide');
     $('#collapseCustomerInformation').collapse('show');
@@ -53,7 +54,8 @@ $('#paymentSubmit').click(function(){
 });
 
 // Customer Information [Next] button
-$('#infoSubmit').click(function(){
+$('#infoSubmit').click(function(e){
+    e.preventDefault();
     // show next section
     $('#collapseCustomerInformation').collapse('hide');
     $('#collapseReviewOrder').collapse('show');
