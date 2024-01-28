@@ -2,9 +2,9 @@
     --font-color: #0F1332;
     --bg-color: #efefef;
     --navbar-color: white;
-    --white-text-color: white;
     --main-orange: #F26722;
     --main-cyan: #06D3C7;
+    --button-sub-color: white;
     --button-shadow: #0F1332;
     font-family: Arial, sans-serif;
     font-size: 1em;
@@ -128,23 +128,23 @@ button:active {
 
 /* Button: variation 1 */
 .buttonVar1 {
-    color: var(--white-text-color);
+    color: var(--button-sub-color);
     background-color: var(--main-orange);
 }
 
 .buttonVar1:hover {
     color: var(--main-orange);
-    background-color: var(--bg-color);
+    background-color: var(--button-sub-color);
 }
 
 /* Button: variation 2*/
 .buttonVar2 {
     color: var(--main-orange);
-    background-color: var(--bg-color);
+    background-color: var(--button-sub-color);
 }
 
 .buttonVar2:hover {
-    color: var(--white-text-color);
+    color: var(--button-sub-color);
     background-color: var(--main-orange);
 }
 
