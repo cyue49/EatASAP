@@ -264,6 +264,10 @@ button:active {
     text-align: right;
 }
 
+#tablePriceHeader {
+    text-align: right;
+}
+
 .orderSummary table .subtotal {
     font-size: 18px;
     font-weight: bold;
