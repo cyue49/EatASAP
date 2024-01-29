@@ -65,6 +65,7 @@ p {
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    text-decoration: none;
 }
 
 /* Left side */
@@ -79,6 +80,7 @@ p {
 
 .navbarRight .navbarIcons i {
     font-size: 2em;
+    color: var(--font-color);
 }
 
 /* Center section */

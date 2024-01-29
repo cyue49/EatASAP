@@ -12,6 +12,7 @@ $('#headingPaymentMethod').click(function () {
         $('#headingReviewOrder').removeClass('currentAccordionSection');
         currentSection= 'payment';
     }
+    $('#paymentAccordion #headingReviewOrder').css('border-radius', '0 0 25px 25px');
 });
 
 $('#headingCustomerInformation').click(function () {
@@ -24,16 +25,19 @@ $('#headingCustomerInformation').click(function () {
         $('#headingReviewOrder').removeClass('currentAccordionSection');
         currentSection= 'info';
     }
+    $('#paymentAccordion #headingReviewOrder').css('border-radius', '0 0 25px 25px');
 });
 
 $('#headingReviewOrder').click(function () {
     if (currentSection == 'review') {
         $('#headingReviewOrder').removeClass('currentAccordionSection');
+        $('#paymentAccordion #headingReviewOrder').css('border-radius', '0 0 25px 25px');
         currentSection = 'none';
     } else {
         $('#headingReviewOrder').addClass('currentAccordionSection');
         $('#headingPaymentMethod').removeClass('currentAccordionSection');
         $('#headingCustomerInformation').removeClass('currentAccordionSection');
+        $('#paymentAccordion #headingReviewOrder').css('border-radius', '0');
         currentSection= 'review';
     }
 });
@@ -64,4 +68,5 @@ $('#infoSubmit').click(function(e){
     currentSection = 'review';
     $('#headingCustomerInformation').removeClass('currentAccordionSection');
     $('#headingReviewOrder').addClass('currentAccordionSection');
+    $('#paymentAccordion #headingReviewOrder').css('border-radius', '0');
 });
