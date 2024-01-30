@@ -81,11 +81,66 @@ main {
     width: 95%;
     display: flex;
     flex-flow: column;
-    gap: 1em;
+    gap: 2em;
+    margin-bottom: 2em;
 }
 
 .orderHistory {
-    background-color: var(--light-grey);
+    background-color: var(--bg-color);
     border-radius: 25px;
     padding: 0.5em 1.5em;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Order History Table */
+.orderHistory table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    margin-bottom: 1.3em;
+}
+
+.orderHistory table tr {
+    line-height: 3em;
+    border-bottom: 1px solid var(--light-grey);
+    background-color: var(--bg-color);
+}
+
+.orderHistory table th,
+.orderHistory table td {
+    padding: 0 1em;
+}
+
+.orderHistory table th {
+    text-align: left;
+    color: var(--bg-color);
+    background-color: var(--font-color);
+}
+
+.orderHistory table td:nth-child(3), .orderHistory table th:nth-child(3) {
+    text-align: right;
+}
+
+.orderHistory table td:nth-child(2), .orderHistory table th:nth-child(2) {
+    text-align: center;
+}
+
+.orderHistory table .subtotal {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--bg-color);
+    background-color: var(--font-color);
+}
+
+.orderHistory table .tax {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.orderHistory table .total {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--bg-color);
+    background-color: var(--font-color);
 }
