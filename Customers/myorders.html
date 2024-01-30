@@ -22,7 +22,7 @@
     <link href="CSS/common-styles.css" rel="stylesheet" />
     <link href="CSS/orders-styles.css" rel="stylesheet" />
     <!-- JS -->
-    <script src="JS/scripts.js" defer></script>
+    <script src="JS/orders-scripts.js" defer></script>
 </head>
 
 <body>
@@ -136,13 +136,13 @@
                         <div class="accordion-body">
                             <form action="">
                                 <i class="fa fa-cc-visa"></i>
-                                <input type="radio" name="paymentMethod" id="visa">
+                                <input type="radio" name="paymentMethod" id="visa" value="Visa">
                                 <label for="visa">Visa</label><br>
                                 <i class="fa fa-cc-mastercard"></i>
-                                <input type="radio" name="paymentMethod" id="mastercard">
+                                <input type="radio" name="paymentMethod" id="mastercard" value="MasterCard">
                                 <label for="mastercard">MasterCard</label><br>
                                 <i class="fa fa-cc-paypal"></i>
-                                <input type="radio" name="paymentMethod" id="paypal">
+                                <input type="radio" name="paymentMethod" id="paypal" value="PayPal">
                                 <label for="paypal">PayPal</label><br>
                                 <button class="buttonVar1" type="submit" id="paymentSubmit">Next</button>
                             </form>
@@ -166,7 +166,7 @@
                                     <legend>Customer Information</legend>
                                     <!-- First Name -->
                                     <label for="firstName">First Name</label><br>
-                                    <input type="text" name="firstname" id="first" maxlength="50" required><br><br>
+                                    <input type="text" name="firstname" id="firstName" maxlength="50" required><br><br>
                                     <!-- Last Name -->
                                     <label for="lastName">Last Name</label><br>
                                     <input type="text" name="lastname" id="lastName" maxlength="50" required><br><br>
@@ -215,19 +215,19 @@
                             <table>
                                 <tr>
                                     <td><b>Subtotal</b></td>
-                                    <td class="priceColumn"><b>17.00$</b></td>
+                                    <td><b>17.00$</b></td>
                                 </tr>
                                 <tr>
                                     <td>GST</td>
-                                    <td class="priceColumn">2.18$</td>
+                                    <td>2.18$</td>
                                 </tr>
                                 <tr>
                                     <td>QST</td>
-                                    <td class="priceColumn">4.67$</td>
+                                    <td>4.67$</td>
                                 </tr>
                                 <tr>
                                     <td><b>Total</b></td>
-                                    <td class="priceColumn"><b>24.56$</b></td>
+                                    <td><b>24.56$</b></td>
                                 </tr>
                             </table>
                             <button class="buttonVar1" id="confirmOrder"

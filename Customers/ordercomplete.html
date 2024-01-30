@@ -22,7 +22,7 @@
     <link href="CSS/common-styles.css" rel="stylesheet" />
     <link href="CSS/orders-styles.css" rel="stylesheet" />
     <!-- JS -->
-    <script src="JS/scripts.js" defer></script>
+    <script src="JS/orders-scripts.js" defer></script>
 </head>
 
 <body>
@@ -83,6 +83,12 @@
                     <hr class="separatorLine">
                 </span>
                 <div class="receiptList">
+                    <p id="orderDate"></p>
+                    <p>ORDER FOR: 
+                        <span id="customerName"></span>
+                        <span id="customerPhoneNumber"></span>
+                        <span id="customerEmail"></span>
+                    </p>
                     <p>ITEMS: </p>
                     <ul>
                         <li>Tomato Salad (6.00$) x 1</li>
@@ -94,7 +100,11 @@
                     <p>SUBTOTAL: 23.45$</p>
                     <p>GST: 3.45$</p>
                     <p>QST: 4.56$</p>
-                    <p>TOTAL: 31.12</p>
+                    <p>TOTAL: 31.12$</p>
+                    <p>PAID BY: 
+                        <span id="customerPaymentMethod"></span>
+                        <span id="customerCardNum"></span>
+                    </p>
                 </div>
             </div>
             <!-- Buttons -->
