@@ -7,6 +7,7 @@ main {
     justify-content: space-around;
     padding: 3em;
     gap: 3em;
+    box-sizing: border-box;
 }
 
 /* ======================== Main Content - Left Side ======================== */
@@ -52,6 +53,7 @@ main {
 .separatorLine {
     border: 2px solid var(--main-orange);
     width: 90%;
+    opacity: 1;
 }
 
 /* Receipt Section */
@@ -117,27 +119,31 @@ main {
 }
 
 /* Order Complete Page Left Side */
-/* .orderSummary h3 {
-    text-align: center;
-    font-weight: bold;
-    color: var(--bg-blue);
-    margin-top: 2%;
+.orderNumber {
+    width: 100%;
+    padding: 1em 2.5em;
+    box-sizing: border-box;
 }
 
-.orderNotifs {
-    background-color: var(--darker-grey);
-    border-radius: 25px;
-    padding: 5%;
-    margin: 3% 0;
+.orderInfo {
+    padding: 1em;
+    background-color: var(--bg-color);
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 25px;
+    font-size: 1.5em;
 }
 
-.orderNotifs h1 {
-    font-weight: bold;
-    color: var(--bg-blue);
-} */
+.orderInfo h1 {
+    color: var(--font-color);
+}
+
+.orderNumber h2:last-child {
+    margin: 1em;
+    text-align: center;
+    font-size: 2em;
+}
 
 /* ======================== Main Content - Right Side ======================== */
 .rightContent {
@@ -273,27 +279,56 @@ fieldset legend {
     font-weight: bold;
 }
 
-/* Buttons on Order Complete page */
-/* .ordercompleteButtons {
+
+/* Order complete page Receipt Summary */
+.receiptSummary {
     width: 100%;
-    margin: 3vmin 0;
+    border-radius: 25px;
+    box-shadow: 5px 5px 10px rgba(69, 44, 30, 0.3);
+    background-color: var(--navbar-color);
+    padding: 1.5em;
+}
+
+/* br */
+.receiptSummary span {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.receiptSummary ul {
+    list-style-type: square;
+}
+
+.receiptList {
+    max-height: 300px;
+    margin: 0 1em;
+    padding: 0 1em;
+    overflow-y: scroll;
+}
+
+/* Receipt Summary Scrollbar */
+.receiptList::-webkit-scrollbar {
+    width: 12px;
+}
+
+.receiptList::-webkit-scrollbar-track {
+    /* color of the tracking area */
+    background: var(--light-grey);
+    border-radius: 25px;
+}
+
+.receiptList::-webkit-scrollbar-thumb {
+    background-color: var(--bg-color);
+    border-radius: 25px;
+    border: 3px solid var(--light-grey);
+    background-clip: content-box;
+}
+
+/* Order Complete Page Buttons*/
+.buttonsGroup {
+    width: 100%;
     display: flex;
     flex-flow: column wrap;
-    justify-content: center;
-    align-items: center;
+    gap: 1em;
 }
-
-.ordercompleteButtons button {
-    width: 70%;
-    margin: 3% 0;
-    padding: 3% 0;
-}
-
-#allThree {
-    padding: 10% 0;
-}
-
-#orderCompleteThankYou {
-    color: var(--bg-color);
-    text-align: center;
-}  */
