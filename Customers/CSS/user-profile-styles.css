@@ -1,0 +1,57 @@
+main {
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 3em;
+    gap: 3em;
+    box-sizing: border-box;
+}
+
+.mainContentBox {
+    width: 100%;
+    background-color: var(--navbar-color);
+    border-radius: 25px;
+    overflow: none;
+    box-shadow: 5px 5px 10px rgba(69, 44, 30, 0.3);
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Info section */
+.profileHeader {
+    width: 100%;
+    padding: 1em 2em;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+}
+
+.leftSide {
+    background-color: blue;
+    width: 10%;
+}
+
+.leftSide img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+.rightSide {
+    background-color: green;
+    width: 90%;
+    padding: 1em;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.infoBox {
+    background-color: aqua;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+}

@@ -4,11 +4,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Customer Profile</title>
+    <!-- Icon -->
+    <link rel="icon" type="image/x-icon" href="Assets/Icons/Logo.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- CSS -->
+    <link href="CSS/common-styles.css" rel="stylesheet" />
+    <link href="CSS/user-profile-styles.css" rel="stylesheet" />
+    <!-- JS -->
+
 </head>
 
 <body>
+    <!-- Top Navigation Bar -->
+    <div class="topNavbar">
+        <!-- Left Side -->
+        <div class="navbarLeft">
+            <a class="navbarIcons">
+                <img src="Assets/Icons/Logo.svg" alt="EatASAP Logo">
+            </a>
+        </div>
+        <!-- Center Part -->
+        <div class="navbarCenter">
+            <a class="navItem" href="#">Home</a>
+            <a class="navItem" href="#">Contact</a>
+            <a class="navItem" href="#">About</a>
+        </div>
+        <!-- Right Side -->
+        <div class="navbarRight">
+            <a class="navItem" href="#">Sign In</a>
+            <a class="navbarIcons">
+                <i class="fa fa-globe"></i>
+            </a>
+        </div>
+    </div>
 
+    <!-- Main Content -->
+    <main>
+        <div class="mainContentBox">
+            <div class="profileHeader">
+                <div class="leftSide">
+                    <img src="Assets/Images/userProfilePic.png" alt="User profile picture">
+                </div>
+                <div class="rightSide">
+                    <div class="infoBox">
+                        <h2>Firstname Lastname</h2>
+                        <p>firstname@email.com</p>
+                        <p>514-123-4567</p>
+                    </div>
+                    <div class="infoBox">
+                        <h2>Payment Information</h2>
+                        <p>Payment Method: Visa</p>
+                        <p>Card Number: ************1234</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer></footer>
 </body>
 
 </html>
