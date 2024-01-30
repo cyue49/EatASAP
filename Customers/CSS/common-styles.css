@@ -121,8 +121,8 @@ button {
 }
 
 .buttonVar1:hover {
-    color: var(--main-orange);
-    background-color: var(--button-sub-color);
+    background-color: var(--main-cyan);
+    border: 2px solid var(--main-cyan);
 }
 
 /* Button: variation 2*/
@@ -132,8 +132,8 @@ button {
 }
 
 .buttonVar2:hover {
-    color: var(--button-sub-color);
-    background-color: var(--main-orange);
+    color: var(--main-cyan);
+    border: 2px solid var(--main-cyan);
 }
 
 /* Footer */
