@@ -1,3 +1,7 @@
+:root {
+    --light-grey: #d3d3d3;
+}
+
 main {
     flex-flow: column;
     justify-content: flex-start;
@@ -22,36 +26,66 @@ main {
 /* Info section */
 .profileHeader {
     width: 100%;
-    padding: 1em 2em;
+    padding: 2em;
     box-sizing: border-box;
     display: flex;
     flex-flow: row wrap;
+    justify-content: space-around;
     align-items: center;
 }
 
-.leftSide {
-    background-color: blue;
-    width: 10%;
+#profilePic {
+    height: 10vmax;
 }
 
-.leftSide img {
-    width: 100%;
+#profilePic img {
+    height: 100%;
     border-radius: 50%;
 }
 
-.rightSide {
-    background-color: green;
-    width: 90%;
+.infoBox {
     padding: 1em;
     box-sizing: border-box;
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column wrap;
     justify-content: space-between;
 }
 
-.infoBox {
-    background-color: aqua;
+.infoLine, .infoLineHeader {
     display: flex;
-    flex-flow: column wrap;
-    justify-content: space-between;
+    align-items: center;
+}
+
+.infoLine i, .infoLineHeader i {
+    font-size: 1.8em;
+    color: var(--font-color);
+    margin-right: 0.8em;
+}
+
+.infoLineHeader h2 {
+    margin-right: 5em;
+}
+
+.infoLineHeader i {
+    color: var(--main-cyan);
+}
+
+.separatorLine {
+    border: 2px solid var(--main-orange);
+    width: 95%;
+    opacity: 1;
+}
+
+/* Order History Section */
+.orderHistorySection {
+    width: 95%;
+    display: flex;
+    flex-flow: column;
+    gap: 1em;
+}
+
+.orderHistory {
+    background-color: var(--light-grey);
+    border-radius: 25px;
+    padding: 0.5em 1.5em;
 }

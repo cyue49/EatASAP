@@ -43,20 +43,25 @@
     <main>
         <div class="mainContentBox">
             <div class="profileHeader">
-                <div class="leftSide">
+                <div id="profilePic">
                     <img src="Assets/Images/userProfilePic.png" alt="User profile picture">
                 </div>
-                <div class="rightSide">
-                    <div class="infoBox">
-                        <h2>Firstname Lastname</h2>
-                        <p>firstname@email.com</p>
-                        <p>514-123-4567</p>
-                    </div>
-                    <div class="infoBox">
-                        <h2>Payment Information</h2>
-                        <p>Payment Method: Visa</p>
-                        <p>Card Number: ************1234</p>
-                    </div>
+                <div class="infoBox">
+                    <span class="infoLineHeader"><h2>Firstname Lastname</h2><i class="fa fa-edit"></i></span>
+                    <span class="infoLine"><i class="fa fa-envelope"></i><p>firstname@email.com</p></span>
+                    <span class="infoLine"><i class="fa fa-phone"></i><p>514-123-4567</p></span>
+                </div>
+                <div class="infoBox">
+                    <span class="infoLineHeader"><h2>Payment Information</h2><i class="fa fa-edit"></i></span>
+                    <span class="infoLine"><i class="fa fa-cc-visa"></i></i><p>Payment Method: Visa</p></span>
+                    <span class="infoLine"><i class="fa fa-credit-card"></i><p>Card Number: ************1234</p></span>
+                </div>
+            </div>
+            <hr class="separatorLine">
+            <div class="orderHistorySection">
+                <h2>Order History</h2>
+                <div class="orderHistory">
+                    <h3>Restaurant Name</h3>
                 </div>
             </div>
         </div>
