@@ -300,7 +300,7 @@ fieldset legend {
     list-style-type: square;
 }
 
-.receiptList {
+#receiptList {
     max-height: 300px;
     margin: 0 1em;
     padding: 0 1em;
@@ -308,17 +308,17 @@ fieldset legend {
 }
 
 /* Receipt Summary Scrollbar */
-.receiptList::-webkit-scrollbar {
+#receiptList::-webkit-scrollbar {
     width: 12px;
 }
 
-.receiptList::-webkit-scrollbar-track {
+#receiptList::-webkit-scrollbar-track {
     /* color of the tracking area */
     background: var(--light-grey);
     border-radius: 25px;
 }
 
-.receiptList::-webkit-scrollbar-thumb {
+#receiptList::-webkit-scrollbar-thumb {
     background-color: var(--bg-color);
     border-radius: 25px;
     border: 3px solid var(--light-grey);

@@ -126,9 +126,9 @@ $('#paymentSubmit').click(function () {
     // payment method
     if ($('#visa').is(':checked')) {
         sessionStorage.setItem("paymentmethod", "Visa");
-    }else if ($('#mastercard').is(':checked')) {
+    } else if ($('#mastercard').is(':checked')) {
         sessionStorage.setItem("paymentmethod", "MasterCard");
-    }else if ($('#paypal').is(':checked')){
+    } else if ($('#paypal').is(':checked')) {
         sessionStorage.setItem("paymentmethod", "PayPal");
     }
 });
@@ -197,3 +197,15 @@ function addToReceipt() {
 }
 
 addToReceipt();
+
+// Save receipt as pdf button
+$('#downloadPDF').click(function () {
+    const element = document.getElementById('receiptList');
+    const opt = {
+        filename: "Receipt.pdf",
+        margin: 10,
+        image: { type: "png", quality: 0.95 },
+        html2canvas: { scale: 2 }
+    };
+    html2pdf().set(opt).from(element).save();
+});
