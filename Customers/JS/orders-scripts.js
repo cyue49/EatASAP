@@ -1,4 +1,4 @@
-// Hightlight current section of accordion
+// ========================= Hightlight current section of accordion =========================
 $('#headingPaymentMethod').addClass('currentAccordionSection');
 var currentSection = 'payment';
 
@@ -42,8 +42,7 @@ $('#headingReviewOrder').click(function () {
     }
 });
 
-// Clicking the [Next] buttons of the accordion
-
+// ========================= Clicking the [Next] buttons of the accordion =========================
 // Payment Method [Next] button
 $('#paymentSubmit').click(function (e) {
     e.preventDefault();
@@ -71,8 +70,54 @@ $('#infoSubmit').click(function (e) {
     $('#paymentAccordion #headingReviewOrder').css('border-radius', '0');
 });
 
-// Webstorage
 
+// ========================= Getting and displaying customer order items and totals =========================
+var userOrder = "Tomato Salad,1,6.00;Chicken Noodle Soup,1,6.00;Egg Sandwich,1,6.50;Apple Juice,2,2.50;Croissant,4,4.50";
+sessionStorage.setItem("customerOrderItems", userOrder);
+
+var subtotal = 0;
+var gst = 0;
+var qst = 0;
+var total = 0;
+
+// Adding customer's order items to order summary table and order review table 
+function addToOrderSummary() {
+    var orders = sessionStorage.getItem("customerOrderItems");
+    var orderItem = orders.split(';');
+    for (i = 0; i < orderItem.length; i++) {
+        var orderItemArr = orderItem[i].split(',');
+        // get each values
+        var menuItem = orderItemArr[0];
+        var itemQuantity = orderItemArr[1];
+        var itemPrice = orderItemArr[2];
+
+        // add item price to subtotal
+        subtotal += parseFloat(itemPrice);
+
+        // adding ordered items to order summary table
+        $('#orderSummaryTable').append("<tr><td>" + menuItem + "</td><td>" + itemQuantity + "</td><td>" + itemPrice + "$</td></tr>");
+    }
+    // calculating taxes and totals
+    gst = 0.05 * subtotal;
+    qst = 0.09975 * subtotal;
+    total = subtotal + gst + qst;
+
+    // displaying totals and taxes
+    $('#orderSummaryTable').append('<tr class="subtotal"><td>Subtotal</td><td></td><td>' + subtotal.toFixed(2) + '$</td></tr>');
+    $('#orderSummaryTable').append('<tr class="tax"><td>GST</td><td></td><td>' + gst.toFixed(2) + '$</td></tr>');
+    $('#orderSummaryTable').append('<tr class="tax"><td>QST</td><td></td><td>' + qst.toFixed(2) + '$</td></tr>');
+    $('#orderSummaryTable').append('<tr class="total"><td>Total</td><td></td><td>' + total.toFixed(2) + '$</td></tr>');
+
+    // displaying for review and order table in accordion
+    $('#reviewPlaceOrderTable').append('<tr><td>Subtotal</td><td></td><td>' + subtotal.toFixed(2) + '$</td></tr>');
+    $('#reviewPlaceOrderTable').append('<tr><td>GST</td><td></td><td>' + gst.toFixed(2) + '$</td></tr>');
+    $('#reviewPlaceOrderTable').append('<tr><td>QST</td><td></td><td>' + qst.toFixed(2) + '$</td></tr>');
+    $('#reviewPlaceOrderTable').append('<tr><td>Total</td><td></td><td>' + total.toFixed(2) + '$</td></tr>');
+}
+
+addToOrderSummary();
+
+// ========================= Webstorage =========================
 // Add user order information to webstorage 
 $('#paymentSubmit').click(function () {
     // payment method
@@ -133,168 +178,3 @@ function addToReceipt() {
 }
 
 addToReceipt();
-
-// Add to order summary table
-let userOrder = "Tomato Salad,1,6.00;Chicken Noodle Soup,1,6.00;Egg Sandwich,1,6.50;Apple Juice,2,2.50;Croissant,4,4.50";
-
-let subtotal = 0;
-let gst = 0;
-let qst = 0;
-let total = 0;
-let orderTable = document.getElementById('orderSummaryTable');
-let reviewTable = document.getElementById('reviewPlaceOrderTable');
-
-// add ordered items to order summary
-function addToOrderSummary() {
-    let orderItem = userOrder.split(';');
-    for (let i = 0; i < orderItem.length; i++) {
-        let orderItemArr = orderItem[i].split(',');
-        // get each values
-        let menuItem = orderItemArr[0];
-        let itemQuantity = orderItemArr[1];
-        let itemPrice = orderItemArr[2];
-
-        // add item price to subtotal
-        subtotal += parseFloat(itemPrice);
-
-        // adding ordered items to order summary table
-        let newTr = document.createElement("tr");
-
-        let newTd1 = document.createElement("td");
-        newTd1.appendChild(document.createTextNode(menuItem));
-
-        let newTd2 = document.createElement("td");
-        newTd2.appendChild(document.createTextNode(itemQuantity));
-
-        let newTd3 = document.createElement("td");
-        newTd3.appendChild(document.createTextNode(itemPrice + "$"));
-
-        newTr.appendChild(newTd1);
-        newTr.appendChild(newTd2);
-        newTr.appendChild(newTd3);
-        orderTable.appendChild(newTr);
-    }
-    gst = 0.05 * subtotal;
-    qst = 0.09975 * subtotal;
-    total = subtotal + gst + qst;
-}
-
-function DisplayPricesOrderSummary() {
-    // Subtotal
-    let newTr = document.createElement("tr");
-    newTr.setAttribute("class", "subtotal");
-
-    let newTd1 = document.createElement("td");
-    newTd1.appendChild(document.createTextNode("Subtotal"));
-
-    let newTd2 = document.createElement("td");
-
-    let newTd3 = document.createElement("td");
-    newTd3.appendChild(document.createTextNode(subtotal.toFixed(2) + "$"));
-
-    newTr.appendChild(newTd1);
-    newTr.appendChild(newTd2);
-    newTr.appendChild(newTd3);
-    orderTable.appendChild(newTr);
-
-    // GST
-    newTr = document.createElement("tr");
-    newTr.setAttribute("class", "tax");
-
-    newTd1 = document.createElement("td");
-    newTd1.appendChild(document.createTextNode("GST"));
-
-    newTd2 = document.createElement("td");
-
-    newTd3 = document.createElement("td");
-    newTd3.appendChild(document.createTextNode(gst.toFixed(2) + "$"));
-
-    newTr.appendChild(newTd1);
-    newTr.appendChild(newTd2);
-    newTr.appendChild(newTd3);
-    orderTable.appendChild(newTr);
-
-    // QST
-    newTr = document.createElement("tr");
-    newTr.setAttribute("class", "tax");
-
-    newTd1 = document.createElement("td");
-    newTd1.appendChild(document.createTextNode("QST"));
-
-    newTd2 = document.createElement("td");
-
-    newTd3 = document.createElement("td");
-    newTd3.appendChild(document.createTextNode(qst.toFixed(2) + "$"));
-
-    newTr.appendChild(newTd1);
-    newTr.appendChild(newTd2);
-    newTr.appendChild(newTd3);
-    orderTable.appendChild(newTr);
-
-    // Total
-    newTr = document.createElement("tr");
-    newTr.setAttribute("class", "total");
-
-    newTd1 = document.createElement("td");
-    newTd1.appendChild(document.createTextNode("Total"));
-
-    newTd2 = document.createElement("td");
-
-    newTd3 = document.createElement("td");
-    newTd3.appendChild(document.createTextNode(total.toFixed(2) + "$"));
-
-    newTr.appendChild(newTd1);
-    newTr.appendChild(newTd2);
-    newTr.appendChild(newTd3);
-    orderTable.appendChild(newTr);
-}
-
-function DisplayPricesOrderReview(){
-    // subtotal
-    let newTr = document.createElement("tr");
-    let newTd1 = document.createElement("td");
-    newTd1.appendChild(document.createTextNode("Subtotal"));
-    let newTd2 = document.createElement("td");
-    newTd2.appendChild(document.createTextNode(subtotal.toFixed(2) + "$"));
-
-    newTr.appendChild(newTd1);
-    newTr.appendChild(newTd2);
-    reviewTable.appendChild(newTr);
-
-    // gst
-    newTr = document.createElement("tr");
-    newTd1 = document.createElement("td");
-    newTd1.appendChild(document.createTextNode("GST"));
-    newTd2 = document.createElement("td");
-    newTd2.appendChild(document.createTextNode(gst.toFixed(2) + "$"));
-
-    newTr.appendChild(newTd1);
-    newTr.appendChild(newTd2);
-    reviewTable.appendChild(newTr);
-
-    // qst
-    newTr = document.createElement("tr");
-    newTd1 = document.createElement("td");
-    newTd1.appendChild(document.createTextNode("QST"));
-    newTd2 = document.createElement("td");
-    newTd2.appendChild(document.createTextNode(qst.toFixed(2) + "$"));
-
-    newTr.appendChild(newTd1);
-    newTr.appendChild(newTd2);
-    reviewTable.appendChild(newTr);
-
-    // total
-    newTr = document.createElement("tr");
-    newTd1 = document.createElement("td");
-    newTd1.appendChild(document.createTextNode("Total"));
-    newTd2 = document.createElement("td");
-    newTd2.appendChild(document.createTextNode(total.toFixed(2) + "$"));
-
-    newTr.appendChild(newTd1);
-    newTr.appendChild(newTd2);
-    reviewTable.appendChild(newTr);
-}
-
-addToOrderSummary();
-DisplayPricesOrderSummary();
-DisplayPricesOrderReview();
