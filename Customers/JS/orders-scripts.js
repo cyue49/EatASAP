@@ -76,8 +76,13 @@ $('#infoSubmit').click(function (e) {
 // Add user order information to webstorage 
 $('#paymentSubmit').click(function () {
     // payment method
-    var paymentMthd = $('input[name="paymentMethod"]').val();
-    sessionStorage.setItem("paymentmethod", paymentMthd);
+    if ($('#visa').is(':checked')) {
+        sessionStorage.setItem("paymentmethod", "Visa");
+    }else if ($('#mastercard').is(':checked')) {
+        sessionStorage.setItem("paymentmethod", "MasterCard");
+    }else if ($('#paypal').is(':checked')){
+        sessionStorage.setItem("paymentmethod", "PayPal");
+    }
 });
 
 $('#infoSubmit').click(function () {
@@ -242,11 +247,6 @@ function DisplayPricesOrderSummary() {
     newTr.appendChild(newTd2);
     newTr.appendChild(newTd3);
     orderTable.appendChild(newTr);
-
-    /* newTr2 = document.createElement("tr");
-    newTr.appendChild(newTd1);
-    newTr.appendChild(newTd3);
-    reviewTable.appendChild(newTr); */
 }
 
 function DisplayPricesOrderReview(){
