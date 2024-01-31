@@ -219,8 +219,8 @@ main {
     border: 1px solid;
 }
 
-.accordion table td:nth-child(2) {
-    text-align: right;
+.accordion table tr:first-child, .accordion table tr:last-child {
+    font-weight: bold;
 }
 
 .accordion table tr {

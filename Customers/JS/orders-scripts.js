@@ -137,6 +137,7 @@ let gst = 0;
 let qst = 0;
 let total = 0;
 let orderTable = document.getElementById('orderSummaryTable');
+let reviewTable = document.getElementById('reviewPlaceOrderTable');
 
 // add ordered items to order summary
 function addToOrderSummary() {
@@ -168,9 +169,12 @@ function addToOrderSummary() {
         newTr.appendChild(newTd3);
         orderTable.appendChild(newTr);
     }
+    gst = 0.05 * subtotal;
+    qst = 0.09975 * subtotal;
+    total = subtotal + gst + qst;
 }
 
-function DisplayPrices() {
+function DisplayPricesOrderSummary() {
     // Subtotal
     let newTr = document.createElement("tr");
     newTr.setAttribute("class", "subtotal");
@@ -189,7 +193,6 @@ function DisplayPrices() {
     orderTable.appendChild(newTr);
 
     // GST
-    gst = 0.05 * subtotal;
     newTr = document.createElement("tr");
     newTr.setAttribute("class", "tax");
 
@@ -207,8 +210,6 @@ function DisplayPrices() {
     orderTable.appendChild(newTr);
 
     // QST
-    qst = 0.09975 * subtotal;
-
     newTr = document.createElement("tr");
     newTr.setAttribute("class", "tax");
 
@@ -226,8 +227,6 @@ function DisplayPrices() {
     orderTable.appendChild(newTr);
 
     // Total
-    total = subtotal + gst + qst;
-
     newTr = document.createElement("tr");
     newTr.setAttribute("class", "total");
 
@@ -243,7 +242,59 @@ function DisplayPrices() {
     newTr.appendChild(newTd2);
     newTr.appendChild(newTd3);
     orderTable.appendChild(newTr);
+
+    /* newTr2 = document.createElement("tr");
+    newTr.appendChild(newTd1);
+    newTr.appendChild(newTd3);
+    reviewTable.appendChild(newTr); */
+}
+
+function DisplayPricesOrderReview(){
+    // subtotal
+    let newTr = document.createElement("tr");
+    let newTd1 = document.createElement("td");
+    newTd1.appendChild(document.createTextNode("Subtotal"));
+    let newTd2 = document.createElement("td");
+    newTd2.appendChild(document.createTextNode(subtotal.toFixed(2) + "$"));
+
+    newTr.appendChild(newTd1);
+    newTr.appendChild(newTd2);
+    reviewTable.appendChild(newTr);
+
+    // gst
+    newTr = document.createElement("tr");
+    newTd1 = document.createElement("td");
+    newTd1.appendChild(document.createTextNode("GST"));
+    newTd2 = document.createElement("td");
+    newTd2.appendChild(document.createTextNode(gst.toFixed(2) + "$"));
+
+    newTr.appendChild(newTd1);
+    newTr.appendChild(newTd2);
+    reviewTable.appendChild(newTr);
+
+    // qst
+    newTr = document.createElement("tr");
+    newTd1 = document.createElement("td");
+    newTd1.appendChild(document.createTextNode("QST"));
+    newTd2 = document.createElement("td");
+    newTd2.appendChild(document.createTextNode(qst.toFixed(2) + "$"));
+
+    newTr.appendChild(newTd1);
+    newTr.appendChild(newTd2);
+    reviewTable.appendChild(newTr);
+
+    // total
+    newTr = document.createElement("tr");
+    newTd1 = document.createElement("td");
+    newTd1.appendChild(document.createTextNode("Total"));
+    newTd2 = document.createElement("td");
+    newTd2.appendChild(document.createTextNode(total.toFixed(2) + "$"));
+
+    newTr.appendChild(newTd1);
+    newTr.appendChild(newTd2);
+    reviewTable.appendChild(newTr);
 }
 
 addToOrderSummary();
-DisplayPrices();
+DisplayPricesOrderSummary();
+DisplayPricesOrderReview();
