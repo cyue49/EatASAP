@@ -75,14 +75,17 @@ $('#infoSubmit').click(function (e) {
 var userOrder = "Tomato Salad,1,6.00;Chicken Noodle Soup,1,6.00;Egg Sandwich,1,6.50;Apple Juice,2,2.50;Croissant,4,4.50";
 sessionStorage.setItem("customerOrderItems", userOrder);
 
+// totals and taxes values
 var subtotal = 0;
 var gst = 0;
 var qst = 0;
 var total = 0;
 
+// customer's order
+var orders = sessionStorage.getItem("customerOrderItems");
+
 // Adding customer's order items to order summary table and order review table 
 function addToOrderSummary() {
-    var orders = sessionStorage.getItem("customerOrderItems");
     var orderItem = orders.split(';');
     for (i = 0; i < orderItem.length; i++) {
         var orderItemArr = orderItem[i].split(',');
@@ -175,6 +178,22 @@ function addToReceipt() {
     // card number
     var cardNumber = sessionStorage.getItem("cardnum");
     $('#customerCardNum').html("************" + cardNumber);
+    // Totals and taxes
+    $('#receiptSubtotal').html(subtotal.toFixed(2) + "$");
+    $('#receiptGST').html(gst.toFixed(2) + "$");
+    $('#receiptQST').html(qst.toFixed(2) + "$");
+    $('#receiptTotal').html(total.toFixed(2) + "$");
+    // Order items
+    var orderItem = orders.split(';');
+    for (i = 0; i < orderItem.length; i++) {
+        var orderItemArr = orderItem[i].split(',');
+        // get each values
+        var menuItem = orderItemArr[0];
+        var itemQuantity = orderItemArr[1];
+        var itemPrice = orderItemArr[2];
+        // display on receipt list
+        $('#receiptItems').append('<li>' + menuItem + ' (' + itemPrice + '$) x ' + itemQuantity + '</li>');
+    }
 }
 
 addToReceipt();
