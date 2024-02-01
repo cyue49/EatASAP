@@ -70,6 +70,7 @@ main {
 
 .infoLineHeader i {
     color: var(--main-cyan);
+    cursor: pointer;
 }
 
 .separatorLine {
@@ -176,4 +177,9 @@ main {
 
 .fa-angle-up {
     display: none;
+}
+
+.card {
+    background-color: var(--navbar-color);
+    border-radius: 25px;
 }
