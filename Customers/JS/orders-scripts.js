@@ -95,7 +95,7 @@ function addToOrderSummary() {
         var itemPrice = orderItemArr[2];
 
         // add item price to subtotal
-        subtotal += parseFloat(itemPrice);
+        subtotal += parseFloat(itemPrice) * parseFloat(itemQuantity);
 
         // adding ordered items to order summary table
         $('#orderSummaryTable').append("<tr><td>" + menuItem + "</td><td>" + itemQuantity + "</td><td>" + itemPrice + "$</td></tr>");
