@@ -51,12 +51,14 @@ main {
     justify-content: space-between;
 }
 
-.infoLine, .infoLineHeader {
+.infoLine,
+.infoLineHeader {
     display: flex;
     align-items: center;
 }
 
-.infoLine i, .infoLineHeader i {
+.infoLine i,
+.infoLineHeader i {
     font-size: 1.8em;
     color: var(--font-color);
     margin-right: 0.8em;
@@ -118,11 +120,13 @@ main {
     background-color: var(--font-color);
 }
 
-.orderHistory table td:nth-child(3), .orderHistory table th:nth-child(3) {
+.orderHistory table td:nth-child(3),
+.orderHistory table th:nth-child(3) {
     text-align: right;
 }
 
-.orderHistory table td:nth-child(2), .orderHistory table th:nth-child(2) {
+.orderHistory table td:nth-child(2),
+.orderHistory table th:nth-child(2) {
     text-align: center;
 }
 
@@ -143,4 +147,33 @@ main {
     font-weight: bold;
     color: var(--bg-color);
     background-color: var(--font-color);
+}
+
+/* Order history restaurant info */
+.orderHistorySectionInfo {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Order history collapse section*/
+.orderHistoryMoreLink {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.orderHistoryMoreLink a {
+    text-decoration: none;
+}
+
+.orderHistoryMoreLink a i {
+    font-size: 4em;
+    color: var(--main-cyan);
+}
+
+.fa-angle-up {
+    display: none;
 }
