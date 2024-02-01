@@ -58,7 +58,7 @@
                 </div>
                 <div class="infoBox">
                     <span class="infoLineHeader">
-                        <h2>Firstname Lastname</h2><i class="fa fa-edit"></i>
+                        <h2>Firstname Lastname</h2><i id="editUserInfoPopupButton" class="fa fa-edit"></i>
                     </span>
                     <span class="infoLine"><i class="fa fa-envelope"></i>
                         <p>firstname@email.com</p>
@@ -69,7 +69,7 @@
                 </div>
                 <div class="infoBox">
                     <span class="infoLineHeader">
-                        <h2>Payment Information</h2><i class="fa fa-edit"></i>
+                        <h2>Payment Information</h2><i id="editPaymentMethodPopupButton" class="fa fa-edit"></i>
                     </span>
                     <span class="infoLine"><i class="fa fa-cc-visa"></i></i>
                         <p>Payment Method: Visa</p>
@@ -91,8 +91,8 @@
                         <h3>29.32$</h3>
                     </div>
                     <p class="orderHistoryMoreLink">
-                        <a data-bs-toggle="collapse" href="#collapsedHistory1" role="button"
-                            aria-expanded="false" aria-controls="collapsedHistory1">
+                        <a data-bs-toggle="collapse" href="#collapsedHistory1" role="button" aria-expanded="false"
+                            aria-controls="collapsedHistory1">
                             <i class="fa fa-angle-down"></i>
                             <i class="fa fa-angle-up"></i>
                         </a>
@@ -161,9 +161,9 @@
                         <p>1/31/2024, 7:07:24 PM</p>
                         <h3>29.32$</h3>
                     </div>
-                    <p class="orderHistoryMoreLink"> 
-                        <a data-bs-toggle="collapse" href="#collapsedHistory2" role="button"
-                            aria-expanded="false" aria-controls="collapsedHistory2">
+                    <p class="orderHistoryMoreLink">
+                        <a data-bs-toggle="collapse" href="#collapsedHistory2" role="button" aria-expanded="false"
+                            aria-controls="collapsedHistory2">
                             <i class="fa fa-angle-down"></i>
                             <i class="fa fa-angle-up"></i>
                         </a>
@@ -224,6 +224,23 @@
                             </table>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="editPopup" id="userInfoEditPopup">
+            <div class="popupContent">
+                <div class="editPopupHeader">
+                    <h3>Edit your profile information</h3>
+                    <i id="closeUserInfoPopup" class="fa fa-close"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="editPopup" id="paymentInfoEditPopup">
+            <div class="popupContent">
+                <div class="editPopupHeader">
+                    <h3>Edit your payment information</h3>
+                    <i id="closePaymentInfoPopup" class="fa fa-close"></i>
                 </div>
             </div>
         </div>

@@ -183,3 +183,43 @@ main {
     background-color: var(--navbar-color);
     border-radius: 25px;
 }
+
+/* Edit user profile Pop up */
+.editPopup {
+    position: fixed;
+    z-index: 15;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);;
+    display: none;
+}
+
+.popupContent {
+    height: 50%;
+    width: 50%;
+    border-radius: 25px;
+    background-color: var(--navbar-color);
+    box-shadow: 5px 5px 10px rgba(69, 44, 30, 0.3);
+    padding: 1em 2em;
+}
+
+.editPopupHeader { 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.editPopupHeader i {
+    font-size: 2em;
+    color: var(--main-orange);
+}
+
+.fa-close {
+    cursor: pointer;
+}
