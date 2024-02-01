@@ -200,12 +200,13 @@ addToReceipt();
 
 // Save receipt as pdf button
 $('#downloadPDF').click(function () {
-    const element = document.getElementById('receiptList');
+    let element = document.getElementById('receiptList');
+    element.style.maxHeight = "100%";
     const opt = {
         filename: "Receipt.pdf",
         margin: 10,
         image: { type: "png", quality: 0.95 },
-        html2canvas: { scale: 2 }
+        html2canvas: { scale: 2, scrollX: 0, scrollY: 0}
     };
     html2pdf().set(opt).from(element).save();
 });

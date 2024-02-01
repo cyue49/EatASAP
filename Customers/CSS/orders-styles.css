@@ -119,7 +119,7 @@ main {
 }
 
 /* Order Complete Page Left Side */
-.orderNumber {
+#orderNumber {
     width: 100%;
     padding: 1em 2.5em;
     box-sizing: border-box;
@@ -139,7 +139,7 @@ main {
     color: var(--font-color);
 }
 
-.orderNumber h2:last-child {
+#orderNumber h2:last-child {
     margin: 1em;
     text-align: center;
     font-size: 2em;
@@ -281,7 +281,7 @@ fieldset legend {
 
 
 /* Order complete page Receipt Summary */
-.receiptSummary {
+#receiptSummary {
     width: 100%;
     border-radius: 25px;
     box-shadow: 5px 5px 10px rgba(69, 44, 30, 0.3);
@@ -290,13 +290,13 @@ fieldset legend {
 }
 
 /* br */
-.receiptSummary span {
+#receiptSummary span {
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
-.receiptSummary ul {
+#receiptSummary ul {
     list-style-type: square;
 }
 
