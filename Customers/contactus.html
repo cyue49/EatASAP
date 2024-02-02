@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template Page</title>
+    <!-- Icon -->
+    <link rel="icon" type="image/x-icon" href="Assets/Icons/Logo.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- CSS -->
+    <link href="CSS/contactus-styles.css" rel="stylesheet" />
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=false&callback=myMap"></script>
+    <!-- JS -->
+
+</head>
+
+<body>
+    <!-- Top Navigation Bar -->
+    <div class="topNavbar">
+        <!-- Left Side -->
+        <div class="navbarLeft">
+            <a class="navbarIcons">
+                <img src="Assets/Icons/Logo.svg" alt="EatASAP Logo">
+            </a>
+        </div>
+        <!-- Center Part -->
+        <div class="navbarCenter">
+            <a class="navItem" href="#">Home</a>
+            <a class="navItem" href="contactus.html">Contact</a>
+            <a class="navItem" href="aboutus.html">About</a>
+            <a class="navItem" href="#">Add Your Restaurant</a>
+        </div>
+        <!-- Right Side -->
+        <div class="navbarRight">
+            <a class="navItem" href="#">Sign In</a>
+            <a class="navbarIcons">
+                <i class="fa fa-globe"></i>
+            </a>
+        </div>
+    </div>
+    <main>
+    <div class="team-contact-section">
+        <section class="team">
+            <!-- Team member profiles -->
+            <div class="profile">
+                <img src="./profile photo/profile4.png" alt="Team Member">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh</p>
+            </div>
+            <div class="profile">
+                <img src="./profile photo/profile1.jpg" alt="Team Member">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh</p>
+            </div>
+            <div class="profile">
+                <img src="./profile photo/profile2.png" alt="Team Member">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh</p>
+            </div>
+            <div class="profile">
+                <img src="./profile photo/profile3.png" alt="Team Member">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh</p>
+            </div>
+        </section>
+        <section class="contact-info">
+            <div class="card">
+                <div class="contact">
+                    <div class="icon phone-icon"></div>
+                    <h2>CALL US</h2>
+                    <p>(+1)-450-110-1010</p>
+                </div>
+                <div class="location">
+                    <div class="icon location-icon"></div>
+                    <h2>LOCATION</h2>
+                    <p>21 275 Rue Lakeshore Road, Sainte-Anne-de-Bellevue, QC H9X 3L9</p>
+                </div>
+                <div class="business-hours">
+                    <div class="icon clock-icon"></div>
+                    <h2>BUSINESS HOURS</h2>
+                    <div class="hours">
+                        <div class="day">
+                            <p>MONDAY</p>
+                            <p>10AM - 8PM</p>
+                        </div>
+                        <div class="day">
+                            <p>TUESDAY</p>
+                            <p>10AM - 8PM</p>
+                        </div>
+                        <div class="day">
+                            <p>WEDNESDAY</p>
+                            <p>10AM - 8PM</p>
+                        </div>
+                        <div class="day">
+                            <p>FRIDAY</p>
+                            <p>10AM - 8PM</p>
+                        </div>
+                        <div class="day">
+                            <p>SATURDAY</p>
+                            <p>10AM - 9PM</p>
+                        </div>
+                        <div class="day">
+                            <p>SUNDAY</p>
+                            <p>CLOSE</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         
+        </section>
+    </div>
+        <section class="contact">
+            <div class="contact-container">
+                <form class="contact-form">
+                    <h2>Contact US</h2>
+                    <div class="input-group">
+                        <input type="text" id="name" name="name" required>
+                        <label for="name">Enter your name</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" id="email" name="email" required>
+                        <label for="email">Enter a valid email address</label>
+                    </div>
+                    <div class="input-group">
+                        <textarea id="message" name="message" rows="4" required></textarea>
+                        <label for="message">Enter your message</label>
+                    </div>
+                    <button type="submit">SUBMIT</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1-VlXsvMWMr8EotfMcIwYKt-1SrI" width="320" height="350" ></iframe> -->
+        <iframe
+  width="355"
+  height="300"
+  style="border:0; position: absolute; top: 500px;left: 42%;"
+  loading="lazy"
+  allowfullscreen
+  referrerpolicy="no-referrer-when-downgrade"
+  
+   src="https://www.google.com/maps?q=John+Abbott+College,+21+275+Rue+Lakeshore+Road,+Sainte-Anne-de-Bellevue,+QC&output=embed">
+</iframe>
+    </main>
+
+    <footer>
+        <!-- Footer content will go here -->
+    </footer>
+</body>
+</html>
