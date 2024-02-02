@@ -147,7 +147,7 @@ main {
 
 /* ======================== Main Content - Right Side ======================== */
 .rightContent {
-    width: 300px;
+    width: 400px;
     flex-grow: 4;
     display: flex;
     flex-flow: column wrap;

@@ -233,6 +233,26 @@
                     <h3>Edit your profile information</h3>
                     <i id="closeUserInfoPopup" class="fa fa-close"></i>
                 </div>
+                <form action="" class="editPopupForm">
+                    <fieldset>
+                        <!-- First Name -->
+                        <label for="firstName">First Name</label><br>
+                        <input type="text" name="firstname" id="firstName" maxlength="50" required><br><br>
+                        <!-- Last Name -->
+                        <label for="lastName">Last Name</label><br>
+                        <input type="text" name="lastname" id="lastName" maxlength="50" required><br><br>
+                        <!-- Phone Number -->
+                        <label for="phoneNumber">Phone Number</label><br>
+                        <input type="tel" id="phoneNumber" name="phonenumber" placeholder="514-123-4567"
+                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}" required><br><br>
+                        <!-- Email Address -->
+                        <label for="emailAddress">Email</label><br>
+                        <input type="email" id="emailAddress" name="emailaddress" maxlength="100" required><br><br>
+                    </fieldset>
+                    <!-- Submit -->
+                    <button class="buttonVar1" type="submit" id="editProfileInfoDone">Done</button>
+                    <button class="buttonVar2" type="button" id="editProfileInfoCancel">cancel</button>
+                </form>
             </div>
         </div>
 
@@ -242,6 +262,24 @@
                     <h3>Edit your payment information</h3>
                     <i id="closePaymentInfoPopup" class="fa fa-close"></i>
                 </div>
+                <form action="" class="editPopupForm">
+                    <fieldset>
+                        <!-- Card Number -->
+                        <label for="cardNumber">Card Number</label><br>
+                        <input type="number" id="cardNumber" name="cardnumber" maxlength="16"
+                            onKeyPress="if(this.value.length==16) return false;" required><br><br>
+                        <!-- CVV -->
+                        <label for="cvv">CVV</label><br>
+                        <input type="number" id="cvv" name="cvv" maxlength="3"
+                            onKeyPress="if(this.value.length==3) return false;" required><br><br>
+                        <!-- Expiration Date -->
+                        <label for="expirationDate">Expiration Date</label><br>
+                        <input type="month" id="expirationDate" name="expirationdate" required>
+                    </fieldset>
+                    <!-- Submit -->
+                    <button class="buttonVar1" type="submit" id="editPaymentInfoDone">Done</button>
+                    <button class="buttonVar2" type="button" id="editPaymentInfoCancel">cancel</button>
+                </form>
             </div>
         </div>
     </main>

@@ -201,8 +201,8 @@ main {
 }
 
 .popupContent {
-    height: 50%;
-    width: 50%;
+    /* height: 60vmin;
+    width: 60vmin; */
     border-radius: 25px;
     background-color: var(--navbar-color);
     box-shadow: 5px 5px 10px rgba(69, 44, 30, 0.3);
@@ -222,4 +222,36 @@ main {
 
 .fa-close {
     cursor: pointer;
+}
+
+.popupContent button {
+    width: 40%;
+    margin: 1em;
+}
+
+.editPopupForm label {
+    color: var(--font-color);
+}
+
+.editPopupForm input {
+    width: 100%;
+    border: 1px solid var(--light-grey);
+    padding: 0.7em 1em;
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+
+
+/* Removing arrows form number type input */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+fieldset {
+    background-color: var(--bg-color);
+    padding: 2em;
+    border-radius: 25px;
+    margin: 1em;
 }
