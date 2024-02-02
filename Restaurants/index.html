@@ -1,38 +1,75 @@
-<!DOCTYPE html>
 <html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Template Page</title>
+        <!-- Icon -->
+        <link rel="icon" type="image/x-icon" href="Assets/Icons/Logo.svg" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- CSS -->
+        <link href="CSS/common-styles.css" rel="stylesheet" />
+        <link href="CSS/styles.css" rel="stylesheet" />
+        <!-- JS -->
+    </head>
+    
+    <body>
+        <!-- Top Navigation Bar -->
+        <div class="topNavbar">
+            <!-- Left Side -->
+            <div class="navbarLeft">
+                <a class="navbarIcons">
+                    <img src="./assets/NewLogo.svg" alt="EatASAP Logo">
+                </a>
+            </div>
+            <!-- Center Part -->
+            <div class="navbarCenter">
+                <a class="navItem" href="./index.html">Home</a>
+                <a class="navItem" href="#">Contact</a>
+                <a class="navItem" href="#">About</a>
+                <a class="navItem" href="./signup.html">Add Your Restaurant</a>
+            </div>
+            <!-- Right Side -->
+            <div class="navbarRight">
+                <a class="navItem" href="./signin.html">Sign In</a>
+                <a class="navbarIcons">
+                    <i class="fa fa-globe"></i>
+                </a>
+            </div>
+        </div>
+    
+        <!-- Main Content -->
+        
+        <main class="hero">
+            <!-- Demo, delete and put your divs here instead -->
+            <div >
+                <h1>Revolutionize Your Dining Experience</h1>
+                <h3>Boost Efficiency, Delight Customers, and Transform Your Restaurant Operations!</h3>
+                
+                    <div >
+                        <button onclick="location.href='./signup.html'" class="buttonVar1">
+                            <label for="button">Add Your Restaurant</label>
+                        </button>
+                        
+                </div>
+            </div>
+            
+        </main>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EAT ASAP</title>
-    <link rel="stylesheet" type="text/css" href="./CSS/common-styles.css">
-    <link rel="stylesheet" type="text/css" href="./CSS/styles.css">
-</head>
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <h1>How It Works?</h1>
+            <video src="./assets/invideo-ai-480 'EAT ASAP' Enhancing Customer Experience 2024-01-29.mp4" controls style="max-width: 100%;"></video>
+        </div>
+        
 
-<body>
-<header >
-    <nav class="topNavbar">
-       <img src="./assets/NewLogo.png" class="navbarLeft">
-       <ul>Home</ul>
-       <ul>About</ul>
-       <ul>Contact</ul>
-       <ul>Add Your Restaurant</ul>
-       <img src="./assets/NewLogo.png" class="navbarRight">
-    </nav>
-</header>
-<div class="hero">
-    <div class="text-container">
-<h1>Revolutionize Your Dining Experience</h1>
-<h3>Boost Efficiency, Delight Customers, and Transform Your Restaurant Operations!</h3>
 
     
-    <button onclick="" class="buttonVar1">
-        <label for="button"> Add Your Restaurant</label> 
-    </button>
-
-</div>
-<img src="./assets/longqueue123.png">
-</div>
-</body>
+        <!-- Footer -->
+        <footer>
+            <!-- Currently display: none, remove as needed to show footer -->
+        </footer>
+    </body>
 
 </html>
