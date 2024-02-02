@@ -141,10 +141,17 @@ p {
 footer {
     padding: 0.3em;
     min-height: 1em;
-    background-color: var(--navbar-color);
-    display: none;
+    background-color: #dedede;
+    display: flex;
+    margin-top: 10em;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 5px 10px rgba(69, 44, 30, 0.3);
 }
 
+footer p{
+    color: black;
+}
 
 .contact-container {
     max-width: 600px;
@@ -316,4 +323,4 @@ p {
     margin: 5px 0;
 }
 
-/* You would need to include media queries and additional styling details to make this look exactly like the card in the image. */
+

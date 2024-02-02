@@ -170,12 +170,16 @@ h2 {
 
 /* Footer */
 footer {
-    width: 100%;
-    padding: 0.5em;
-    background-color: var(--navbar-color);
-    text-align: center;
+    padding: 0.3em;
+    min-height: 1em;
+    background-color: #dedede;
     display: flex;
-    justify-content: center;
+    margin-top: 10em;
     align-items: center;
-    box-shadow: 0 -5px 10px rgba(69, 44, 30, 0.3);
+    justify-content: center;
+    box-shadow: 0px 5px 10px rgba(69, 44, 30, 0.3);
+}
+
+footer p{
+    color: black;
 }
