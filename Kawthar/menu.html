@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kawthar Mashkour" />
+    <title>Eat ASAP</title>
+    <link rel="icon" href="./assets/EatASAPlogo.svg" />
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/menu.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/20d18bedad.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header>
+        <div class="left-box">
+            <a href="./index.html">
+                <img src="./assets/EatASAPlogo.svg" alt="ban the dishes logo">
+            </a>
+        </div>
+        <div class="right-box">
+            <a href="">Contact</a>
+
+            <button id="login">
+                <i class="fas fa-user-circle"></i>
+                <p>Log-in</p>
+            </button>
+            <a href="#"> <i class="fas fa-globe"></i></a>
+        </div>
+    </header>
+
+    <main>
+        <div class="retaurant-card">
+            <img class="restaurant-image" src="./assets/image/restaurantlogo@2x.png" alt="Restaurant Logo">
+            <div class="info-text-block">
+                <h2>Restaurant Mame</h2>
+                <lu>
+                    <li>
+                        <i class='fas fa-globe-americas'></i>
+                        <h5> : www.mywebsite.com</h5>
+                    </li>
+                    <li>
+                        <i class="material-icons" style="font-size:20px">call</i>
+                        <h5> : 514-123-4567</h5>
+                    </li>
+                </lu>
+            </div>
+            <div class="edit-btn">
+                <i class='far fa-edit' style='color: var(--secondary-color)'></i>
+            </div>
+            <div class="info-text-block">
+                <h2>Payment Information</h2>
+                <lu>
+                    <li>
+                        <i class="fa fa-credit-card"></i>
+                        <h5> : Credit Card*********461</h5>
+                    </li>
+                    <li>
+                        <h5>Next Payment Due: 03/06/2024</h5>
+                    </li>
+                </lu>
+            </div>
+            <div class="edit-btn">
+                <i class='far fa-edit' style='color: var(--secondary-color)'></i>
+
+            </div>
+        </div>
+        <hr class="line1">
+        <h2 class="menu-title">Menu</h2>
+        <nav>
+            <ul class="tabs">
+                <li id="tab-head1" class="tab-head active" onclick="showTab('tab1')">Main Dishes</li>
+                <li id="tab-head2" class="tab-head" onclick="showTab('tab2')">Appetisers</li>
+                <li id="tab-head3" class="tab-head" onclick="showTab('tab3')">Beverages</li>
+            </ul>
+        </nav>
+        <hr class="line2">
+        <ul id="newmenulist">
+            <div id="tab1" class="tab-content active"></div>
+        </ul>
+        <lu>
+            <div id="tab2" class="tab-content"></div>
+        </lu>
+        <lu>
+            <div id="tab3" class="tab-content"></div>
+        </lu>
+
+    </main>
+    <div id="form-section">
+        <form action="" id="form">
+            <h2 class="heading">New Meal Information</h2>
+            <div id="form-container">
+                <input type="text" id="title">
+                <input type="number" id="price">
+            </div>
+            <div id="text-add">
+                <textarea id="desc" name="description" cols="30" rows="3"></textarea>
+                <button id="submit-btn" class="btn"><i class="fas fa-plus"></i></button>
+            </div>
+        </form>
+    </div>
+
+
+    <script src="./js/menu.js"></script>
+</body>
+
+</html>
