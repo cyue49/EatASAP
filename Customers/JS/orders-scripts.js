@@ -208,5 +208,7 @@ $('#downloadPDF').click(function () {
         image: { type: "png", quality: 0.95 },
         html2canvas: { scale: 2, scrollX: 0, scrollY: 0}
     };
-    html2pdf().set(opt).from(element).save();
+    html2pdf().set(opt).from(element).toPdf().get('pdf').then(function (pdf) {
+        window.open(pdf.output('bloburl'), '_blank');
+      });
 });
