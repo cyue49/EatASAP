@@ -73,7 +73,7 @@ $('#infoSubmit').click(function (e) {
 
 // ========================= Getting and displaying customer order items and totals =========================
 var userOrder = "Tomato Salad,1,6.00;Chicken Noodle Soup,1,6.00;Egg Sandwich,1,6.50;Apple Juice,2,2.50;Croissant,4,4.50";
-sessionStorage.setItem("customerOrderItems", userOrder);
+localStorage.setItem("customerOrderItems", userOrder);
 
 // totals and taxes values
 var subtotal = 0;
@@ -82,7 +82,7 @@ var qst = 0;
 var total = 0;
 
 // customer's order
-var orders = sessionStorage.getItem("customerOrderItems");
+var orders = localStorage.getItem("customerOrderItems");
 
 // Adding customer's order items to order summary table and order review table 
 function addToOrderSummary() {
@@ -125,58 +125,58 @@ addToOrderSummary();
 $('#paymentSubmit').click(function () {
     // payment method
     if ($('#visa').is(':checked')) {
-        sessionStorage.setItem("paymentmethod", "Visa");
+        localStorage.setItem("paymentmethod", "Visa");
     } else if ($('#mastercard').is(':checked')) {
-        sessionStorage.setItem("paymentmethod", "MasterCard");
+        localStorage.setItem("paymentmethod", "MasterCard");
     } else if ($('#paypal').is(':checked')) {
-        sessionStorage.setItem("paymentmethod", "PayPal");
+        localStorage.setItem("paymentmethod", "PayPal");
     }
 });
 
 $('#infoSubmit').click(function () {
     // first name 
     var firstName = $('#firstName').val();
-    sessionStorage.setItem("firstname", firstName);
+    localStorage.setItem("firstname", firstName);
     // last name 
     var lastName = $('#lastName').val();
-    sessionStorage.setItem("lastname", lastName);
+    localStorage.setItem("lastname", lastName);
     // phone number 
     var phone = $('#phoneNumber').val();
-    sessionStorage.setItem("phone", phone);
+    localStorage.setItem("phone", phone);
     // email 
     var email = $('#emailAddress').val();
-    sessionStorage.setItem("email", email);
+    localStorage.setItem("email", email);
     // card number
     var cardNumber = $('#cardNumber').val().substring(12, 16);
-    sessionStorage.setItem("cardnum", cardNumber);
+    localStorage.setItem("cardnum", cardNumber);
 });
 
 $('#confirmOrder').click(function () {
     // date and time of cornfirm order
     var orderDateTime = new Date().toLocaleString();
-    sessionStorage.setItem("orderDateTime", orderDateTime);
+    localStorage.setItem("orderDateTime", orderDateTime);
 });
 
 // Get user infromation from webstorage to put on receipt
 function addToReceipt() {
     // Order date and time
-    var orderDateTime = sessionStorage.getItem("orderDateTime");
+    var orderDateTime = localStorage.getItem("orderDateTime");
     $('#orderDate').html(orderDateTime);
     // Payment method
-    var paymentMthd = sessionStorage.getItem("paymentmethod");
+    var paymentMthd = localStorage.getItem("paymentmethod");
     $('#customerPaymentMethod').html(paymentMthd);
     // Full name
-    var firstName = sessionStorage.getItem("firstname");
-    var lastName = sessionStorage.getItem("lastname");
+    var firstName = localStorage.getItem("firstname");
+    var lastName = localStorage.getItem("lastname");
     $('#customerName').html(firstName + " " + lastName);
     // phone number
-    var phone = sessionStorage.getItem("phone");
+    var phone = localStorage.getItem("phone");
     $('#customerPhoneNumber').html(phone);
     // email
-    var email = sessionStorage.getItem("email");
+    var email = localStorage.getItem("email");
     $('#customerEmail').html(email);
     // card number
-    var cardNumber = sessionStorage.getItem("cardnum");
+    var cardNumber = localStorage.getItem("cardnum");
     $('#customerCardNum').html("************" + cardNumber);
     // Totals and taxes
     $('#receiptSubtotal').html(subtotal.toFixed(2) + "$");

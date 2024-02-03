@@ -32,19 +32,19 @@ $('#closePaymentInfoPopup').click(function () {
 $('#editProfileInfoDone').click(function () {
     // if user edited name
     if ($('#firstName').val() != "" && $('#lastName').val() != ""){
-        sessionStorage.setItem("userFirstName", $('#firstName').val());
-        sessionStorage.setItem("userLastName", $('#lastName').val());
-        $('#userFullName').html(sessionStorage.getItem("userFirstName") + " " + sessionStorage.getItem("userLastName"));
+        localStorage.setItem("userFirstName", $('#firstName').val());
+        localStorage.setItem("userLastName", $('#lastName').val());
+        $('#userFullName').html(localStorage.getItem("userFirstName") + " " + localStorage.getItem("userLastName"));
     }
     // if user edited email
     if ($('#emailAddress').val() != ""){
-        sessionStorage.setItem("userEmailAddress", $('#emailAddress').val());
-        $('#userEmailAddress').html(sessionStorage.getItem("userEmailAddress"));
+        localStorage.setItem("userEmailAddress", $('#emailAddress').val());
+        $('#userEmailAddress').html(localStorage.getItem("userEmailAddress"));
     }
     // if user edited phone number
     if ($('#phoneNumber').val() != ""){
-        sessionStorage.setItem("userPhoneNum", $('#phoneNumber').val());
-        $('#userPhoneNum').html(sessionStorage.getItem("userPhoneNum"));
+        localStorage.setItem("userPhoneNum", $('#phoneNumber').val());
+        $('#userPhoneNum').html(localStorage.getItem("userPhoneNum"));
     }
     // close user information edit popup
     $('#userInfoEditPopup').css("display", "none");
@@ -53,8 +53,8 @@ $('#editProfileInfoDone').click(function () {
 $('#editPaymentInfoDone').click(function () {
     // if user edited card number
     if ($('#cardNumber').val() != ""){
-        sessionStorage.setItem("userCardNum", $('#cardNumber').val());
-        $('#userCardNum').html("************" + sessionStorage.getItem("userCardNum").substr(12,15));
+        localStorage.setItem("userCardNum", $('#cardNumber').val());
+        $('#userCardNum').html("************" + localStorage.getItem("userCardNum").substr(12,15));
     }
     // closer payment information edit popup
     $('#paymentInfoEditPopup').css("display", "none");
@@ -72,11 +72,11 @@ $('#editPaymentInfoCancel').click(function () {
 // User Information Displayed 
 $( document ).ready(function() {
     // get variables from webstorage
-    var userFirstName = sessionStorage.getItem("userFirstName");
-    var userLastName = sessionStorage.getItem("userLastName");
-    var userEmailAddress = sessionStorage.getItem("userEmailAddress");
-    var userPhoneNum = sessionStorage.getItem("userPhoneNum");
-    var userCardNum = sessionStorage.getItem("userCardNum");
+    var userFirstName = localStorage.getItem("userFirstName");
+    var userLastName = localStorage.getItem("userLastName");
+    var userEmailAddress = localStorage.getItem("userEmailAddress");
+    var userPhoneNum = localStorage.getItem("userPhoneNum");
+    var userCardNum = localStorage.getItem("userCardNum");
 
     if (userFirstName == null || userLastName == null){
         userFirstName = "Firstname";
