@@ -264,6 +264,23 @@
                 </div>
                 <form action="" class="editPopupForm">
                     <fieldset>
+                        <div class="paymentRadioInput">
+                            <i class="fa fa-cc-visa"></i>
+                            <input type="radio" name="paymentMethod" id="visa" value="Visa">
+                            <label for="visa">Visa</label><br>
+                        </div>
+                        <div class="paymentRadioInput">
+                            <i class="fa fa-cc-mastercard"></i>
+                            <input type="radio" name="paymentMethod" id="mastercard" value="MasterCard">
+                            <label for="mastercard">MasterCard</label><br>
+                        </div>
+                        <div class="paymentRadioInput">
+                            <i class="fa fa-cc-paypal"></i>
+                            <input type="radio" name="paymentMethod" id="paypal" value="PayPal">
+                            <label for="paypal">PayPal</label><br>
+                        </div>
+                    </fieldset>
+                    <fieldset>
                         <!-- Card Number -->
                         <label for="cardNumber">Card Number</label><br>
                         <input type="number" id="cardNumber" name="cardnumber" maxlength="16"
