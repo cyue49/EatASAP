@@ -8,7 +8,6 @@
     --button-shadow: #0F1332;
     font-family: Arial, sans-serif;
 }
-
 body {
     color: var(--font-color);
     background-color: var(--bg-color);
@@ -140,6 +139,15 @@ button {
 footer {
     padding: 0.3em;
     min-height: 1em;
-    background-color: var(--navbar-color);
-    display: none;
+    background-color: #dedede;
+    display: flex;
+    margin-top: 10em;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 5px 10px rgba(69, 44, 30, 0.3);
+    
+}
+
+footer p{
+    color: black;
 }
