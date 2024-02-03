@@ -1,0 +1,220 @@
+.tabs {
+    display: flex;
+    list-style: none;
+    padding: 0;
+  }
+
+  .tab-head {
+    margin-right: 10px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px 5px 0 0;
+    color: var(--inactive-color);
+    font-weight: bold;
+  }
+
+  .tab-head.active {
+    border-bottom: 5px solid var(--btn-background); 
+    color: var(--card-txt-color);
+  }
+
+  .tab:hover {
+    background-color: #ddd;
+  }
+
+  .tab-content {
+    display: none;
+  }
+
+  .tab-content.active {
+    display: block;
+  }
+
+  .tab.tab-active {
+color: aqua;
+  }
+
+.menu-title {
+    padding: 0.75em 0 0.5em;
+    color: var(--card-txt-color);
+    padding-left: 1.5rem;
+}
+
+hr {
+    border: none;
+    border-top: 3px solid var(--btn-background);
+    border-radius: 5px;
+}
+
+.line2 {
+    border-top: 1px solid rgb(220, 220, 220);
+}
+
+nav{
+    display:inline-block;
+    width:450px;
+    border-bottom: 1 solid #F4F4F4;
+    padding-left: 1.5rem;
+}
+
+nav li{
+    display: inline-block;
+}
+
+li {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+}
+
+li img {
+    margin-right: 0.5rem;
+
+}
+
+.btn {
+    border: none;
+    cursor: pointer;
+    color: gray;
+    display: inline;
+}
+
+.edit-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.edit-btn>img {
+margin-top: 2rem;
+width: 1rem;
+height: 1rem;
+}
+
+.btn:hover {
+    color: red;
+}
+
+
+/* Overall cards */
+
+.item-image {
+    width:200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    box-shadow: -3px -3px 6px rgba(0, 0, 0, 0.16);
+    margin-right: 1.5rem;
+}
+
+.restaurant-image {
+    width:8rem;
+    height: 8rem;
+    object-fit: cover;
+    border-radius:50%;
+}
+
+.card {
+    margin: 2rem 0;
+    background: var(--card-background);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.retaurant-card {
+    padding: 1rem ;
+    padding-top: 3rem;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.info-text-block {
+margin: auto 0 auto 1.5rem;
+}
+
+.card:first-child {
+    margin-top: 0;
+}
+
+.card:hover {
+    box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+.text p {
+    color: var(--card-txt-color);
+}
+
+.text>* {
+    margin-bottom: 0.75em;
+}
+
+.text> :last-child {
+    margin-bottom: 0;
+}
+
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    
+    color: gray;
+}
+
+.card button {
+    display: none;
+    margin-left: 0.75em;
+}
+
+
+
+#form-section {
+    background-color: #f98e9b;
+    position: sticky;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+}
+
+form {
+    max-width: 800px;
+    padding: 0 1rem 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    gap: 0.5em;
+}
+
+#form-container {
+    display: flex;
+    gap: 0.5em;
+}
+
+#form-container input {
+    padding: 0.5em;
+}
+
+#title {
+    flex: 3;
+}
+
+#price {
+    flex: 1;
+    min-width: 120px;
+}
+
+textarea {
+    padding: 0.5em;
+}
+
+#text-add {
+    display: flex;
+    gap: 0.5em;
+}
+
+textarea {
+    flex: 1;
+}
