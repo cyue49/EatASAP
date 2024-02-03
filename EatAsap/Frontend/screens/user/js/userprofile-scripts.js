@@ -19,7 +19,7 @@ $('#editPaymentMethodPopupButton').click(function () {
     $('#paymentInfoEditPopup').css("display", "flex");
 });
 
-// close popu up windows with 'X' icon
+// close popup windows with 'X' icon
 $('#closeUserInfoPopup').click(function () {
     $('#userInfoEditPopup').css("display", "none");
 });
@@ -51,6 +51,15 @@ $('#editProfileInfoDone').click(function () {
 });
 
 $('#editPaymentInfoDone').click(function () {
+    // if user edited payment method
+    if ($('#visa').is(':checked')) {
+        localStorage.setItem("userPaymentmethod", "Visa");
+    } else if ($('#mastercard').is(':checked')) {
+        localStorage.setItem("userPaymentmethod", "MasterCard");
+    } else if ($('#paypal').is(':checked')) {
+        localStorage.setItem("userPaymentmethod", "PayPal");
+    }
+    $('#userPaymentmethod').html(localStorage.getItem("userPaymentmethod"));
     // if user edited card number
     if ($('#cardNumber').val() != ""){
         localStorage.setItem("userCardNum", $('#cardNumber').val());
@@ -76,6 +85,7 @@ $( document ).ready(function() {
     var userLastName = localStorage.getItem("userLastName");
     var userEmailAddress = localStorage.getItem("userEmailAddress");
     var userPhoneNum = localStorage.getItem("userPhoneNum");
+    var userPaymentmethod = localStorage.getItem("userPaymentmethod");
     var userCardNum = localStorage.getItem("userCardNum");
 
     if (userFirstName == null || userLastName == null){
@@ -91,9 +101,13 @@ $( document ).ready(function() {
     if (userCardNum == null){
         userCardNum = "none";
     }
+    if (userPaymentmethod == null){
+        userPaymentmethod = "none";
+    }
 
     $('#userFullName').html(userFirstName + " " + userLastName);
     $('#userEmailAddress').html(userEmailAddress);
     $('#userPhoneNum').html(userPhoneNum);
+    $('#userPaymentmethod').html(userPaymentmethod);
     $('#userCardNum').html("************" + userCardNum.substr(12,15));
 });
