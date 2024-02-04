@@ -8,22 +8,22 @@ document.addEventListener('DOMContentLoaded', function() {
       if (activeItem) activeItem.classList.remove('active');
   
       items[currentIndex].classList.add('active');
-      currentIndex = (currentIndex + 1) % totalItems; // Loop back to the first item
+      currentIndex = (currentIndex + 1) % totalItems; 
     }
   
-    setInterval(cycleItems, 2000); // Change image every 3 seconds
+    setInterval(cycleItems, 2000);
   });
   
   document.addEventListener('DOMContentLoaded', function() {
-    const addButton = document.getElementById('hover'); // Corrected method to get the button
-    const heroImage = document.querySelector('#hero-image img'); // Correctly target the img element within the hero-image div
+    const addButton = document.getElementById('hover'); 
+    const heroImage = document.querySelector('#hero-image img'); 
 
     addButton.addEventListener('mouseover', function() {
-        heroImage.src = './Assets/peopleTalking.png'; // Ensure the path is correct
+        heroImage.src = './Assets/peopleTalking.png'; 
     });
 
     addButton.addEventListener('mouseout', function() {
-        heroImage.src = './Assets/longqueue123.png'; // Ensure the path is correct and matches the file extension
+        heroImage.src = './Assets/longqueue123.png'; 
     });
 });
 
