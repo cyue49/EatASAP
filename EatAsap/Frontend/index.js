@@ -19,11 +19,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const heroImage = document.querySelector('#hero-image img'); // Correctly target the img element within the hero-image div
 
     addButton.addEventListener('mouseover', function() {
-        heroImage.src = './Assets/peopleTalking.png'; // Ensure the path is correct
+        heroImage.src = './assets/pictures/peopleTalking.png'; // Ensure the path is correct
     });
 
     addButton.addEventListener('mouseout', function() {
-        heroImage.src = './Assets/longqueue123.png'; // Ensure the path is correct and matches the file extension
+        heroImage.src = './assets/pictures/longqueue123.png'; // Ensure the path is correct and matches the file extension
     });
 });
 
