@@ -49,6 +49,10 @@
     border: 2px solid #0F1332;
 }
 
+.sign-up-form select{
+  background-color: white;
+}
+
 
 .sign-up-form button{
     margin-bottom: 10%;

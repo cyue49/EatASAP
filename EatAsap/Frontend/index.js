@@ -27,3 +27,19 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+function validateFormAndNavigate() {
+
+  var password = document.getElementById('password').value;
+  var retypePassword = document.getElementById('retypePassword').value;
+
+
+  if (password !== retypePassword) {
+    alert('Passwords do not match. Please try again.');
+    return false; 
+  }
+
+
+  window.location.href = './screens/user/RestaurantProfile.html';
+  return false; 
+}
+
