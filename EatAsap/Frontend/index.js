@@ -42,6 +42,10 @@ if (password !== retypePassword) {
   alert('Passwords do not match. Please try again.'); // Show an alert if they don't match
   return false; // Prevent form submission
 }
+//local storage
+var restaurantName = document.getElementsByName(restaurantName).value;
+localStorage.setItem("signedIn", true)
+localStorage.setItem("restaurantName", restaurantName)
 
 // Redirect to another page if the passwords match
 window.location.href = './screens/user/RestaurantProfile.html';
