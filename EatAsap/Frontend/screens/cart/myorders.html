@@ -26,28 +26,39 @@
 </head>
 
 <body>
-    <!-- Top Navigation Bar -->
-    <div class="topNavbar">
-        <!-- Left Side -->
-        <div class="navbarLeft">
-            <a class="navbarIcons">
-                <img src="../../assets/icons/Logo.svg" alt="EatASAP Logo">
-            </a>
-        </div>
-        <!-- Center Part -->
-        <div class="navbarCenter">
-            <a class="navItem" href="#">Home</a>
-            <a class="navItem" href="#">Contact</a>
-            <a class="navItem" href="#">About</a>
-        </div>
-        <!-- Right Side -->
-        <div class="navbarRight">
-            <a class="navItem" href="#">Sign In</a>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../../index.html"><img src=" ../../assets/icons/Logo.svg" alt="logo"
+                style="height: 50px;"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100 justify-content-center">
+                    <li class="nav-item text-center px-4 mx-5">
+                        <a class="nav-link active" aria-current="page" href="../../index.html">Home</a>
+                    </li>
+                    <li class="nav-item text-center px-5 mx-5">
+                        <a class="nav-link" href="../../aboutus.html">About</a>
+                    </li>
+                    <li class="nav-item text-center px-5 mx-5">
+                        <a class="nav-link" href="../contactus.html">Contact</a>
+                    </li>
+                    <li class="nav-item text-center px-5 mx-5">
+                        <a class="nav-link" href="../signup.html">Sign In</a>
+                    </li>
+                </ul>
+
+            </div>
             <a class="navbarIcons">
                 <i class="fa fa-globe"></i>
             </a>
         </div>
-    </div>
+    </nav>
 
     <main>
         <!-- Left Side -->
@@ -69,7 +80,8 @@
                             <th>Price Per Unit</th>
                         </tr>
                     </table>
-                    <button class="buttonVar2" id="modifyOrder" onclick="window.location.href ='menu.html'">Continue ordering</button>
+                    <button class="buttonVar2" id="modifyOrder" onclick="window.location.href ='menu.html'">Continue
+                        ordering</button>
                 </div>
             </div>
         </div>
@@ -177,7 +189,8 @@
             </div>
             <!-- Quick Checkout Button -->
             <div class="buttonsGroup">
-                <button class="buttonVar1" onclick="window.location.href ='login.html'">Sign In for Quick Order</button>
+                <button class="buttonVar1" onclick="window.location.href ='../signup.html'">Sign In for Quick
+                    Order</button>
             </div>
         </div>
     </main>
