@@ -8,6 +8,7 @@
     --button-shadow: #0F1332;
     font-family: Arial, sans-serif;
 }
+
 body {
     color: var(--font-color);
     background-color: var(--bg-color);
@@ -39,7 +40,7 @@ p {
 /* Navigation bar */
 .topNavbar {
     width: 100%;
-    height: 5em;
+    height: 4em;
     background-color: var(--navbar-color);
     box-shadow: 0px 5px 10px rgba(69, 44, 30, 0.3);
     display: flex;
@@ -55,7 +56,6 @@ p {
     height: 100%;
     display: flex;
     align-items: center;
-    margin: 50px;
 }
 
 .navbarIcons {
@@ -65,6 +65,7 @@ p {
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    text-decoration: none;
 }
 
 /* Left side */
@@ -77,10 +78,9 @@ p {
     justify-content: flex-end;
 }
 
-
-/*keep this*/
 .navbarRight .navbarIcons i {
     font-size: 2em;
+    color: var(--font-color);
 }
 
 /* Center section */
@@ -99,8 +99,7 @@ p {
     cursor: pointer;
 }
 
-/*keep this*/
-.navItem:hover, .nav-link:hover {
+.navItem:hover {
     text-decoration: underline var(--main-orange) 2px;
 }
 
@@ -122,7 +121,6 @@ button {
 }
 
 .buttonVar1:hover {
-    color: var(--button-sub-color);
     background-color: var(--main-cyan);
     border: 2px solid var(--main-cyan);
 }
@@ -134,8 +132,8 @@ button {
 }
 
 .buttonVar2:hover {
-    color: var(--button-sub-color);
-    background-color: var(--main-orange);
+    color: var(--main-cyan);
+    border: 2px solid var(--main-cyan);
 }
 
 /* Footer */
@@ -148,7 +146,6 @@ footer {
     align-items: center;
     justify-content: center;
     box-shadow: 0px 5px 10px rgba(69, 44, 30, 0.3);
-    
 }
 
 footer p{

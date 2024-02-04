@@ -1,0 +1,326 @@
+:root {
+    --font-color: #0F1332;
+    --bg-color: #efefef;
+    --navbar-color: white;
+    --main-orange: #F26722;
+    --main-cyan: #06D3C7;
+    --button-sub-color: white;
+    --button-shadow: #0F1332;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    color: var(--font-color);
+    background-color: var(--bg-color);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Hide Scrollbar */
+body::-webkit-scrollbar {
+    display: none;
+}
+
+main {
+    flex: 1;
+    width: 100vw;
+    padding-top: 50px;
+}
+
+h1 {
+    color: var(--main-cyan);
+}
+
+p {
+    color: var(--font-color);
+}
+
+/* Navigation bar */
+.topNavbar {
+    width: 100%;
+    height: 4em;
+    background-color: var(--navbar-color);
+    box-shadow: 0px 5px 10px rgba(69, 44, 30, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.navbarLeft,
+.navbarRight {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.navbarIcons {
+    height: 70%;
+    padding: 0 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* Left side */
+.navbarIcons img {
+    height: 100%;
+}
+
+/* Right side */
+.navbarRight {
+    justify-content: flex-end;
+}
+
+.navbarRight .navbarIcons i {
+    font-size: 2em;
+    color: var(--font-color);
+}
+
+/* Center section */
+.navbarCenter {
+    display: flex;
+    gap: 5vw;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.navItem {
+    color: var(--font-color);
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.navItem:hover {
+    text-decoration: underline var(--main-orange) 2px;
+}
+
+/* Buttons */
+/* button {
+    padding: 0.7em 1.2em;
+    border-radius: 25px;
+    cursor: pointer;
+    border: 2px solid var(--main-orange);
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 5px 5px 10px rgba(69, 44, 30, 0.3);
+    
+} */
+
+/* Button: variation 1 */
+.buttonVar1 {
+    color: var(--button-sub-color);
+    background-color: var(--main-orange);
+}
+
+.buttonVar1:hover {
+    background-color: var(--main-cyan);
+    border: 2px solid var(--main-cyan);
+}
+
+/* Button: variation 2*/
+.buttonVar2 {
+    color: var(--main-orange);
+    background-color: var(--button-sub-color);
+}
+
+.buttonVar2:hover {
+    color: var(--main-cyan);
+    border: 2px solid var(--main-cyan);
+}
+
+/* Footer */
+footer {
+    padding: 0.3em;
+    min-height: 1em;
+    background-color: #dedede;
+    display: flex;
+    margin-top: 10em;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 5px 10px rgba(69, 44, 30, 0.3);
+}
+
+footer p{
+    color: black;
+}
+
+.contact-container {
+    max-width: 600px;
+    margin: 50px auto;
+    background: #d6e6e6;
+    position: absolute;
+    top: 360px;
+    width: 40%;
+}
+
+
+.contact {
+    width: 33%;
+    max-width: 600px;
+}
+.contact-form {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+}
+
+.contact-form h2 {
+    margin-bottom: 20px;
+    color: orange;
+    /* background: orange; */
+    display: inline-block;
+    border-radius: 20px;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+.team  {
+    display: flex;
+    width:50%;
+}
+
+
+.team .profile {
+    width: 30%;
+    margin: 10px;
+    text-align: center;
+}
+
+.team .profile img {
+    width: 100px; /* Adjust based on actual size */
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.input-group input,
+.input-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 4px;
+    background: transparent;
+    font-size: 16px;
+    color: #333;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-radius: unset;
+}
+
+.input-group label {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    font-size: 16px;
+    color: #666;
+    pointer-events: none;
+    transition: all 0.2s ease;
+}
+
+.input-group input:valid + label,
+.input-group input:focus + label,
+.input-group textarea:valid + label,
+.input-group textarea:focus + label {
+    top: -20px;
+    left: 0;
+    font-size: 12px;
+    color: #333;
+}
+
+button {
+    margin-left: auto;
+    padding: 10px;
+    border: 2px solid orange;
+    border-radius: 25px;
+    background: transparent;
+    color: orange;
+    font-size: 16px;
+    cursor: pointer;
+    width: 140px;
+
+}
+
+button:hover {
+    background: darkorange;
+}
+.contact-info{
+    width: 30%;
+}
+
+.team-contact-section{
+display: flex;
+width: 100%;
+justify-content: space-between;
+}
+
+
+
+.card {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #FEEFB3;
+    color: #333;
+}
+
+.contact, .location, .business-hours {
+    margin-bottom: 20px;
+}
+
+.icon {
+    background-size: cover;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+}
+
+.phone-icon {
+    background-image: url('phone-icon.png');
+}
+
+.location-icon {
+    background-image: url('location-icon.png');
+}
+
+.clock-icon {
+    background-image: url('clock-icon.png');
+}
+
+h2 {
+    color: #C27E00;
+    text-transform: uppercase;
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.hours {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+}
+
+.day {
+    background: #FFFFFF;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+}
+
+p {
+    margin: 5px 0;
+}
+
+

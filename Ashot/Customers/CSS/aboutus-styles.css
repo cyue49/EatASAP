@@ -8,6 +8,7 @@
     --button-shadow: #0F1332;
     font-family: Arial, sans-serif;
 }
+
 body {
     color: var(--font-color);
     background-color: var(--bg-color);
@@ -36,10 +37,14 @@ p {
     color: var(--font-color);
 }
 
+.container{
+    margin-right: auto;
+    margin-left: auto;
+}
 /* Navigation bar */
 .topNavbar {
     width: 100%;
-    height: 5em;
+    height: 4em;
     background-color: var(--navbar-color);
     box-shadow: 0px 5px 10px rgba(69, 44, 30, 0.3);
     display: flex;
@@ -55,7 +60,6 @@ p {
     height: 100%;
     display: flex;
     align-items: center;
-    margin: 50px;
 }
 
 .navbarIcons {
@@ -65,6 +69,7 @@ p {
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    text-decoration: none;
 }
 
 /* Left side */
@@ -77,10 +82,9 @@ p {
     justify-content: flex-end;
 }
 
-
-/*keep this*/
 .navbarRight .navbarIcons i {
     font-size: 2em;
+    color: var(--font-color);
 }
 
 /* Center section */
@@ -99,43 +103,69 @@ p {
     cursor: pointer;
 }
 
-/*keep this*/
-.navItem:hover, .nav-link:hover {
+.navItem:hover {
     text-decoration: underline var(--main-orange) 2px;
 }
 
-/* Buttons */
-button {
-    padding: 0.7em 1.2em;
-    border-radius: 25px;
-    cursor: pointer;
-    border: 2px solid var(--main-orange);
-    font-weight: bold;
+.header h1 {
+    font-size: 3em; /* Adjust the size as necessary */
+    margin-bottom: 0.5em;
     text-align: center;
-    box-shadow: 5px 5px 10px rgba(69, 44, 30, 0.3);
+    color: var(--main-cyan);
+    margin:auto;
+    margin-top: 40px;
+} 
+
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    /* width: 100%; */
+    max-width: 1200px;
+    margin-top: 20px;
+    flex-direction: column;
 }
 
-/* Button: variation 1 */
-.buttonVar1 {
-    color: var(--button-sub-color);
-    background-color: var(--main-orange);
+.left-column, .right-column {
+    display: flex;
+    flex-direction: row;
+    /* flex-basis: 50%; */
 }
 
-.buttonVar1:hover {
-    color: var(--button-sub-color);
-    background-color: var(--main-cyan);
-    border: 2px solid var(--main-cyan);
+.left-column > *, .right-column > * {
+    margin-bottom: 20px;
 }
 
-/* Button: variation 2*/
-.buttonVar2 {
-    color: var(--main-orange);
-    background-color: var(--button-sub-color);
+
+h2 {
+    font-size: 2em;
+    color: var(--font-color);
+    margin-bottom: 10px;
+    text-align: center;
 }
 
-.buttonVar2:hover {
-    color: var(--button-sub-color);
-    background-color: var(--main-orange);
+.textContainer {
+    background: var(--navbar-color);
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+.column{
+    width: 30%;
+}
+.ads >img {
+    width: 30vw;
+    max-width: 350px;
+
+}
+.ads{
+    padding: 15px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+/* Style for the individual sections */
+.challenges, .purposes, .why-choose, .community, .how-it-works {
+    padding: 15px;
 }
 
 /* Footer */
@@ -148,7 +178,6 @@ footer {
     align-items: center;
     justify-content: center;
     box-shadow: 0px 5px 10px rgba(69, 44, 30, 0.3);
-    
 }
 
 footer p{
