@@ -1,24 +1,33 @@
+
 const delBtns = document.getElementsByClassName("fa-trash-alt");
 const loginBtnTxt = document.getElementById("login").getElementsByTagName("p")[0];
-
+const allEditProfileBtn = document.querySelectorAll("main .retaurant-card .edit-btn");
 const formSection = document.getElementById("form-section");
 const form = document.getElementById("form");
 const submitBtn = document.getElementById("submit-btn");
 const log = document.getElementById("login");
-
+//debugger;
 document.addEventListener('DOMContentLoaded', function () {
     addMenuItems();
-    //debugger;
+    
     //delete events
     const allDelBtn = document.querySelectorAll("main .card .del-btn");
     for (let btn of allDelBtn) {
             btn.addEventListener("click", delCard);
         }
+    //debugger;    
+    //edit Profile events
+    for (let epbtn of allEditProfileBtn) {
+        epbtn.addEventListener("click", function() {
+            window.location.href = '../../index.html';
+        });
+    }
+  debugger;
+    //edit item event
+    const allEditItemBtn = document.querySelectorAll("main .card .edit-btn");
+    for (let eibtn of allEditItemBtn) {
+        eibtn.addEventListener("click", editCard);
         
-    //edit events
-    const allEditBtn = document.querySelectorAll("main .card .edit-btn");
-    for (let btn of allEditBtn) {
-            btn.addEventListener("click", editCard);
     }
     
 });
@@ -39,7 +48,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 form.addEventListener("submit", addCard);
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', popUpAddItem);
+
+function popUpAddItem() {
     var addButton = document.getElementById('add-btn');
     var overlay = document.querySelector('.overlay');
     var overlayBg = document.querySelector('.overlay-bg');
@@ -55,7 +66,30 @@ document.addEventListener('DOMContentLoaded', function () {
         overlay.style.display = 'none';
         overlayBg.style.display = 'none';
     });
-});
+}
+//work here
+function popUpEditItem(event) {
+    event.preventDefault();
+
+    var addButton = document.getElementById('add-btn');
+    var overlay = document.querySelector('.overlay');
+    var overlayBg = document.querySelector('.overlay-bg');
+
+    addButton.addEventListener('click', function () {
+        overlay.style.display = 'flex';
+        overlayBg.style.display = 'flex';
+    });
+    const title = document.getElementById("title").value;
+    const price = document.getElementById("price").value;
+    const description = document.querySelector("textarea").value;
+
+    // close the pop-up window
+    var closeButton = document.querySelector('.close-btn');
+    closeButton.addEventListener('click', function () {
+        overlay.style.display = 'none';
+        overlayBg.style.display = 'none';
+    });
+}
 
 function showTab(tabId) {
     //debugger;
@@ -135,40 +169,6 @@ function addMenuItems() {
 
 }
 
-// function addItem() {
-// //debugger;
-//     const title = document.getElementById("title").value;
-//     const price = document.getElementById("price").value;
-//     const description = document.querySelector("textarea").value;
-//     const imageSrc = "../../assets/pictures/PlatesPictures/plate1.jpg"
-
-
-//     const listItem = document.createElement('li');
-//     listItem.classList.add('card');
-
-//     // Set the inner HTML for the li element
-//     listItem.innerHTML = `
-//         <img class="item-image" src="${imageSrc}" alt="Item Picture1">
-//         <div class="text">
-//             <h3 class="i-title">${title}</h3>
-//             <p class="i-description">${description}</p>
-//             <h3 class="i-price">${price}</h3>
-//         </div>
-//         <div class="buttons">
-//             <div class="edit-btn">
-//                 <i class='far fa-edit' style="font-size:24px !important;color: var(--secondary-color)"></i>
-//             </div>
-//             <div class="del-btn">
-//                 <i class="fas fa-trash-alt" style="font-size:24px"></i>
-//             </div>
-//         </div>`;
-
-//     const parentContainer = document.getElementById('newmenulist');
-//     parentContainer.appendChild(listItem);
-
-// }
-
-
 function login(isLogin) {
     if (loginBtnTxt.textContent === "Log-in") {
         loginBtnTxt.textContent = "Log-out";
@@ -178,10 +178,10 @@ function login(isLogin) {
         //formSection.style.display = "block";
     } else {
         loginBtnTxt.textContent = "Log-in";
-        window.location.href = './index.html';
-        for (let btn of delBtns) {
-            btn.parentElement.style.display = "none";
-        }
+        window.location.href = '../../index.html';
+        // for (let btn of delBtns) {
+        //     btn.parentElement.style.display = "none";
+        // }
         formSection.style.display = "none";
     }
 }
@@ -232,28 +232,6 @@ function addCard(event) {
             btn.addEventListener("click", editCard);
     }
 
-    // const textDiv = createSimpleNode("div", "text");
-    // textDiv.appendChild(createNodeWithText("h3", title, "i-title"));
-    // textDiv.appendChild(createNodeWithText("p", description, "i-description"));
-    // textDiv.appendChild(createNodeWithText("h3", '$' + price, "i-price"));
-
-    // const buttonDiv = createSimpleNode("div", "buttons");
-    // const delButton = createSimpleNode("button", "btn");
-    // const buttonI = createSimpleNode("i", "fas fa-trash-alt");
-
-    // delButton.style.display = 'inline';  // by default .btn has display: none
-
-    // delButton.appendChild(buttonI);
-    // buttonDiv.appendChild(delButton);
-
-    // const li = createSimpleNode("li", "card");
-    // li.appendChild(textDiv);
-    // li.appendChild(buttonDiv);
-    // document.querySelector("ul").appendChild(li);
-
-    // // adding event listener to newly created button
-    // delButton.addEventListener("click", delCard);
-
     // Clear input fields
     document.getElementById("title").value = '';
     document.getElementById("price").value = '';
@@ -261,9 +239,7 @@ function addCard(event) {
 }
 
 function editCard () {
-
-    window.location.href = '../../signin.html';
-
+    popUpAddItem();
 }
 
 // Helper functions to avoid repetition.

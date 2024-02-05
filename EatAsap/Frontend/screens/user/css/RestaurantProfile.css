@@ -194,6 +194,13 @@ li img {
     cursor: pointer;
 }
 
+.edit-profile {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    cursor: pointer;
+}
+
 .del-btn i {
     display: flex;
     flex-direction: column;
