@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
         item.addEventListener('click', function () {
             count++;
             badge.textContent = count;
+            sessionStorage.setItem("item",item);
 
             if (count > 0) {
                 badge.classList.add('orange-color');

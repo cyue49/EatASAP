@@ -40,6 +40,7 @@ header {
     padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
+    box-shadow: 5px 5px 16px rgba(0, 0, 0, 0.16);
 }
 
 .right-box {
@@ -413,4 +414,32 @@ fieldset {
 
 .menu-title-container .submit-btn {
     align-self: center;
+}
+
+.right-box a:hover {
+    text-decoration: underline var(--btn-hover-color);
+           
+}
+#login:hover {
+    text-decoration: underline var(--btn-hover-color);
+           
+}
+
+.orange-color {
+    color: var(--btn-hover-color);
+}
+
+.right-box {
+    display: flex;
+    align-items: center;
+    color: var(--header-txt-color);
+    width: 100%;
+    justify-content: space-between;
+}
+
+.right-box i {
+    font-size: 1.5rem;
+    margin: 0.25rem 0.5rem;
+    color: var(--header-txt-color);
+    
 }

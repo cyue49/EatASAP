@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
             window.location.href = '../../index.html';
         });
     }
-  debugger;
+
     //edit item event
     const allEditItemBtn = document.querySelectorAll("main .card .edit-btn");
     for (let eibtn of allEditItemBtn) {
@@ -170,14 +170,14 @@ function addMenuItems() {
 }
 
 function login(isLogin) {
-    if (loginBtnTxt.textContent === "Log-in") {
-        loginBtnTxt.textContent = "Log-out";
+    if (loginBtnTxt.textContent === "Sign In") {
+        loginBtnTxt.textContent = "Sign Out";
         // for (let btn of delBtns) {
         //     btn.parentElement.style.display = "inline";
         // }
         //formSection.style.display = "block";
     } else {
-        loginBtnTxt.textContent = "Log-in";
+        loginBtnTxt.textContent = "Sign In";
         window.location.href = '../../index.html';
         // for (let btn of delBtns) {
         //     btn.parentElement.style.display = "none";
