@@ -5,9 +5,10 @@
   font-size: 3vh;
   margin: auto  auto auto 10%;
   width: 80%;
-  color: var(--font-color);
-
+  color: var(--main-orange);
+  font-weight: bolder;
 }
+
 .hero h1{
     margin-top: -75%;
     margin-bottom: 7%;
@@ -16,7 +17,6 @@
     font-size: 5vh;
     overflow: visible;
     font-weight: bolder;
-    
 }
 .hero button{
     margin-top: 10%;
@@ -162,13 +162,12 @@
   
   
   .video{
-    width: 75%;
-    margin: 50px auto;
-    display: flex;
-    flex-direction: column;
+    width: 100%;
+    margin: 50px auto auto 15%;
+    
   }
   .video h1{
-    margin: 70% auto 60px auto;
+    margin: 70% auto 60px 30%;
     display: flex;
     flex-direction: column;
     
