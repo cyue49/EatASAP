@@ -73,25 +73,49 @@
         
         <div class="sign-up-form">
            
-            <form>
+          <form id="validation" onsubmit="return validateFormAndNavigate()">
             <h1>Add Your Restaurant</h1>
             <br><br><br><br><br>
-            <input type="text" placeholder="First Name"><br><br>
-            <input type="text" placeholder="Last Name"><br><br>
-            <input type="email" placeholder="Email"><br><br>
-            <input type="password" placeholder="Password"><br><br>
-            <input type="password" placeholder="Retype Password"><br><br>
-            <input type="address" placeholder="Store Address"><br><br>
-            <input type="number" placeholder="Floor/Suite (Optional)"><br><br>
-            <input type="text" placeholder="Store Name On Eat Asap"><br><br>
-            <input type="text" placeholder="Brand Name"><br><br>
-            <select name="Business Type">
-                <option>Business Type</option>
-                <option>Fast Food</option>
-            </select><br><br>
-            <input type="phone" placeholder="Phone Number"><br><br>
+            <input type="text" placeholder="First Name" required minlength="2" maxlength="30"><br><br>
+            <input type="text" placeholder="Last Name" required minlength="2" maxlength="30"><br><br>
+            <input type="email" placeholder="Email" required minlength="6" maxlength="60"><br><br>
+            <input type="password" id="password" placeholder="Password" required
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{8,32}"
+            title="Password should be between 8 and 32 characters and must contain at least one number, one uppercase letter, 
+            one lowercase letter, and one special character.  Length: 8-32 characters."><br><br>
+            <input value="NA" type="password" id="retypePassword" placeholder="Retype Password" required minlength="8" maxlength="32"> <br><br>
+            <input value="NA" type="address" placeholder="Store Address" required minlength="6" maxlength="60"> <br><br>
+            <input value="NA" type="number" placeholder="Floor/Suite (Optional)" minlength="1" maxlength="12"><br><br>
+            <input value="restaurantName" type="text" placeholder="Store Name On Eat Asap" required minlength="2" maxlength="60"><br><br>
+            <input value="Brand-Name" type="text" placeholder="Brand Name" required minlength="2" maxlength="60"><br><br>
+            <select name="Business Type" required>
+              <option value="NA" disabled selected>Select business type</option>
+              <option value="fast_food">Fast Food</option>
+              <option value="casual_dining">Casual Dining</option>
+              <option value="fine_dining">Fine Dining</option>
+              <option value="cafe">Café</option>
+              <option value="buffet">Buffet</option>
+              <option value="food_truck">Food Truck</option>
+              <option value="pop_up">Pop-Up Restaurant</option>
+              <option value="fast_casual">Fast Casual</option>
+              <option value="bistro">Bistro</option>
+              <option value="pub">Pub</option>
+              <option value="diner">Diner</option>
+              <option value="family_style">Family Style</option>
+              <option value="theme">Theme Restaurant</option>
+              <option value="steakhouse">Steakhouse</option>
+              <option value="seafood">Seafood Restaurant</option>
+              <option value="vegetarian_vegan">Vegetarian / Vegan</option>
+              <option value="ethnic">Ethnic Cuisine</option>
+              <option value="bakery">Bakery</option>
+              <option value="deli">Deli</option>
+              <option value="pizzeria">Pizzeria</option>
+            </select>
+            <br><br>
+            <input type="number" placeholder="Phone Number" minlength="6" maxlength="18"><br><br>
             
-            <br><br><button type="button" onclick="window.location.href='./screens/user/RestaurantProfile.html'" class="buttonVar1">Sign Up</button>
+            <br><br><button type="submit" class="buttonVar1">Sign Up</button>
+          
           </form>
               
         </div>

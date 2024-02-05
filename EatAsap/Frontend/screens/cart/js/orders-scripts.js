@@ -206,9 +206,19 @@ $('#downloadPDF').click(function () {
         filename: "Receipt.pdf",
         margin: 10,
         image: { type: "png", quality: 0.95 },
-        html2canvas: { scale: 2, scrollX: 0, scrollY: 0}
+        html2canvas: { scale: 2, scrollX: 0, scrollY: 0 }
     };
     html2pdf().set(opt).from(element).toPdf().get('pdf').then(function (pdf) {
         window.open(pdf.output('bloburl'), '_blank');
-      });
+    });
 });
+
+// check if signed in
+if (localStorage.getItem("signedIn") == null || localStorage.getItem("signedIn") == false) { // not signed in, navbar displays sign in
+    $('#checkoutSignedInOut').html('Sign In');
+    $('#receiptSignedInOut').html('Sign In');
+} else { // signed in, navbar displays sign out
+    $('#checkoutSignedInOut').html('Sign Out');
+    $('#receiptSignedInOut').html('Sign Out');
+    $('#quickOrderSignInButton').css("display", "none");
+}

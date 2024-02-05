@@ -24,9 +24,9 @@ body::-webkit-scrollbar {
 }
 
 main {
-    flex: 1;
-    width: 100vw;
+    
     padding-top: 50px;
+    flex-direction: column;
 }
 
 h1 {
@@ -180,6 +180,7 @@ footer p{
     /* background: orange; */
     display: inline-block;
     border-radius: 20px;
+
 }
 
 .input-group {
@@ -256,8 +257,16 @@ button {
 button:hover {
     background: darkorange;
 }
+/* .contact-form h2, p{
+    display: inline-table;
+    overflow: hidden;
+    white-space: nowrap;
+} */
+
 .contact-info{
     width: 30%;
+    margin-top: -10%;
+    margin-left: auto;
 }
 
 .team-contact-section{
@@ -268,7 +277,8 @@ justify-content: space-between;
 
 
 
-.card {
+.contact-us-card{
+    background-color: #fde5b9;
     max-width: 400px;
     margin: 20px auto;
     padding: 20px;
@@ -285,10 +295,6 @@ justify-content: space-between;
     display: inline-block;
     width: 40px;
     height: 40px;
-}
-
-.phone-icon {
-    background-image: url('phone-icon.png');
 }
 
 .location-icon {
@@ -322,5 +328,40 @@ h2 {
 p {
     margin: 5px 0;
 }
+.iframe{border:0;
+     position: absolute;
+      top: 500px;
+      left: 42%;
+    
+}
 
 
+
+
+@media (max-width: 1100px) {
+    .team{
+        width: 100%;
+    }
+    .contact-info {
+        width: 100%;
+        margin-top: 5%;
+        margin-left: 0;
+    }
+    .iframe{
+        position: relative !important ;
+        top:0;
+        left: 0;
+
+        }
+        .contact-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #d6e6e6;
+            position: relative;
+            top: 0;
+             width: 100%
+        }
+        .contact {
+             width: 100%
+        }
+  }
