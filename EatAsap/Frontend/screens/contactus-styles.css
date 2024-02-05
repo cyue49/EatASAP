@@ -328,5 +328,40 @@ h2 {
 p {
     margin: 5px 0;
 }
+.iframe{border:0;
+     position: absolute;
+      top: 500px;
+      left: 42%;
+    
+}
 
 
+
+
+@media (max-width: 1100px) {
+    .team{
+        width: 100%;
+    }
+    .contact-info {
+        width: 100%;
+        margin-top: 5%;
+        margin-left: 0;
+    }
+    .iframe{
+        position: relative !important ;
+        top:0;
+        left: 0;
+
+        }
+        .contact-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #d6e6e6;
+            position: relative;
+            top: 0;
+             width: 100%
+        }
+        .contact {
+             width: 100%
+        }
+  }
