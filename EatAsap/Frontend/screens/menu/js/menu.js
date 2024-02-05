@@ -26,6 +26,9 @@ document.addEventListener('DOMContentLoaded', function () {
             count++;
             badge.textContent = count;
             sessionStorage.setItem("item",item);
+            var snd = new Audio("../../assets/mixkit-correct-answer-tone-2870.wav");
+            snd.play();
+            snd.currentTime=0;
 
             if (count > 0) {
                 badge.classList.add('orange-color');
