@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
     //edit Profile events
     for (let epbtn of allEditProfileBtn) {
         epbtn.addEventListener("click", function() {
-            window.location.href = '../../index.html';
+            window.location.href = '../../signup.html';
         });
     }
 
