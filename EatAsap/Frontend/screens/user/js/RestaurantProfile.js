@@ -132,7 +132,7 @@ function addMenuItems() {
             title: "Vegetarian Pad Thai",
             description: "Stir-fried rice noodles with tofu, bean sprouts, and peanuts.",
             price: "$11.95",
-            imageSrc: "../../assets/pictures/PlatesPictures/plate4.jpg",
+            imageSrc: "../../assets/pictures/PlatesPictures/plate5.jpg",
         },
         {
             title: "Classic Margherita Pizza",
