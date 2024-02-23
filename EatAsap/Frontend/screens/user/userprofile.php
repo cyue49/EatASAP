@@ -1,3 +1,8 @@
+<?php
+// include php file
+include("../../../Backend/screens/user/customeruser.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
