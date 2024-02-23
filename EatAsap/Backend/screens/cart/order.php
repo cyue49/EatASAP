@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 // for testing
 $_SESSION["loggedin"] = true;
 $_SESSION["cartID"] = 3;
@@ -473,6 +475,18 @@ if (isset($_POST["formSubmit"])) {
     // if no error
     if ($noError) {
         echo "<script>validCustomerForm = true;</script>";
+
+        // customer info to put on receipt
+        $_SESSION["orderItems"] = $cartItems;
+        $_SESSION["customerFullName"] = $firstName . " " . $lastName;
+        $_SESSION["customerEmail"] = $emailAddress;
+        $_SESSION["customerPhone"] = $phoneNumber;
+        $_SESSION["subtotal"] = $subtotal;
+        $_SESSION["gst"] = $gst;
+        $_SESSION["qst"] = $qst;
+        $_SESSION["total"] = $total;
+        $_SESSION["paymentMethod"] = $paymentMethod;
+        $_SESSION["cardNum"] = "************" . substr($cardNumber, 12);
 
         // create order
 
