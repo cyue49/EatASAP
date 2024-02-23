@@ -2,7 +2,7 @@
 session_start();
 
 // for testing
-$_SESSION["loggedin"] = true;
+$_SESSION["loggedin"] = false;
 $_SESSION["cartID"] = 3;
 $_SESSION["userID"] = 1;
 
@@ -591,9 +591,13 @@ if (isset($_POST["confirmOrder"])) {
 
     // set parameters
     date_default_timezone_set("America/New_York");
-    $param_orderDateTime = date('Y-m-d') . " " . date('H:i:s');
+    $orderTime = date('Y-m-d') . " " . date('H:i:s');
+    $param_orderDateTime = $orderTime;
     $param_orderNumber = $_SESSION["orderNumber"];
     $param_orderID = $_SESSION["orderID"] - 1; // - 1 because page reloaded after form submit, so new order, so -1 to get current order
+
+    // add order time to session variables 
+    $_SESSION["orderTime"] = $orderTime;
 
     // execute statement
     if (mysqli_stmt_execute($stmt)) {

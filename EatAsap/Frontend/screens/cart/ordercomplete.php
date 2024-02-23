@@ -100,7 +100,7 @@ session_start();
                     <hr class="separatorLine">
                 </span>
                 <div id="receiptList">
-                    <p id="orderDate"></p>
+                    <p id="orderDate"><?php echo $_SESSION["orderTime"]; ?></p>
                     <p>ORDER FOR: 
                         <span id="customerName"><?php echo $_SESSION["customerFullName"]; ?></span>
                         <span id="customerPhoneNumber"><?php echo $_SESSION["customerPhone"]; ?></span>
