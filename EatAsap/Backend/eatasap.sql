@@ -22,10 +22,12 @@ USE eatasap;
 /* User */
 CREATE TABLE user (
 user_id INT NOT NULL UNIQUE PRIMARY KEY,
-firstName VARCHAR(30) NOT NULL,
-lastName VARCHAR(30) NOT NULL,
+first_name VARCHAR(30) NOT NULL,
+last_name VARCHAR(30) NOT NULL,
 email VARCHAR(50) NOT NULL UNIQUE,
-phoneNumber INT NOT NULL UNIQUE
+user_password VARCHAR(100) NOT NULL,
+phone_number VARCHAR(13) NOT NULL UNIQUE,
+user_role VARCHAR(20) NOT NULL /*owner-customer*/
 );
 
 
