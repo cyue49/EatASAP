@@ -2,7 +2,6 @@
 // include php file
 include("../../../Backend/screens/user/customeruser.php");
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -74,13 +73,13 @@ include("../../../Backend/screens/user/customeruser.php");
                 </div>
                 <div class="infoBox">
                     <span class="infoLineHeader">
-                        <h2 id="userFullName"></h2><i id="editUserInfoPopupButton" class="fa fa-edit"></i>
+                        <h2 id="userFullName"><?php echo $firstName . " " . $lastName; ?></h2><i id="editUserInfoPopupButton" class="fa fa-edit"></i>
                     </span>
                     <span class="infoLine"><i class="fa fa-envelope"></i>
-                        <p id="userEmailAddress"></p>
+                        <p id="userEmailAddress"><?php echo $emailAddress; ?></p>
                     </span>
                     <span class="infoLine"><i class="fa fa-phone"></i>
-                        <p id="userPhoneNum"></p>
+                        <p id="userPhoneNum"><?php echo $phoneNumber; ?></p>
                     </span>
                 </div>
                 <div class="infoBox">
@@ -88,10 +87,10 @@ include("../../../Backend/screens/user/customeruser.php");
                         <h2>Payment Information</h2><i id="editPaymentMethodPopupButton" class="fa fa-edit"></i>
                     </span>
                     <span class="infoLine"><i class="fa fa-cc-visa"></i></i>
-                        <p>Payment Method: <span id="userPaymentmethod"></span></p>
+                        <p>Payment Method: <span id="userPaymentmethod"><?php echo $paymentMethod; ?></span></p>
                     </span>
                     <span class="infoLine"><i class="fa fa-credit-card"></i>
-                        <p>Card Number: <span id="userCardNum"></span></p>
+                        <p>Card Number: <span id="userCardNum"><?php echo "************" . substr($cardNumber, 12);; ?></span></p>
                     </span>
                 </div>
             </div>
