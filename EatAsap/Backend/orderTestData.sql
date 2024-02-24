@@ -2,9 +2,9 @@
 USE eatasap; 
 
 -- user
-INSERT INTO user(user_id, first_name, last_name, email, phone_number, user_password, user_role) VALUES
-(1, "Jasmine", "Tea", "jasmine@teamail.com", "5141234567", "password", "customer"),
-(2, "Green", "Tea", "green@teamail.com", "5141112233", "password", "owner");
+INSERT INTO user(user_id, first_name, last_name, email, user_password, phone_number, user_role) VALUES
+(1, "Jasmine", "Tea", "jasmine@teamail.com", "password", "5141234567", "customer"),
+(2, "Green", "Tea", "green@teamail.com", "password", "5141112233", "owner");
 
 -- order entity
 INSERT INTO payment(payment_id, user_id, payment_method, card_number, cvv, expiration_date) VALUES
