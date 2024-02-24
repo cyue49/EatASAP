@@ -3,7 +3,7 @@ session_start();
 
 // for testing
 $_SESSION["loggedin"] = true;
-$_SESSION["cartID"] = 3;
+$_POST["cartID"] = 3;
 $_SESSION["userID"] = 1;
 
 // ============================ Get cart items ============================
@@ -342,7 +342,7 @@ function getNextTempUserID()
 
 // ============================ Get cartItems and calculate totals ============================
 // get cart items
-$cartItems = getCartItems($_SESSION["cartID"]);
+$cartItems = getCartItems($_POST["cartID"]);
 
 // get and update totals and taxes 
 $subtotal = updateSubtotal($cartItems);
@@ -502,7 +502,7 @@ if (isset($_POST["formSubmit"])) {
 
         // set parameters
         $param_orderID = $_SESSION["orderID"];
-        $param_cartID = $_SESSION["cartID"];
+        $param_cartID = $_POST["cartID"];
         $param_userID = NULL;
         $param_orderTotal = $total;
         $param_orderDateTime = NULL;
