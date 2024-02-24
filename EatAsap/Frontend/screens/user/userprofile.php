@@ -73,24 +73,24 @@ include("../../../Backend/screens/user/customeruser.php");
                 </div>
                 <div class="infoBox">
                     <span class="infoLineHeader">
-                        <h2 id="userFullName"><?php echo $firstName . " " . $lastName; ?></h2><i id="editUserInfoPopupButton" class="fa fa-edit"></i>
+                        <h2><?php echo $firstName . " " . $lastName; ?></h2><a href="edituserprofile.php"><i class="fa fa-edit"></i></a>
                     </span>
                     <span class="infoLine"><i class="fa fa-envelope"></i>
-                        <p id="userEmailAddress"><?php echo $emailAddress; ?></p>
+                        <p><?php echo $emailAddress; ?></p>
                     </span>
                     <span class="infoLine"><i class="fa fa-phone"></i>
-                        <p id="userPhoneNum"><?php echo $phoneNumber; ?></p>
+                        <p><?php echo $phoneNumber; ?></p>
                     </span>
                 </div>
                 <div class="infoBox">
                     <span class="infoLineHeader">
-                        <h2>Payment Information</h2><i id="editPaymentMethodPopupButton" class="fa fa-edit"></i>
+                        <h2>Payment Information</h2><a href="edituserpayment.php"><i class="fa fa-edit"></i></a>
                     </span>
                     <span class="infoLine"><i class="fa fa-cc-visa"></i></i>
-                        <p>Payment Method: <span id="userPaymentmethod"><?php echo $paymentMethod; ?></span></p>
+                        <p>Payment Method: <?php echo $paymentMethod; ?></p>
                     </span>
                     <span class="infoLine"><i class="fa fa-credit-card"></i>
-                        <p>Card Number: <span id="userCardNum"><?php echo "************" . substr($cardNumber, 12);; ?></span></p>
+                        <p>Card Number: <?php echo "************" . substr($cardNumber, 12);; ?></p>
                     </span>
                 </div>
             </div>
@@ -98,148 +98,29 @@ include("../../../Backend/screens/user/customeruser.php");
             <!-- Order History Section -->
             <div class="orderHistorySection">
                 <h2>Order History</h2>
-                <!-- First order history -->
+                <!-- orders -->
+                <?php 
+                $orders = getOrderIds();
+                foreach($orders as $orderID) {
+                ?>
                 <div class="orderHistory">
-                    <div class="orderHistorySectionInfo">
-                        <h3>Restaurant Name</h3>
-                        <p>1/31/2024, 7:07:24 PM</p>
-                        <h3>29.32$</h3>
-                    </div>
+                    <?php printAnOrderHistoryHeader($orderID); ?>
                     <p class="orderHistoryMoreLink">
-                        <a data-bs-toggle="collapse" href="#collapsedHistory1" role="button" aria-expanded="false"
-                            aria-controls="collapsedHistory1">
+                        <a data-bs-toggle="collapse" href="#collapsedHistory" role="button" aria-expanded="false"
+                            aria-controls="collapsedHistory">
                             <i class="fa fa-angle-down"></i>
                             <i class="fa fa-angle-up"></i>
                         </a>
                     </p>
-                    <div class="collapse" id="collapsedHistory1">
+                    <div class="collapse" id="collapsedHistory">
                         <div class="card card-body">
-                            <table>
-                                <tr>
-                                    <th>Item</th>
-                                    <th>Quantity</th>
-                                    <th>Price Per Unit</th>
-                                </tr>
-                                <tr>
-                                    <td>Tomato Salad</td>
-                                    <td>1</td>
-                                    <td>6.00$</td>
-                                </tr>
-                                <tr>
-                                    <td>Chicken Noodle Soup</td>
-                                    <td>1</td>
-                                    <td>6.00$</td>
-                                </tr>
-                                <tr>
-                                    <td>Egg Sandwich</td>
-                                    <td>1</td>
-                                    <td>7.00$</td>
-                                </tr>
-                                <tr>
-                                    <td>Apple Juice</td>
-                                    <td>2</td>
-                                    <td>2.50$</td>
-                                </tr>
-                                <tr>
-                                    <td>Croissant</td>
-                                    <td>4</td>
-                                    <td>4.50$</td>
-                                </tr>
-                                <tr class="subtotal">
-                                    <td>Subtotal</td>
-                                    <td></td>
-                                    <td>17.00$</td>
-                                </tr>
-                                <tr class="tax">
-                                    <td>GST</td>
-                                    <td></td>
-                                    <td>2.18$</td>
-                                </tr>
-                                <tr class="tax">
-                                    <td>QST</td>
-                                    <td></td>
-                                    <td>4.67$</td>
-                                </tr>
-                                <tr class="total">
-                                    <td>Total</td>
-                                    <td></td>
-                                    <td>24.56$</td>
-                                </tr>
-                            </table>
+                            <?php printAnOrderHistoryItems($orderID); ?>
                         </div>
                     </div>
                 </div>
-                <!-- Second order history -->
-                <div class="orderHistory">
-                    <div class="orderHistorySectionInfo">
-                        <h3>Restaurant Name</h3>
-                        <p>1/31/2024, 7:07:24 PM</p>
-                        <h3>29.32$</h3>
-                    </div>
-                    <p class="orderHistoryMoreLink">
-                        <a data-bs-toggle="collapse" href="#collapsedHistory2" role="button" aria-expanded="false"
-                            aria-controls="collapsedHistory2">
-                            <i class="fa fa-angle-down"></i>
-                            <i class="fa fa-angle-up"></i>
-                        </a>
-                    </p>
-                    <div class="collapse" id="collapsedHistory2">
-                        <div class="card card-body">
-                            <table>
-                                <tr>
-                                    <th>Item</th>
-                                    <th>Quantity</th>
-                                    <th>Price Per Unit</th>
-                                </tr>
-                                <tr>
-                                    <td>Tomato Salad</td>
-                                    <td>1</td>
-                                    <td>6.00$</td>
-                                </tr>
-                                <tr>
-                                    <td>Chicken Noodle Soup</td>
-                                    <td>1</td>
-                                    <td>6.00$</td>
-                                </tr>
-                                <tr>
-                                    <td>Egg Sandwich</td>
-                                    <td>1</td>
-                                    <td>7.00$</td>
-                                </tr>
-                                <tr>
-                                    <td>Apple Juice</td>
-                                    <td>2</td>
-                                    <td>2.50$</td>
-                                </tr>
-                                <tr>
-                                    <td>Croissant</td>
-                                    <td>4</td>
-                                    <td>4.50$</td>
-                                </tr>
-                                <tr class="subtotal">
-                                    <td>Subtotal</td>
-                                    <td></td>
-                                    <td>17.00$</td>
-                                </tr>
-                                <tr class="tax">
-                                    <td>GST</td>
-                                    <td></td>
-                                    <td>2.18$</td>
-                                </tr>
-                                <tr class="tax">
-                                    <td>QST</td>
-                                    <td></td>
-                                    <td>4.67$</td>
-                                </tr>
-                                <tr class="total">
-                                    <td>Total</td>
-                                    <td></td>
-                                    <td>24.56$</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+                <?php 
+                }
+                ?>
             </div>
         </div>
     </main>

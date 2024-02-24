@@ -2,7 +2,7 @@
 session_start();
 
 // for testing
-$_SESSION["loggedin"] = false;
+$_SESSION["loggedin"] = true;
 $_SESSION["cartID"] = 3;
 $_SESSION["userID"] = 1;
 
