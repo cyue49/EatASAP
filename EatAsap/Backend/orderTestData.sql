@@ -32,9 +32,12 @@ INSERT INTO menu_items (menu_item_id, restaurant_id, category_id, item_name, pri
 
 -- Cart Items
 INSERT INTO cart_item(cart_item_id, cart_id, menu_item_id, quantity) VALUES
-(1, 3, 1, 3), 
-(2, 3, 2, 2), 
-(3, 3, 3, 1);
+(1, 1, 1, 2), 
+(2, 1, 2, 2), 
+(3, 1, 3, 2),
+(4, 3, 1, 3), 
+(5, 3, 2, 2), 
+(6, 3, 3, 1);
 
 INSERT INTO temporary_order_user(temp_user_id, order_id, first_name, last_name, phone, email, payment_method, card_number, cvv, expiration_date) VALUES
 (1, 2 , "Oolong", "Tea", "5145145145", "oolong@chamail.com", "MasterCard", "1111222233334444", 999, "2026-01-01");

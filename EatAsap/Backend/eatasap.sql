@@ -100,7 +100,7 @@ CREATE TABLE menu_items (
 CREATE TABLE cart_item (
     cart_item_id INT NOT NULL UNIQUE AUTO_INCREMENT,
     cart_id INT NOT NULL,
-    menu_item_id INT NOT NULL UNIQUE,
+    menu_item_id INT NOT NULL,
     quantity INT NOT NULL,
     PRIMARY KEY (cart_item_id), 
     FOREIGN KEY (cart_id) REFERENCES order_cart (cart_id),
