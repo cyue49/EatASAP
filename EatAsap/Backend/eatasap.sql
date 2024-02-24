@@ -1,7 +1,7 @@
 /* ============== CREATING AND USING DATABASE ============== */
 /* DROP DATABASE IF EXISTS eatasap; */
 
-CREATE DATABASE eatasap;
+CREATE DATABASE IF NOT EXISTS eatasap;
 
 USE eatasap; 
 
@@ -14,8 +14,7 @@ USE eatasap;
     last_name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     phone VARCHAR(255),
-    message TEXT NOT NULL,
-   
+    message TEXT NOT NULL
 );
 
 
