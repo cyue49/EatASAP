@@ -1,14 +1,22 @@
 /* ============== CREATING AND USING DATABASE ============== */
 DROP DATABASE IF EXISTS eatasap;
 
-CREATE DATABASE eatasap;
+CREATE DATABASE IF NOT EXISTS eatasap;
 
 USE eatasap; 
 
 
 /* ============== CREATING TABLES ============== */
 /*Contact Us*/
- 
+ CREATE TABLE contact_submissions (
+    submission_id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(255) NOT NULL,
+    last_name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    phone VARCHAR(255),
+    message TEXT NOT NULL
+);
+
 
 /* User */
 CREATE TABLE user (
@@ -16,9 +24,15 @@ user_id INT NOT NULL UNIQUE PRIMARY KEY,
 first_name VARCHAR(30) NOT NULL,
 last_name VARCHAR(30) NOT NULL,
 email VARCHAR(50) NOT NULL UNIQUE,
+<<<<<<< HEAD
 phone_number VARCHAR(20) NOT NULL UNIQUE,
 user_password VARCHAR(100) NOT NULL, 
 user_role VARCHAR(50) NOT NULL
+=======
+user_password VARCHAR(100) NOT NULL,
+phone_number VARCHAR(13) NOT NULL UNIQUE,
+user_role VARCHAR(20) NOT NULL /*owner-customer*/
+>>>>>>> origin/master
 );
 
 
@@ -135,7 +149,7 @@ CREATE TABLE ingredient (
 -- Create Item_ingredients table
 CREATE TABLE item_ingredients (
     item_ingredient_id INT PRIMARY KEY AUTO_INCREMENT,
-    menu_item_id INT UNIQUE NOT NULL,               -- one-to-one relationship with menu_items table
+    menu_item_id INT NOT NULL,               
     ingredient_id INT NOT NULL,
     quantity INT,
     FOREIGN KEY (menu_item_id) REFERENCES menu_items(menu_item_id),
