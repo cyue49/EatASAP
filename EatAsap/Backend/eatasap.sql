@@ -1,7 +1,7 @@
 /* ============== CREATING AND USING DATABASE ============== */
 /* DROP DATABASE IF EXISTS eatasap; */
 
-CREATE DATABASE eatasap;
+CREATE DATABASE IF NOT EXISTS eatasap;
 
 USE eatasap; 
 
@@ -14,8 +14,7 @@ USE eatasap;
     last_name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     phone VARCHAR(255),
-    message TEXT NOT NULL,
-   
+    message TEXT NOT NULL
 );
 
 
@@ -144,7 +143,7 @@ CREATE TABLE ingredient (
 -- Create Item_ingredients table
 CREATE TABLE item_ingredients (
     item_ingredient_id INT PRIMARY KEY AUTO_INCREMENT,
-    menu_item_id INT UNIQUE NOT NULL,               -- one-to-one relationship with menu_items table
+    menu_item_id INT NOT NULL,               
     ingredient_id INT NOT NULL,
     quantity INT,
     FOREIGN KEY (menu_item_id) REFERENCES menu_items(menu_item_id),
