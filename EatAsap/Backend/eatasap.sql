@@ -24,15 +24,9 @@ user_id INT NOT NULL UNIQUE PRIMARY KEY,
 first_name VARCHAR(30) NOT NULL,
 last_name VARCHAR(30) NOT NULL,
 email VARCHAR(50) NOT NULL UNIQUE,
-<<<<<<< HEAD
-phone_number VARCHAR(20) NOT NULL UNIQUE,
-user_password VARCHAR(100) NOT NULL, 
-user_role VARCHAR(50) NOT NULL
-=======
 user_password VARCHAR(100) NOT NULL,
 phone_number VARCHAR(13) NOT NULL UNIQUE,
 user_role VARCHAR(20) NOT NULL /*owner-customer*/
->>>>>>> origin/master
 );
 
 
