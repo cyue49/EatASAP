@@ -86,9 +86,9 @@ include("../../../Backend/screens/cart/order.php");
                                 "<td>" . $item["quantity"] . "</td>" .
                                 "<td>" . $item["itemPrice"] . "$</td>" .
                                 "<td class='editDelete'>" .
-                                "<a href='myorders.php'><i class='fa fa-plus'></i></a>" .
-                                "<a href='myorders.php'><i class='fa fa-minus'></i></a>" .
-                                "<a href='myorders.php'><i class='fa fa-trash-o'></i></a>" .
+                                "<a href='myorders.php?additem=" . $item['itemID'] . "'><i class='fa fa-plus'></i></a>" .
+                                "<a href='myorders.php?minitem=" . $item['itemID'] . "'><i class='fa fa-minus'></i></a>" .
+                                "<a href='myorders.php?delitem=" . $item['itemID'] . "'><i class='fa fa-trash-o'></i></a>" .
                                 "</td>" .
                                 "</tr>";
                         }

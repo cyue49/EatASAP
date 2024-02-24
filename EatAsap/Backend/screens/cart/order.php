@@ -16,7 +16,7 @@ function getCartItems($cartID)
     $response = array();
 
     // prepare insert statement and bind variables
-    $sql = "SELECT C.cart_id, M.item_name, M.price, I.quantity  
+    $sql = "SELECT C.cart_id, M.item_name, M.price, I.quantity, I.cart_item_id  
             FROM order_cart C JOIN cart_item I ON C.cart_id = I.cart_id JOIN menu_items M ON I.menu_item_id = M.menu_item_id
             WHERE C.cart_id = ?;";
 
@@ -34,13 +34,14 @@ function getCartItems($cartID)
 
         // if has result in database
         if (mysqli_stmt_num_rows($stmt) > 0) {
-            mysqli_stmt_bind_result($stmt, $orderCartID, $itemName, $itemPrice, $quantity);
+            mysqli_stmt_bind_result($stmt, $orderCartID, $itemName, $itemPrice, $quantity, $itemID);
             $x = 0;
             while (mysqli_stmt_fetch($stmt)) {
                 $response[$x]['cartID'] = $orderCartID;
                 $response[$x]['itemName'] = $itemName;
                 $response[$x]['itemPrice'] = $itemPrice;
                 $response[$x]['quantity'] = $quantity;
+                $response[$x]['itemID'] = $itemID;
                 $x++;
             }
         }
@@ -58,12 +59,16 @@ function getCartItems($cartID)
 }
 
 // ============================ Update / Calculate taxes and totals ============================
+// update subtotal given a cart 2d array of all cart items [["cartID", "itemName", "itemPrice", "quantity", "itemID"], [...], ...]
 function updateSubtotal($cartItems)
 {
     // recalculate subtotal
     $subtotal = 0;
+
+    if (!$cartItems) return number_format((float)$subtotal, 2, '.', ''); // if array empty (no items in cart) return subtotal = 0
+
     foreach ($cartItems as $item) {
-        $subtotal += $item['itemPrice'];
+        $subtotal += ($item['itemPrice'] * $item['quantity']);
     }
     $subtotal = number_format((float)$subtotal, 2, '.', '');
 
@@ -340,6 +345,133 @@ function getNextTempUserID()
     }
 }
 
+// ============================ Adding/Removing items from cart given cart item ID ============================
+function addItem($itemID)
+{
+    // connect to database
+    include("dbconnect.php");
+
+    // prepare statement and bind variables
+    $sql = "UPDATE cart_item 
+            SET quantity = quantity + 1
+            WHERE cart_item_id = ?;";
+    if ($stmt = mysqli_prepare($db, $sql)) {
+        mysqli_stmt_bind_param($stmt, "s", $param_itemID);
+    }
+
+    // set parameters
+    $param_itemID = $itemID;
+
+    // execute statement
+    if (mysqli_stmt_execute($stmt)) { // success
+        // redirect to same page
+        header("Location: ../../../Frontend/screens/cart/myorders.php");
+    } else { // error
+        die(mysqli_error($db));
+    }
+
+    // close statement
+    mysqli_stmt_close($stmt);
+}
+
+function minusItem($itemID)
+{
+    // connect to database
+    include("dbconnect.php");
+
+    // prepare statement and bind variables
+    $sql = "UPDATE cart_item 
+            SET quantity = quantity - 1
+            WHERE cart_item_id = ?;";
+    if ($stmt = mysqli_prepare($db, $sql)) {
+        mysqli_stmt_bind_param($stmt, "s", $param_itemID);
+    }
+
+    // set parameters
+    $param_itemID = $itemID;
+
+    // execute statement
+    if (mysqli_stmt_execute($stmt)) { // success
+        // check if quantity for item is 0, if yes, delete item
+        $remainingQuantity;
+
+        // prepare statement and bind variables
+        $sql2 = "SELECT quantity 
+                FROM cart_item
+                WHERE cart_item_id = ?;";
+        if ($stmt2 = mysqli_prepare($db, $sql2)) {
+            mysqli_stmt_bind_param($stmt2, "s", $param_itemID);
+        }
+
+        // set parameters
+        $param_itemID = $itemID;
+
+        // execute statement
+        if (mysqli_stmt_execute($stmt2)) {
+            // Store result
+            mysqli_stmt_store_result($stmt2);
+
+            // if has result in database
+            if (mysqli_stmt_num_rows($stmt2) == 1) {
+                mysqli_stmt_bind_result($stmt2, $quantity);
+                if (mysqli_stmt_fetch($stmt2)) {
+                    $remainingQuantity = $quantity;
+                }
+            }
+
+            // close statement
+            mysqli_stmt_close($stmt2);
+        }
+
+        if ($remainingQuantity == 0) {
+            removeItem($itemID);
+        } else {
+            // redirect to same page
+            header("Location: ../../../Frontend/screens/cart/myorders.php");
+        }
+    } else { // error
+        die(mysqli_error($db));
+    }
+
+    // close statement
+    mysqli_stmt_close($stmt);
+}
+
+function removeItem($itemID)
+{
+    // connect to database
+    include("dbconnect.php");
+
+    // prepare statement and bind variables
+    $sql = "DELETE FROM cart_item WHERE cart_item_id = ?;";
+    if ($stmt = mysqli_prepare($db, $sql)) {
+        mysqli_stmt_bind_param($stmt, "s", $param_itemID);
+    }
+
+    // set parameters
+    $param_itemID = $itemID;
+
+    // execute statement
+    if (mysqli_stmt_execute($stmt)) { // success
+        // redirect to same page
+        header("Location: ../../../Frontend/screens/cart/myorders.php");
+    } else { // error
+        die(mysqli_error($db));
+    }
+
+    // close statement
+    mysqli_stmt_close($stmt);
+}
+
+// ============================ Trim data, remove slashes, etc. ============================
+function validate_input($data)
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
 // ============================ Get cartItems and calculate totals ============================
 // get cart items
 $cartItems = getCartItems($_POST["cartID"]);
@@ -350,15 +482,7 @@ $gst = calculateGST($subtotal)[1];
 $qst = calculateQST($subtotal)[1];
 $total = calculateTotal($subtotal);
 
-// ============================ Form validation for checkout ============================
-function validate_input($data)
-{
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
-
+// ============================ Display on page ============================
 // user input values
 $paymentMethod = $firstName = $lastName = $phoneNumber = $emailAddress = $paymentMethod = $cardNumber = $cvv = $expirationDate = "";
 
@@ -386,6 +510,14 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
     $expirationDate = $userInfo['expirationDate'];
 }
 
+// ============================ Adding/Removing items ============================
+if (isset($_GET["additem"])) addItem($_GET["additem"]);
+
+if (isset($_GET["minitem"])) minusItem($_GET["minitem"]);
+
+if (isset($_GET["delitem"])) removeItem($_GET["delitem"]);
+
+// ============================ Form Validation ============================
 // payment method form validation // todo: put payment info and payment method together, change order of user info and payment info in accordion
 echo "<script> var validCustomerForm = false;</script>";
 
