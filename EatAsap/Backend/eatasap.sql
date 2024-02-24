@@ -8,21 +8,32 @@ USE eatasap;
 
 /* ============== CREATING TABLES ============== */
 /*Contact Us*/
- 
+ CREATE TABLE contact_submissions (
+    submission_id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(255) NOT NULL,
+    last_name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    phone VARCHAR(255),
+    message TEXT NOT NULL,
+   
+);
+
 
 /* User */
 CREATE TABLE user (
 user_id INT NOT NULL UNIQUE PRIMARY KEY,
-firstName VARCHAR(30) NOT NULL,
-lastName VARCHAR(30) NOT NULL,
+first_name VARCHAR(30) NOT NULL,
+last_name VARCHAR(30) NOT NULL,
 email VARCHAR(50) NOT NULL UNIQUE,
-phoneNumber INT NOT NULL UNIQUE
+user_password VARCHAR(100) NOT NULL,
+phone_number VARCHAR(13) NOT NULL UNIQUE,
+user_role VARCHAR(20) NOT NULL /*owner-customer*/
 );
 
 
 -- Order Entity
 CREATE TABLE payment (
-    payment_id INT NOT NULL UNIQUE,
+    payment_id INT NOT NULL UNIQUE AUTO_INCREMENT,
     user_id INT NOT NULL UNIQUE,
     payment_method VARCHAR(20) NOT NULL,
     card_number VARCHAR(16) NOT NULL,
@@ -33,13 +44,13 @@ CREATE TABLE payment (
 );
 
 CREATE TABLE order_cart (
-    cart_id INT NOT NULL UNIQUE,
+    cart_id INT NOT NULL UNIQUE AUTO_INCREMENT,
     cart_subtotal FLOAT NOT NULL DEFAULT 0, /* before tax */
     PRIMARY KEY (cart_id)
 );
 
 CREATE TABLE orders (
-    order_id INT NOT NULL UNIQUE,
+    order_id INT NOT NULL UNIQUE AUTO_INCREMENT,
     cart_id INT NOT NULL UNIQUE,
     user_id INT, 
     order_total FLOAT NOT NULL,
@@ -96,9 +107,9 @@ CREATE TABLE menu_items (
 -- For Order Entity
 
 CREATE TABLE cart_item (
-    cart_item_id INT NOT NULL UNIQUE,
+    cart_item_id INT NOT NULL UNIQUE AUTO_INCREMENT,
     cart_id INT NOT NULL,
-    menu_item_id INT NOT NULL UNIQUE,
+    menu_item_id INT NOT NULL,
     quantity INT NOT NULL,
     PRIMARY KEY (cart_item_id), 
     FOREIGN KEY (cart_id) REFERENCES order_cart (cart_id),
@@ -106,7 +117,7 @@ CREATE TABLE cart_item (
 );
 
 CREATE TABLE temporary_order_user (
-    temp_user_id INT NOT NULL UNIQUE,
+    temp_user_id INT NOT NULL UNIQUE AUTO_INCREMENT,
     order_id INT NOT NULL UNIQUE,
     first_name VARCHAR(20) NOT NULL,
     last_name VARCHAR(20) NOT NULL,
