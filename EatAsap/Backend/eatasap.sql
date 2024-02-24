@@ -133,7 +133,7 @@ CREATE TABLE ingredient (
 -- Create Item_ingredients table
 CREATE TABLE item_ingredients (
     item_ingredient_id INT PRIMARY KEY AUTO_INCREMENT,
-    menu_item_id INT UNIQUE NOT NULL,               -- one-to-one relationship with menu_items table
+    menu_item_id INT NOT NULL,               
     ingredient_id INT NOT NULL,
     quantity INT,
     FOREIGN KEY (menu_item_id) REFERENCES menu_items(menu_item_id),
