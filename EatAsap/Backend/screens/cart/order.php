@@ -3,10 +3,109 @@ session_start();
 
 // for testing
 $_SESSION["loggedin"] = true;
-$_POST["cartID"] = 3;
 $_SESSION["userID"] = 5;
 
-// ============================ Get cart items ============================
+$_SESSION["cart"] = array(
+    array('id' => 1, 'quantity' => 3),
+    array('id' => 2, 'quantity' => 2),
+    array('id' => 3, 'quantity' => 2)
+);
+
+// ============================ Create and get cart items ============================
+// get next cart_id
+function getNextCartID()
+{
+    // connect to database
+    include("dbconnect.php");
+
+    // response
+    $response;
+
+    // prepare insert statement and bind variables
+    $sql = "SELECT cart_id
+            FROM order_cart
+            ORDER BY cart_id DESC;";
+
+    $stmt = mysqli_prepare($db, $sql);
+
+    // execute statement
+    if (mysqli_stmt_execute($stmt)) {
+        // Store result
+        mysqli_stmt_store_result($stmt);
+
+        // if has result in database
+        if (mysqli_stmt_num_rows($stmt) > 0) {
+            mysqli_stmt_bind_result($stmt, $cartID);
+            if (mysqli_stmt_fetch($stmt)) {
+                $response = $cartID + 1;
+            }
+        } else {
+            $response = 1;
+        }
+
+        // close statement
+        mysqli_stmt_close($stmt);
+
+        // disconnect from database
+        mysqli_close($db);
+
+        return $response;
+    } else { // error
+        die(mysqli_error($db));
+    }
+}
+
+// given an array of menu items and their quantity, create the cart and cart items. return the cartID on success.
+function createCartItems($cartItems)
+{
+    // connect to database
+    include("dbconnect.php");
+
+    // create a cart
+    $nextCartID = getNextCartID();
+    // prepare insert statement and bind variables
+    $sql = "INSERT INTO order_cart (cart_id, cart_subtotal) VALUES (?, 0);";
+
+    if ($stmt = mysqli_prepare($db, $sql)) {
+        mysqli_stmt_bind_param($stmt, "s", $param_cartID);
+    }
+
+    // set parameters
+    $param_cartID = $nextCartID;
+
+    // execute statement
+    if (mysqli_stmt_execute($stmt)) {
+        mysqli_stmt_close($stmt);
+    } else {
+        die(mysqli_error($db));
+    }
+
+    // for each item, create cart item
+    foreach ($cartItems as $item) {
+        // prepare insert statement and bind variables
+        $sql = "INSERT INTO cart_item (cart_id, menu_item_id, quantity) VALUES (?, ?, ?);";
+
+        if ($stmt = mysqli_prepare($db, $sql)) {
+            mysqli_stmt_bind_param($stmt, "sss", $param_cartID, $param_menuItemID, $param_quantity);
+        }
+    
+        // set parameters
+        $param_cartID = $nextCartID;
+        $param_menuItemID = $item['id'];
+        $param_quantity = $item['quantity'];
+    
+        // execute statement
+        if (mysqli_stmt_execute($stmt)) {
+            mysqli_stmt_close($stmt);
+        } else {
+            die(mysqli_error($db));
+        }
+    }
+
+    $_SESSION["cartID"] = $nextCartID;
+    return $nextCartID;
+}
+
 function getCartItems($cartID)
 {
     // connect to database
@@ -482,11 +581,14 @@ if (isset($_GET["minitem"])) minusItem($_GET["minitem"]);
 if (isset($_GET["delitem"])) removeItem($_GET["delitem"]);
 
 // ============================ Get cartItems and calculate totals ============================
-// get cart items
-$cartItems = getCartItems($_POST["cartID"]);
+// create and get cart id and items
+if (!isset($_SESSION["cartID"])) {
+    createCartItems($_SESSION["cart"]);
+}
+$cartItems = getCartItems($_SESSION["cartID"]);
 
 // get and update totals and taxes 
-$subtotal = updateSubtotal($_POST["cartID"]);
+$subtotal = updateSubtotal($_SESSION["cartID"]);
 $gst = calculateGST($subtotal)[1];
 $qst = calculateQST($subtotal)[1];
 $total = calculateTotal($subtotal);
@@ -506,7 +608,7 @@ $_SESSION["orderID"] = getNextOrderID();
 $_SESSION["orderNumber"] = getNextOrderNumber();
 $_SESSION["tempUserID"] = getNextTempUserID();
 
-// if is logged in
+// if is logged in set user info
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
     $userInfo = getUserInfo($_SESSION["userID"]);
     $firstName = $userInfo['firstName'];
@@ -529,7 +631,7 @@ if (isset($_POST["formSubmit"])) {
     // can't continue order if don't have item in cart
     if ($subtotal == 0) {
         $noError = false;
-        echo '<script>alert("You don\'t have any item in your cart. Please add an item to proceed with the order.")</script>'; 
+        echo '<script>alert("You don\'t have any item in your cart. Please add an item to proceed with the order.")</script>';
     }
 
     // first name
@@ -642,7 +744,7 @@ if (isset($_POST["formSubmit"])) {
 
         // set parameters
         $param_orderID = $_SESSION["orderID"];
-        $param_cartID = $_POST["cartID"];
+        $param_cartID = $_SESSION["cartID"];
         $param_userID = NULL;
         $param_orderTotal = $total;
         $param_orderDateTime = NULL;
@@ -717,42 +819,42 @@ if (isset($_POST["formSubmit"])) {
 if (isset($_POST["confirmOrder"])) {
     // can't continue order if don't have item in cart
     if ($subtotal == 0) {
-        echo '<script>alert("You don\'t have any item in your cart. Please add an item to proceed with the order.")</script>'; 
+        echo '<script>alert("You don\'t have any item in your cart. Please add an item to proceed with the order.")</script>';
     } else {
         // update order date time, status & number
 
-    // connect to database
-    include("dbconnect.php");
+        // connect to database
+        include("dbconnect.php");
 
-    // prepare statement and bind variables
-    $sql = "UPDATE orders 
+        // prepare statement and bind variables
+        $sql = "UPDATE orders 
             SET order_datetime = ?, order_number = ?, order_status = 'completed'
             WHERE order_id = ?;";
 
-    if ($stmt = mysqli_prepare($db, $sql)) {
-        mysqli_stmt_bind_param($stmt, "sss", $param_orderDateTime, $param_orderNumber, $param_orderID);
-    }
+        if ($stmt = mysqli_prepare($db, $sql)) {
+            mysqli_stmt_bind_param($stmt, "sss", $param_orderDateTime, $param_orderNumber, $param_orderID);
+        }
 
-    // set parameters
-    date_default_timezone_set("America/New_York");
-    $orderTime = date('Y-m-d') . " " . date('H:i:s');
-    $param_orderDateTime = $orderTime;
-    $param_orderNumber = $_SESSION["orderNumber"];
-    $param_orderID = $_SESSION["orderID"] - 1; // - 1 because page reloaded after form submit, so new order, so -1 to get current order
+        // set parameters
+        date_default_timezone_set("America/New_York");
+        $orderTime = date('Y-m-d') . " " . date('H:i:s');
+        $param_orderDateTime = $orderTime;
+        $param_orderNumber = $_SESSION["orderNumber"];
+        $param_orderID = $_SESSION["orderID"] - 1; // - 1 because page reloaded after form submit, so new order, so -1 to get current order
 
-    // add order time to session variables 
-    $_SESSION["orderTime"] = $orderTime;
+        // add order time to session variables 
+        $_SESSION["orderTime"] = $orderTime;
 
-    // execute statement
-    if (mysqli_stmt_execute($stmt)) {
-        mysqli_stmt_close($stmt);
-        mysqli_close($db);
+        // execute statement
+        if (mysqli_stmt_execute($stmt)) {
+            mysqli_stmt_close($stmt);
+            mysqli_close($db);
 
-        // redirect to sign in page
-        header("Location: ordercomplete.php");
-        exit();
-    } else {
-        die(mysqli_error($db));
-    }
+            // redirect to sign in page
+            header("Location: ordercomplete.php");
+            exit();
+        } else {
+            die(mysqli_error($db));
+        }
     }
 }
