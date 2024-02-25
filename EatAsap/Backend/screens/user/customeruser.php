@@ -455,6 +455,36 @@ if (isset($_POST["editProfileInfoDone"])) {
     }
 
     if ($noError) {
+        // connect to database
+        include("dbconnect.php");
+
+        // prepare update statement and bind variables
+        $sql = "UPDATE user 
+            SET first_name = ?, last_name = ?, phone_number = ?, email = ?
+            WHERE user_id = ?;";
+
+        if ($stmt = mysqli_prepare($db, $sql)) {
+            mysqli_stmt_bind_param($stmt, "sssss", $param_firstName, $param_lastName, $param_phone, $param_email, $param_userID);
+        }
+
+        // set parameters
+        $param_firstName = $firstName;
+        $param_lastName = $lastName;
+        $param_phone = $phoneNumber;
+        $param_email = $emailAddress;
+        $param_userID = $_SESSION["userID"];
+
+        // execute statement
+        if (mysqli_stmt_execute($stmt)) {
+            // close statement
+            mysqli_stmt_close($stmt);
+            // disconnect from database
+            mysqli_close($db);
+        } else { // error
+            die(mysqli_error($db));
+        }
+
+        // redirect to profile page
         header("Location: userprofile.php");
         exit();
     }
@@ -508,6 +538,37 @@ if (isset($_POST["editPaymentInfoDone"])) {
     }
 
     if ($noError) {
+        echo '<script>alert("Here")</script>';
+        // connect to database
+        include("dbconnect.php");
+
+        // prepare update statement and bind variables
+        $sql = "UPDATE payment 
+            SET payment_method = ?, card_number = ?, cvv = ?, expiration_date = ?
+            WHERE user_id = ?;";
+
+        if ($stmt = mysqli_prepare($db, $sql)) {
+            mysqli_stmt_bind_param($stmt, "sssss", $param_paymentMethod, $param_cardNumber, $param_cvv, $param_expirationDate, $param_userID);
+        }
+
+        // set parameters
+        $param_paymentMethod = $paymentMethod;
+        $param_cardNumber = $cardNumber;
+        $param_cvv = $cvv;
+        $param_expirationDate = $expirationDate . "-01";
+        $param_userID = $_SESSION["userID"];
+
+        // execute statement
+        if (mysqli_stmt_execute($stmt)) {
+            // close statement
+            mysqli_stmt_close($stmt);
+            // disconnect from database
+            mysqli_close($db);
+        } else { // error
+            die(mysqli_error($db));
+        }
+
+        // redirect to profile page
         header("Location: userprofile.php");
         exit();
     }
