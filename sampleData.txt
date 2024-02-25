@@ -1,20 +1,10 @@
 
-<<<<<<< HEAD
-INSERT INTO user (user_id, first_name, last_name, email, user_password, phone_number, user_role)
-VALUES 
-    (1, "John", "Doe", "john@example.com", "password", 12345, "owner"),
-    (2, "Alice", "Smith", "alice@example.com", "password", 98765, "owner"),
-    (3, "Michael", "Johnson", "michael@example.com", "password", 55512, "owner"),
-    (4, "Emily", "Brown", "emily@example.com", "password", 9998, "owner");
-    (5, "Jasmine", "Tea", "jasmine@example.com", "password", "5141234567", "customer");
-=======
 INSERT INTO user (user_id, first_name, last_name, email, user_password, phone_number, user_role) VALUES
 (1, 'John', 'Doe', 'john@example.com', 'password123', '1234567890', 'owner'),
 (2, 'Jane', 'Doe', 'jane@example.com', 'password456', '0987654321', 'owner'),
 (3, 'Alice', 'Smith', 'alice@example.com', 'password789', '5551234567', 'owner'),
 (4, 'Bob', 'Johnson', 'bob@example.com', 'passwordabc', '9876543210', 'owner'),
 (5, 'Eve', 'Brown', 'eve@example.com', 'passwordxyz', '1112223333', 'customer');
->>>>>>> origin/master
 
 INSERT INTO restaurant (user_id, restaurant_name, business_type_id, brand_name, address, phone_number, website, email)
 VALUES 
