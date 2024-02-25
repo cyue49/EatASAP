@@ -238,7 +238,7 @@ include("../../../Backend/screens/cart/order.php");
             </div>
             <!-- Quick Checkout Button -->
             <div class="buttonsGroup">
-                <button id="quickOrderSignInButton" class="buttonVar1" onclick="window.location.href ='../../signup.html'">Sign In for Quick
+                <button id="quickOrderSignInButton" class="buttonVar1" onclick="window.location.href ='../../signin.html'">Sign In for Quick
                     Order</button>
             </div>
         </div>
