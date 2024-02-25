@@ -1,10 +1,11 @@
 
-INSERT INTO user (user_id, firstName, lastName, email, phoneNumber)
-VALUES 
-    (1, "John", "Doe", "john@example.com", 12345),
-    (2, "Alice", "Smith", "alice@example.com", 98765),
-    (3, "Michael", "Johnson", "michael@example.com", 55512),
-    (4, "Emily", "Brown", "emily@example.com", 9998);
+INSERT INTO user (user_id, first_name, last_name, email, user_password, phone_number, user_role) VALUES
+(1, 'John', 'Doe', 'john@example.com', 'password123', '1234567890', 'owner'),
+(2, 'Jane', 'Doe', 'jane@example.com', 'password456', '0987654321', 'owner'),
+(3, 'Alice', 'Smith', 'alice@example.com', 'password789', '5551234567', 'owner'),
+(4, 'Bob', 'Johnson', 'bob@example.com', 'passwordabc', '9876543210', 'owner'),
+(5, 'Eve', 'Brown', 'eve@example.com', 'passwordxyz', '1112223333', 'customer');
+
 
 
 INSERT INTO restaurant (user_id, restaurant_name, business_type_id, brand_name, address, phone_number, website, email)
