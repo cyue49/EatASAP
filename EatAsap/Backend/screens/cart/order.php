@@ -71,9 +71,9 @@ function updateSubtotal($cartID)
         foreach ($cartItems as $item) {
             $subtotal += ($item['itemPrice'] * $item['quantity']);
         }
-        $subtotal = number_format((float)$subtotal, 2, '.', '');
     }
-
+    $subtotal = number_format((float)$subtotal, 2, '.', '');
+    
     // connect to database
     include("dbconnect.php");
 
@@ -526,6 +526,12 @@ echo "<script> var validCustomerForm = false;</script>";
 if (isset($_POST["formSubmit"])) {
     $noError = true;
 
+    // can't continue order if don't have item in cart
+    if ($subtotal == 0) {
+        $noError = false;
+        echo '<script>alert("You don\'t have any item in your cart. Please add an item to proceed with the order.")</script>'; 
+    }
+
     // first name
     $firstName = validate_input($_POST["firstName"]);
     if (empty($firstName)) {
@@ -703,13 +709,17 @@ if (isset($_POST["formSubmit"])) {
         // disconnect from database
         mysqli_close($db);
     } else {
-        $generalError = "*Please check that you have filled the form correctly.";
+        if ($subtotal != 0) $generalError = "*Please check that you have filled the form correctly.";
     }
 }
 
 // ============================ Order Confirmation ============================
 if (isset($_POST["confirmOrder"])) {
-    // update order date time, status & number
+    // can't continue order if don't have item in cart
+    if ($subtotal == 0) {
+        echo '<script>alert("You don\'t have any item in your cart. Please add an item to proceed with the order.")</script>'; 
+    } else {
+        // update order date time, status & number
 
     // connect to database
     include("dbconnect.php");
@@ -743,5 +753,6 @@ if (isset($_POST["confirmOrder"])) {
         exit();
     } else {
         die(mysqli_error($db));
+    }
     }
 }
