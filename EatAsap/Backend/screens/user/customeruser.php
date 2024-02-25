@@ -1,7 +1,7 @@
 <?php
 // for testing
 $_SESSION["loggedin"] = true;
-$_SESSION["userID"] = 1;
+$_SESSION["userID"] = 5;
 
 // if not logged in, redirect
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] === false) {

@@ -4,7 +4,7 @@ session_start();
 // for testing (data used for testing: EatAsap/Backend/orderTestData.sql)
 $_SESSION["loggedin"] = true;
 $_POST["cartID"] = 3;
-$_SESSION["userID"] = 1;
+$_SESSION["userID"] = 5;
 
 // ============================ Get cart items ============================
 function getCartItems($cartID)
@@ -73,7 +73,7 @@ function updateSubtotal($cartID)
         }
     }
     $subtotal = number_format((float)$subtotal, 2, '.', '');
-    
+
     // connect to database
     include("dbconnect.php");
 
