@@ -81,11 +81,11 @@ include("../../../Backend/screens/user/customeruser.php");
                 <fieldset>
                     <!-- Card Number -->
                     <label for="cardNumber">Card Number</label><br>
-                    <input type="number" id="cardNumber" name="cardNumber" maxlength="16" onKeyPress="if(this.value.length==16) return false;" value="<?php echo $cardNumber; ?>">
+                    <input type="number" id="cardNumber" name="cardNumber" oninput="if(this.value.length>16) this.value = this.value.substr(0, 16);" value="<?php echo $cardNumber; ?>">
                     <span class="error"> <?php echo $cardNumberErr ?></span><br><br>
                     <!-- CVV -->
                     <label for="cvv">CVV/CVC</label><br>
-                    <input type="number" id="cvv" name="cvv" maxlength="3" onKeyPress="if(this.value.length==3) return false;" value="<?php echo $cvv; ?>">
+                    <input type="number" id="cvv" name="cvv" maxlength="3" oninput="if(this.value.length>3) this.value = this.value.substr(0, 3);" value="<?php echo $cvv; ?>">
                     <span class="error"> <?php echo $cvvErr ?></span><br><br>
                     <!-- Expiration Date -->
                     <label for="expirationDate">Expiration Date</label><br>

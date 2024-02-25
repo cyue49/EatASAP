@@ -142,19 +142,19 @@ include("../../../Backend/screens/cart/order.php");
                                     <legend>Customer Information</legend>
                                     <!-- First Name -->
                                     <label for="firstName">First Name</label><br>
-                                    <input type="text" name="firstName" id="firstName" onKeyPress="if(this.value.length==20) return false;" value="<?php echo $firstName; ?>">
+                                    <input type="text" name="firstName" id="firstName" oninput="if(this.value.length>20) this.value = this.value.substr(0, 20);" value="<?php echo $firstName; ?>">
                                     <span class="error"> <?php echo $firstNameErr ?></span><br><br>
                                     <!-- Last Name -->
                                     <label for="lastName">Last Name</label><br>
-                                    <input type="text" name="lastName" id="lastName" onKeyPress="if(this.value.length==20) return false;" value="<?php echo $lastName; ?>">
+                                    <input type="text" name="lastName" id="lastName" oninput="if(this.value.length>20) this.value = this.value.substr(0, 20);" value="<?php echo $lastName; ?>">
                                     <span class="error"> <?php echo $lastNameErr ?></span><br><br>
                                     <!-- Phone Number -->
                                     <label for="phoneNumber">Phone Number</label><br>
-                                    <input type="number" id="phoneNumber" name="phoneNumber" placeholder="5141234567" onKeyPress="if(this.value.length==10) return false;" value="<?php echo $phoneNumber; ?>">
+                                    <input type="number" id="phoneNumber" name="phoneNumber" placeholder="5141234567" oninput="if(this.value.length>13) this.value = this.value.substr(0, 13);" value="<?php echo $phoneNumber; ?>">
                                     <span class="error"> <?php echo $phoneNumberErr ?></span><br><br>
                                     <!-- Email Address -->
                                     <label for="emailAddress">Email</label><br>
-                                    <input type="text" id="emailAddress" name="emailAddress" onKeyPress="if(this.value.length==50) return false;" value="<?php echo $emailAddress; ?>">
+                                    <input type="text" id="emailAddress" name="emailAddress" oninput="if(this.value.length>50) this.value = this.value.substr(0, 50);" value="<?php echo $emailAddress; ?>">
                                     <span class="error"> <?php echo $emailAddressErr ?></span><br><br>
                                 </fieldset>
                                 <fieldset>
@@ -177,11 +177,11 @@ include("../../../Backend/screens/cart/order.php");
                                     <legend>Payment Information</legend>
                                     <!-- Card Number -->
                                     <label for="cardNumber">Card Number</label><br>
-                                    <input type="number" id="cardNumber" name="cardNumber" maxlength="16" onKeyPress="if(this.value.length==16) return false;" value="<?php echo $cardNumber; ?>">
+                                    <input type="number" id="cardNumber" name="cardNumber" maxlength="16" oninput="if(this.value.length>16) this.value = this.value.substr(0, 16);" value="<?php echo $cardNumber; ?>">
                                     <span class="error"> <?php echo $cardNumberErr ?></span><br><br>
                                     <!-- CVV -->
                                     <label for="cvv">CVV/CVC</label><br>
-                                    <input type="number" id="cvv" name="cvv" maxlength="3" onKeyPress="if(this.value.length==3) return false;" value="<?php echo $cvv; ?>">
+                                    <input type="number" id="cvv" name="cvv" maxlength="3" oninput="if(this.value.length>3) this.value = this.value.substr(0, 3);" value="<?php echo $cvv; ?>">
                                     <span class="error"> <?php echo $cvvErr ?></span><br><br>
                                     <!-- Expiration Date -->
                                     <label for="expirationDate">Expiration Date</label><br>

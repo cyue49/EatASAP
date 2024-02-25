@@ -67,19 +67,19 @@ include("../../../Backend/screens/user/customeruser.php");
                 <fieldset>
                     <!-- First Name -->
                     <label for="firstName">First Name</label><br>
-                    <input type="text" name="firstName" id="firstName" onKeyPress="if(this.value.length==20) return false;" value="<?php echo $firstName; ?>">
+                    <input type="text" name="firstName" id="firstName" oninput="if(this.value.length>20) this.value = this.value.substr(0, 20);" value="<?php echo $firstName; ?>">
                     <span class="error"> <?php echo $firstNameErr ?></span><br><br>
                     <!-- Last Name -->
                     <label for="lastName">Last Name</label><br>
-                    <input type="text" name="lastName" id="lastName" onKeyPress="if(this.value.length==20) return false;" value="<?php echo $lastName; ?>">
+                    <input type="text" name="lastName" id="lastName" oninput="if(this.value.length>20) this.value = this.value.substr(0, 20);" value="<?php echo $lastName; ?>">
                     <span class="error"> <?php echo $lastNameErr ?></span><br><br>
                     <!-- Phone Number -->
                     <label for="phoneNumber">Phone Number</label><br>
-                    <input type="number" id="phoneNumber" name="phoneNumber" placeholder="5141234567" onKeyPress="if(this.value.length==10) return false;" value="<?php echo $phoneNumber; ?>">
+                    <input type="number" id="phoneNumber" name="phoneNumber" oninput="if(this.value.length>13) this.value = this.value.substr(0, 13);" value="<?php echo $phoneNumber; ?>">
                     <span class="error"> <?php echo $phoneNumberErr ?></span><br><br>
                     <!-- Email Address -->
                     <label for="emailAddress">Email</label><br>
-                    <input type="text" id="emailAddress" name="emailAddress" onKeyPress="if(this.value.length==50) return false;" value="<?php echo $emailAddress; ?>">
+                    <input type="text" id="emailAddress" name="emailAddress" oninput="if(this.value.length>50) this.value = this.value.substr(0, 50);" value="<?php echo $emailAddress; ?>">
                     <span class="error"> <?php echo $emailAddressErr ?></span><br><br>
                 </fieldset>
                 <!-- Submit -->
