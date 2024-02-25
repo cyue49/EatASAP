@@ -276,12 +276,75 @@ function printAnOrderHistoryHeader($orderID)
             </div>";
 }
 
+// ============================ Calculate taxes and totals ============================
+// get subtotal
+function getSubtotal($cartID)
+{
+    // connect to database
+    include("dbconnect.php");
+
+    // result 
+    $subtotal = 0;
+
+    // prepare insert statement and bind variables
+    $sql = "SELECT cart_subtotal 
+            FROM order_cart 
+            WHERE cart_id = ?;";
+
+    if ($stmt = mysqli_prepare($db, $sql)) {
+        mysqli_stmt_bind_param($stmt, "s", $param_cartID);
+    }
+
+    // set parameters
+    $param_cartID = $cartID;
+
+    // execute statement
+    if (mysqli_stmt_execute($stmt)) {
+        // Store result
+        mysqli_stmt_store_result($stmt);
+
+        // if has result in database
+        if (mysqli_stmt_num_rows($stmt) > 0) {
+            mysqli_stmt_bind_result($stmt, $result);
+            if (mysqli_stmt_fetch($stmt)) {
+                $subtotal = (float) $result;
+            }
+        }
+
+        // close statement
+        mysqli_stmt_close($stmt);
+
+        // disconnect from database
+        mysqli_close($db);
+
+        return $subtotal;
+    } else { // error
+        die(mysqli_error($db));
+    }
+}
+
+function calculateGST($subtotal)
+{
+    $realVal = 0.05 * $subtotal;
+    $displayVal = number_format((float)$realVal, 2, '.', '');
+    return array($realVal, $displayVal);
+}
+
+function calculateQST($subtotal)
+{
+    $realVal = 0.09975 * $subtotal;
+    $displayVal = number_format((float)$realVal, 2, '.', '');
+    return array($realVal, $displayVal);
+}
+
 // print an order history order items
 function printAnOrderHistoryItems($orderID)
 {
     // get order history data
     $orderInfo = getOrderInfo($orderID);
     $orderCartID = $orderInfo['cartID'];
+    $subtotal = getSubtotal($orderInfo['cartID']);
+    $total = $orderInfo['orderTotal'];
 
     $orderItems = getCartItems($orderCartID);
 
@@ -304,22 +367,22 @@ function printAnOrderHistoryItems($orderID)
     echo '<tr class="subtotal">' .
         '<td>Subtotal</td>' .
         '<td></td>' .
-        '<td>' . "temp" . '$</td>' .
+        '<td>' . $subtotal . '$</td>' .
         '</tr>';
     echo '<tr class="tax">' .
         '<td>GST</td>' .
         '<td></td>' .
-        '<td>' . "temp" . '$</td>' .
+        '<td>' . calculateGST($subtotal)[1] . '$</td>' .
         '</tr>';
     echo '<tr class="tax">' .
         '<td>QST</td>' .
         '<td></td>' .
-        '<td>' . "temp" . '$</td>' .
+        '<td>' . calculateQST($subtotal)[1] . '$</td>' .
         '</tr>';
     echo '<tr class="total">' .
         '<td>Total</td>' .
         '<td></td>' .
-        '<td>' . "temp" . '$</td>' .
+        '<td>' . $total . '$</td>' .
         '</tr>';
 
     echo "</table>";
