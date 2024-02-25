@@ -567,7 +567,7 @@ if (isset($_POST["formSubmit"])) {
     if (empty($emailAddress)) {
         $emailAddressErr = "Email address is required.";
         $noError = false;
-    } else if (!preg_match("/^[\w\.\-_]+@[a-zA-Z]+.[a-zA-Z]+$/", $emailAddress)) {
+    } else if (!preg_match("/^[\w\.\-_]+@[a-zA-Z]+\.[a-zA-Z]+$/", $emailAddress)) {
         $emailAddressErr = "Invalid Eamil format.";
         $noError = false;
     }

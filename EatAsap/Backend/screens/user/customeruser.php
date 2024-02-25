@@ -337,13 +337,115 @@ $cvv = $userInfo['cvv'];
 $expirationDate = $userInfo['expirationDate'];
 
 // =============================== Profile info form validation ===============================
+function validate_input($data)
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
 // user input errors
 $firstNameErr = $lastNameErr = $phoneNumberErr = $emailAddressErr = "";
 
-if (isset($_POST["editProfileInfoDone"])) {}
+if (isset($_POST["editProfileInfoDone"])) {
+    $noError = true;
+
+    // first name
+    $firstName = validate_input($_POST["firstName"]);
+    if (empty($firstName)) {
+        $firstNameErr = "First Name is required.";
+        $noError = false;
+    } else if (!preg_match("/^[a-zA-Z\-]+$/", $firstName)) {
+        $firstNameErr = "Invalid first name format.";
+        $noError = false;
+    }
+
+    // last name
+    $lastName = validate_input($_POST["lastName"]);
+    if (empty($lastName)) {
+        $lastNameErr = "Last Name is required.";
+        $noError = false;
+    } else if (!preg_match("/^[a-zA-Z\-]+$/", $lastName)) {
+        $lastNameErr = "Invalid last name format.";
+        $noError = false;
+    }
+
+    // phone number
+    $phoneNumber = validate_input($_POST["phoneNumber"]);
+    if (empty($phoneNumber)) {
+        $phoneNumberErr = "Phone number is required.";
+        $noError = false;
+    } else if (!preg_match("/^\d{10}$/", $phoneNumber)) {
+        $phoneNumberErr = "Invalid phone number format. Please make sure to enter exactly 10 digits.";
+        $noError = false;
+    }
+
+    // email
+    $emailAddress = validate_input($_POST["emailAddress"]);
+    if (empty($emailAddress)) {
+        $emailAddressErr = "Email address is required.";
+        $noError = false;
+    } else if (!preg_match("/^[\w\.\-_]+@[a-zA-Z]+\.[a-zA-Z]+$/", $emailAddress)) {
+        $emailAddressErr = "Invalid Eamil format.";
+        $noError = false;
+    }
+
+    if ($noError) {
+        header("Location: userprofile.php");
+        exit();
+    }
+}
 
 // =============================== Payment info form validation ===============================
 // user input errors
 $paymentMethodErr = $cardNumberErr = $cvvErr = $expirationDateErr = "";
 
-if (isset($_POST["editPaymentInfoDone"])) {}
+if (isset($_POST["editPaymentInfoDone"])) {
+    $noError = true;
+
+    // payment method
+    if (!isset($_POST['paymentMethod'])) {
+        $paymentMethodErr = "Payment method is required.";
+        $noError = false;
+    } else {
+        $paymentMethod = validate_input($_POST['paymentMethod']);
+    }
+
+    // card number
+    $cardNumber = validate_input($_POST["cardNumber"]);
+    if (empty($cardNumber)) {
+        $cardNumberErr = "Card number is required.";
+        $noError = false;
+    } else if (!preg_match("/^\d{16}$/", $cardNumber)) {
+        $cardNumberErr = "Invalid card number format. Please make sure to enter exactly 16 digits with no spaces in between.";
+        $noError = false;
+    }
+
+    // cvv
+    $cvv = validate_input($_POST["cvv"]);
+    if (empty($cvv)) {
+        $cvvErr = "CVV/CVC is required.";
+        $noError = false;
+    } else if (!preg_match("/^\d{3}$/", $cvv)) {
+        $cvvErr = "Invalid CVV/CVC format. Please make sure to enter exactly 3 digits.";
+        $noError = false;
+    }
+
+    // expiration date
+    if ($_POST['expirationDate'] == "") {
+        $expirationDateErr = "Expiration date is required.";
+        $noError = false;
+    } else if (strtotime($_POST['expirationDate']) < strtotime('now')) {
+        $expirationDateErr = "Your card is already expired.";
+        $expirationDate = validate_input($_POST['expirationDate']);
+        $noError = false;
+    } else {
+        $expirationDate = validate_input($_POST['expirationDate']);
+    }
+
+    if ($noError) {
+        header("Location: userprofile.php");
+        exit();
+    }
+}

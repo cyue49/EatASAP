@@ -63,7 +63,7 @@ include("../../../Backend/screens/user/customeruser.php");
             <div class="editUserInfoHeader">
                 <h3>Edit your profile information</h3>
             </div>
-            <form action="" class="editUserInfoForm">
+            <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="editUserInfoForm">
                 <fieldset>
                     <!-- First Name -->
                     <label for="firstName">First Name</label><br>
@@ -84,7 +84,7 @@ include("../../../Backend/screens/user/customeruser.php");
                 </fieldset>
                 <!-- Submit -->
                 <div class="formButtons">
-                    <button class="buttonVar1" type="button" type="submit" name="editProfileInfoDone" id="editProfileInfoDone">Done</button>
+                    <button class="buttonVar1" type="submit" name="editProfileInfoDone" id="editProfileInfoDone">Done</button>
                     <button class="buttonVar2" type="button" id="editProfileInfoCancel" onclick="window.location.href ='userprofile.php'">Cancel</button>
                 </div>
             </form>
