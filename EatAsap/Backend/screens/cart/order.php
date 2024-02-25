@@ -55,7 +55,7 @@ function getNextCartID()
     }
 }
 
-// given an array of menu items and their quantity, create the cart and cart items. return the cartID on success.
+// given an array of menu items and their quantity, create the cart and cart items.
 function createCartItems($cartItems)
 {
     // connect to database
@@ -103,7 +103,6 @@ function createCartItems($cartItems)
     }
 
     $_SESSION["cartID"] = $nextCartID;
-    return $nextCartID;
 }
 
 function getCartItems($cartID)
@@ -840,7 +839,7 @@ if (isset($_POST["confirmOrder"])) {
         $orderTime = date('Y-m-d') . " " . date('H:i:s');
         $param_orderDateTime = $orderTime;
         $param_orderNumber = $_SESSION["orderNumber"];
-        $param_orderID = $_SESSION["orderID"] - 1; // - 1 because page reloaded after form submit, so new order, so -1 to get current order
+        $param_orderID = $_SESSION["orderID"] - 1; // - 1 because page reloaded after form submit and current order added to database, so -1 to get current order
 
         // add order time to session variables 
         $_SESSION["orderTime"] = $orderTime;
