@@ -82,17 +82,21 @@ main {
 }
 
 .orderSummary table th {
-    text-align: left;
+    text-align: center;
     color: var(--bg-color);
     background-color: var(--font-color);
 }
 
-.orderSummary table td:nth-child(3), .orderSummary table th:nth-child(3) {
-    text-align: right;
+.orderSummary table td {
+    text-align: center;
 }
 
-.orderSummary table td:nth-child(2), .orderSummary table th:nth-child(2) {
-    text-align: center;
+.orderSummary table td:first-child, .orderSummary table th:first-child {
+    text-align: left;
+}
+
+.orderSummary table td:last-child {
+    text-align: right;
 }
 
 .orderSummary table .subtotal {
@@ -112,6 +116,22 @@ main {
     font-weight: bold;
     color: var(--bg-color);
     background-color: var(--font-color);
+}
+
+.editDelete {
+    display: flex;
+    justify-content: space-around;
+}
+
+.editDelete a {
+    text-decoration: none;
+    color: var(--font-color);
+}
+
+.editDelete i {
+    font-size: 22px;
+    cursor: pointer;
+    margin-top: 0.5em;
 }
 
 #modifyOrder {
@@ -170,7 +190,7 @@ main {
     background-color: var(--navbar-color);
 }
 
-#paymentAccordion .accordion-item:first-child, #paymentAccordion #headingPaymentMethod  {
+#paymentAccordion .accordion-item:first-child, #paymentAccordion #headingCustomerCheckoutForm  {
     border-radius: 25px 25px 0 0;
     overflow: none;
 }
@@ -233,21 +253,17 @@ main {
 
 /* Forms */
 /* Payment Method Radio Form */
-#collapsePaymentMethod i {
+#collapseCustomerCheckoutForm i {
     font-size: 24px;
     color: var(--font-color);
 }
 
-#collapsePaymentMethod input[type=radio] {
-    margin: 0 1.5em 0 1em;
-}
-
 /* Customer Infromation Form */
-#collapseCustomerInformation label {
+#collapseCustomerCheckoutForm label {
     color: var(--font-color);
 }
 
-#collapseCustomerInformation input {
+#collapseCustomerCheckoutForm input, #collapseCustomerCheckoutForm input {
     width: 100%;
     border: 1px solid var(--light-grey);
     padding: 0.7em 1em;
@@ -273,6 +289,52 @@ fieldset legend {
     font-weight: bold;
 }
 
+#paymentRadioSelect {
+    display: flex;
+    flex-flow: column wrap;
+    gap: 1em;
+}
+
+#paymentRadioSelect div {
+    display: inline;
+}
+
+#paymentRadioSelect div input[type=radio] {
+    margin: 0 1em;
+    padding: 0;
+    width: min-content;
+}
+
+.requiredAsterisk {
+    color: red;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+}
+
+#customerCheckoutFormBody {
+    max-height: 60vh;
+    overflow-y: scroll;
+}
+
+/* Enter Your information Scrollbar */
+#customerCheckoutFormBody::-webkit-scrollbar {
+    width: 12px;
+}
+
+#customerCheckoutFormBody::-webkit-scrollbar-track {
+    /* color of the tracking area */
+    background: var(--bg-color);
+}
+
+#customerCheckoutFormBody::-webkit-scrollbar-thumb {
+    background-color: var(--light-grey);
+    border-radius: 25px;
+    border: 3px solid var(--bg-color);
+    background-clip: content-box;
+}
 
 /* Order complete page Receipt Summary */
 #receiptSummary {
