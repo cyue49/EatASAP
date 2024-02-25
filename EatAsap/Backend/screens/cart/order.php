@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// for testing (data used for testing: EatAsap/Backend/orderTestData.sql)
+// for testing
 $_SESSION["loggedin"] = true;
 $_POST["cartID"] = 3;
 $_SESSION["userID"] = 5;
@@ -367,7 +367,7 @@ function addItem($itemID)
     // execute statement
     if (mysqli_stmt_execute($stmt)) { // success
         // redirect to same page
-        header("Location: ../../../Frontend/screens/cart/myorders.php");
+        header("Location: myorders.php");
     } else { // error
         die(mysqli_error($db));
     }
@@ -429,7 +429,7 @@ function minusItem($itemID)
             removeItem($itemID);
         } else {
             // redirect to same page
-            header("Location: ../../../Frontend/screens/cart/myorders.php");
+            header("Location: myorders.php");
         }
     } else { // error
         die(mysqli_error($db));
@@ -456,7 +456,7 @@ function removeItem($itemID)
     // execute statement
     if (mysqli_stmt_execute($stmt)) { // success
         // redirect to same page
-        header("Location: ../../../Frontend/screens/cart/myorders.php");
+        header("Location: myorders.php");
     } else { // error
         die(mysqli_error($db));
     }
