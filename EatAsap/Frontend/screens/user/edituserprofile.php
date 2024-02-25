@@ -1,3 +1,7 @@
+<?php
+// include php file
+include("../../../Backend/screens/user/customeruser.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -63,16 +67,20 @@
                 <fieldset>
                     <!-- First Name -->
                     <label for="firstName">First Name</label><br>
-                    <input type="text" name="firstname" id="firstName" maxlength="50"><br><br>
+                    <input type="text" name="firstName" id="firstName" onKeyPress="if(this.value.length==20) return false;" value="<?php echo $firstName; ?>">
+                    <span class="error"> <?php echo $firstNameErr ?></span><br><br>
                     <!-- Last Name -->
                     <label for="lastName">Last Name</label><br>
-                    <input type="text" name="lastname" id="lastName" maxlength="50"><br><br>
+                    <input type="text" name="lastName" id="lastName" onKeyPress="if(this.value.length==20) return false;" value="<?php echo $lastName; ?>">
+                    <span class="error"> <?php echo $lastNameErr ?></span><br><br>
                     <!-- Phone Number -->
                     <label for="phoneNumber">Phone Number</label><br>
-                    <input type="tel" id="phoneNumber" name="phonenumber" placeholder="514-123-4567" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}"><br><br>
+                    <input type="number" id="phoneNumber" name="phoneNumber" placeholder="5141234567" onKeyPress="if(this.value.length==10) return false;" value="<?php echo $phoneNumber; ?>">
+                    <span class="error"> <?php echo $phoneNumberErr ?></span><br><br>
                     <!-- Email Address -->
                     <label for="emailAddress">Email</label><br>
-                    <input type="email" id="emailAddress" name="emailaddress" maxlength="100"><br><br>
+                    <input type="text" id="emailAddress" name="emailAddress" onKeyPress="if(this.value.length==50) return false;" value="<?php echo $emailAddress; ?>">
+                    <span class="error"> <?php echo $emailAddressErr ?></span><br><br>
                 </fieldset>
                 <!-- Submit -->
                 <div class="formButtons">

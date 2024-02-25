@@ -235,12 +235,31 @@ fieldset {
     margin: 1em;
 }
 
-.paymentRadioInput {
+#paymentRadioSelect {
     display: flex;
-    justify-content: flex-start;
+    flex-flow: column wrap;
     gap: 1em;
 }
 
-.paymentRadioInput i {
-    font-size: 2em;
+#paymentRadioSelect div {
+    display: inline;
+}
+
+#paymentRadioSelect div input[type=radio] {
+    margin: 0 1em;
+    padding: 0;
+    width: min-content;
+}
+
+#paymentRadioSelect i {
+    font-size: 24px;
+}
+
+.requiredAsterisk {
+    color: red;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
 }

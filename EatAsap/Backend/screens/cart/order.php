@@ -520,7 +520,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 }
 
 // ============================ Form Validation ============================
-// payment method form validation // todo: put payment info and payment method together, change order of user info and payment info in accordion
+// payment method form validation //
 echo "<script> var validCustomerForm = false;</script>";
 
 if (isset($_POST["formSubmit"])) {

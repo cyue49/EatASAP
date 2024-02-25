@@ -64,7 +64,7 @@ function getUserInfo($userID)
 }
 
 // ============================ Get order information ============================
-// get all order ids for an user given the user id
+// get all completed order ids for an user given the user id
 function getOrderIds()
 {
     // connect to database
@@ -76,7 +76,7 @@ function getOrderIds()
     // prepare insert statement and bind variables
     $sql = "SELECT order_id
             FROM orders
-            WHERE user_id = ?;";
+            WHERE order_status = 'completed' AND user_id = ?;";
 
     if ($stmt = mysqli_prepare($db, $sql)) {
         mysqli_stmt_bind_param($stmt, "s", $param_userID);
@@ -325,8 +325,6 @@ function printAnOrderHistoryItems($orderID)
     echo "</table>";
 }
 
-// todo: in frontend, use getOrderIds for the user, then for each orderIds, use printAnOrderHistory
-
 // ============================ Set user information for display on frontend ============================
 $userInfo = getUserInfo($_SESSION["userID"]);
 $firstName = $userInfo['firstName'];
@@ -338,17 +336,14 @@ $cardNumber = $userInfo['cardNumber'];
 $cvv = $userInfo['cvv'];
 $expirationDate = $userInfo['expirationDate'];
 
-// testing
-/* print_r(getOrderIds($_SESSION["userID"]));
-echo "<br>";
-echo getRestaurantName(1) . "<br>";
-$x = getOrderInfo(1);
-print_r($x);
-echo "<br>";
-print_r(getCartItems($x['cartID']));
-echo "<br>";
-echo getRestaurantName(3) . "<br>";
-$y = getOrderInfo(3);
-print_r($y);
-echo "<br>";
-print_r(getCartItems($y['cartID'])); */
+// =============================== Profile info form validation ===============================
+// user input errors
+$firstNameErr = $lastNameErr = $phoneNumberErr = $emailAddressErr = "";
+
+if (isset($_POST["editProfileInfoDone"])) {}
+
+// =============================== Payment info form validation ===============================
+// user input errors
+$paymentMethodErr = $cardNumberErr = $cvvErr = $expirationDateErr = "";
+
+if (isset($_POST["editPaymentInfoDone"])) {}

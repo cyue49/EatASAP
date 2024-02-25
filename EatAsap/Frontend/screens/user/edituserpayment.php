@@ -1,3 +1,7 @@
+<?php
+// include php file
+include("../../../Backend/screens/user/customeruser.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -61,36 +65,36 @@
             </div>
             <form action="" class="editUserInfoForm">
                 <fieldset>
-                    <div class="paymentRadioInput">
-                        <i class="fa fa-cc-visa"></i>
-                        <input type="radio" name="paymentMethod" id="visa" value="Visa">
-                        <label for="visa">Visa</label><br>
-                    </div>
-                    <div class="paymentRadioInput">
-                        <i class="fa fa-cc-mastercard"></i>
-                        <input type="radio" name="paymentMethod" id="mastercard" value="MasterCard">
-                        <label for="mastercard">MasterCard</label><br>
-                    </div>
-                    <div class="paymentRadioInput">
-                        <i class="fa fa-cc-paypal"></i>
-                        <input type="radio" name="paymentMethod" id="paypal" value="PayPal">
-                        <label for="paypal">PayPal</label><br>
+                    <div id="paymentRadioSelect">
+                        <div>
+                            <i class="fa fa-cc-visa"></i>
+                            <input type="radio" name="paymentMethod" id="visa" value="Visa" <?php if ($paymentMethod == "Visa") echo "checked"; ?>>
+                            <label for="visa">Visa</label><br>
+                        </div>
+                        <div>
+                            <i class="fa fa-cc-mastercard"></i>
+                            <input type="radio" name="paymentMethod" id="mastercard" value="MasterCard" <?php if ($paymentMethod == "MasterCard") echo "checked"; ?>>
+                            <label for="mastercard">MasterCard</label><br>
+                        </div>
                     </div>
                 </fieldset>
                 <fieldset>
                     <!-- Card Number -->
                     <label for="cardNumber">Card Number</label><br>
-                    <input type="number" id="cardNumber" name="cardnumber" maxlength="16" onKeyPress="if(this.value.length==16) return false;"><br><br>
+                    <input type="number" id="cardNumber" name="cardNumber" maxlength="16" onKeyPress="if(this.value.length==16) return false;" value="<?php echo $cardNumber; ?>">
+                    <span class="error"> <?php echo $cardNumberErr ?></span><br><br>
                     <!-- CVV -->
-                    <label for="cvv">CVV</label><br>
-                    <input type="number" id="cvv" name="cvv" maxlength="3" onKeyPress="if(this.value.length==3) return false;"><br><br>
+                    <label for="cvv">CVV/CVC</label><br>
+                    <input type="number" id="cvv" name="cvv" maxlength="3" onKeyPress="if(this.value.length==3) return false;" value="<?php echo $cvv; ?>">
+                    <span class="error"> <?php echo $cvvErr ?></span><br><br>
                     <!-- Expiration Date -->
                     <label for="expirationDate">Expiration Date</label><br>
-                    <input type="month" id="expirationDate" name="expirationdate">
+                    <input type="month" id="expirationDate" name="expirationDate" value="<?php echo $expirationDate; ?>">
+                    <span class="error"> <?php echo $expirationDateErr ?></span><br><br>
                 </fieldset>
                 <!-- Submit -->
                 <div class="formButtons">
-                    <button class="buttonVar1" type="button" id="editPaymentInfoDone">Done</button>
+                    <button class="buttonVar1" type="button" type="submit" name="editPaymentInfoDone" id="editPaymentInfoDone">Done</button>
                     <button class="buttonVar2" type="button" id="editPaymentInfoCancel" onclick="window.location.href ='userprofile.php'">Cancel</button>
                 </div>
             </form>
