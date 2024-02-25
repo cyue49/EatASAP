@@ -55,7 +55,7 @@ session_start();
                         <a class="nav-link" href="../contactus.html">Contact</a>
                     </li>
                     <li class="nav-item text-center px-5 mx-5">
-                        <a id="receiptSignedInOut" class="nav-link" href="../user/userprofile.html">Sign In</a>
+                        <a id="receiptSignedInOut" class="nav-link" href="../../signin.html">Sign In</a>
                     </li>
                 </ul>
 
