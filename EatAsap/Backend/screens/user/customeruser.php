@@ -15,7 +15,7 @@ if (!isUserLoggedIn()) {
 function getUserInfo($userID)
 {
     // connect to database
-    include("dbconnect.php");
+    include("../../../Backend/dbconnect.php");
 
     // response array
     $response = array();
@@ -70,7 +70,7 @@ function getUserInfo($userID)
 function getOrderIds()
 {
     // connect to database
-    include("dbconnect.php");
+    include("../../../Backend/dbconnect.php");
 
     // response array
     $response = array();
@@ -118,7 +118,7 @@ function getOrderIds()
 function getOrderInfo($orderID)
 {
     // connect to database
-    include("dbconnect.php");
+    include("../../../Backend/dbconnect.php");
 
     // response array
     $response = array();
@@ -167,7 +167,7 @@ function getOrderInfo($orderID)
 function getRestaurantName($orderID)
 {
     // connect to database
-    include("dbconnect.php");
+    include("../../../Backend/dbconnect.php");
 
     // response
     $response = "";
@@ -213,7 +213,7 @@ function getRestaurantName($orderID)
 function getCartItems($cartID)
 {
     // connect to database
-    include("dbconnect.php");
+    include("../../../Backend/dbconnect.php");
 
     // response array
     $response = array();
@@ -283,7 +283,7 @@ function printAnOrderHistoryHeader($orderID)
 function getSubtotal($cartID)
 {
     // connect to database
-    include("dbconnect.php");
+    include("../../../Backend/dbconnect.php");
 
     // result 
     $subtotal = 0;
@@ -458,7 +458,7 @@ if (isset($_POST["editProfileInfoDone"])) {
 
     if ($noError) {
         // connect to database
-        include("dbconnect.php");
+        include("../../../Backend/dbconnect.php");
 
         // prepare update statement and bind variables
         $sql = "UPDATE user 
@@ -542,7 +542,7 @@ if (isset($_POST["editPaymentInfoDone"])) {
     if ($noError) {
         echo '<script>alert("Here")</script>';
         // connect to database
-        include("dbconnect.php");
+        include("../../../Backend/dbconnect.php");
 
         // prepare update statement and bind variables
         $sql = "UPDATE payment 

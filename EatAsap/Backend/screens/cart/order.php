@@ -15,7 +15,7 @@ $_SESSION["cart"] = array(
 function getNextCartID()
 {
     // connect to database
-    include("dbconnect.php");
+    include("../../../Backend/dbconnect.php");
 
     // response
     $response;
@@ -58,7 +58,7 @@ function getNextCartID()
 function createCartItems($cartItems)
 {
     // connect to database
-    include("dbconnect.php");
+    include("../../../Backend/dbconnect.php");
 
     // create a cart
     $nextCartID = getNextCartID();
@@ -107,7 +107,7 @@ function createCartItems($cartItems)
 function getCartItems($cartID)
 {
     // connect to database
-    include("dbconnect.php");
+    include("../../../Backend/dbconnect.php");
 
     // response array
     $response = array();
@@ -172,7 +172,7 @@ function updateSubtotal($cartID)
     $subtotal = number_format((float)$subtotal, 2, '.', '');
 
     // connect to database
-    include("dbconnect.php");
+    include("../../../Backend/dbconnect.php");
 
     // prepare update statement and bind variables
     $sql = "UPDATE order_cart 
@@ -200,7 +200,7 @@ function updateSubtotal($cartID)
 function getSubtotal($cartID)
 {
     // connect to database
-    include("dbconnect.php");
+    include("../../../Backend/dbconnect.php");
 
     // result 
     $subtotal = 0;
@@ -265,7 +265,7 @@ function calculateTotal($subtotal)
 function getUserInfo($userID)
 {
     // connect to database
-    include("dbconnect.php");
+    include("../../../Backend/dbconnect.php");
 
     // response array
     $response = array();
@@ -318,7 +318,7 @@ function getUserInfo($userID)
 function getNextOrderID()
 {
     // connect to database
-    include("dbconnect.php");
+    include("../../../Backend/dbconnect.php");
 
     // response
     $response;
@@ -360,7 +360,7 @@ function getNextOrderID()
 function getNextOrderNumber()
 {
     // connect to database
-    include("dbconnect.php");
+    include("../../../Backend/dbconnect.php");
 
     // response
     $response;
@@ -405,7 +405,7 @@ function getNextOrderNumber()
 function getNextTempUserID()
 {
     // connect to database
-    include("dbconnect.php");
+    include("../../../Backend/dbconnect.php");
 
     // response
     $response;
@@ -448,7 +448,7 @@ function getNextTempUserID()
 function addItem($itemID)
 {
     // connect to database
-    include("dbconnect.php");
+    include("../../../Backend/dbconnect.php");
 
     // prepare statement and bind variables
     $sql = "UPDATE cart_item 
@@ -476,7 +476,7 @@ function addItem($itemID)
 function minusItem($itemID)
 {
     // connect to database
-    include("dbconnect.php");
+    include("../../../Backend/dbconnect.php");
 
     // prepare statement and bind variables
     $sql = "UPDATE cart_item 
@@ -539,7 +539,7 @@ function minusItem($itemID)
 function removeItem($itemID)
 {
     // connect to database
-    include("dbconnect.php");
+    include("../../../Backend/dbconnect.php");
 
     // prepare statement and bind variables
     $sql = "DELETE FROM cart_item WHERE cart_item_id = ?;";
@@ -731,7 +731,7 @@ if (isset($_POST["formSubmit"])) {
         // create order
 
         // connect to database
-        include("dbconnect.php");
+        include("../../../Backend/dbconnect.php");
 
         // prepare insert statement and bind variables
         $sql = "INSERT INTO orders (order_id, cart_id, user_id, order_total, order_datetime, order_number, order_status) VALUES (?, ?, ?, ?, ?, ?, ?);";
@@ -822,7 +822,7 @@ if (isset($_POST["confirmOrder"])) {
         // update order date time, status & number
 
         // connect to database
-        include("dbconnect.php");
+        include("../../../Backend/dbconnect.php");
 
         // prepare statement and bind variables
         $sql = "UPDATE orders 
