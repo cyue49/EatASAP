@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,7 +55,7 @@
                         <a class="nav-link" href="../contactus.html">Contact</a>
                     </li>
                     <li class="nav-item text-center px-5 mx-5">
-                        <a id="receiptSignedInOut" class="nav-link" href="../user/userprofile.html">Sign In</a>
+                        <a id="receiptSignedInOut" class="nav-link" href="../../signin.html">Sign In</a>
                     </li>
                 </ul>
 
@@ -77,7 +81,7 @@
                     <h2>Your Order has been placed!</h2>
                     <p>Please note down your order number: </p>
                     <div class="orderInfo">
-                        <h1>1 2 3 4 5 6 7 8 9 0</h1>
+                        <h1><?php echo $_SESSION["orderNumber"]; ?></h1>
                     </div>
                     <br>
                     <p>Your are the 9-th in queue, your estimated waiting time is:</p>
@@ -96,22 +100,28 @@
                     <hr class="separatorLine">
                 </span>
                 <div id="receiptList">
-                    <p id="orderDate"></p>
+                    <p id="orderDate"><?php echo $_SESSION["orderTime"]; ?></p>
                     <p>ORDER FOR: 
-                        <span id="customerName"></span>
-                        <span id="customerPhoneNumber"></span>
-                        <span id="customerEmail"></span>
+                        <span id="customerName"><?php echo $_SESSION["customerFullName"]; ?></span>
+                        <span id="customerPhoneNumber"><?php echo $_SESSION["customerPhone"]; ?></span>
+                        <span id="customerEmail"><?php echo $_SESSION["customerEmail"]; ?></span>
                     </p>
-                    <p>ORDER NUMBER: 1234567890</p>
+                    <p>ORDER NUMBER: <?php echo $_SESSION["orderNumber"]; ?></p>
                     <p>ITEMS: </p>
-                    <ul id="receiptItems"></ul>
-                    <p>SUBTOTAL: <span id="receiptSubtotal"></span></p>
-                    <p>GST: <span id="receiptGST"></span></p>
-                    <p>QST: <span id="receiptQST"></span></p>
-                    <p>TOTAL: <span id="receiptTotal"></span></p>
+                    <ul id="receiptItems">
+                        <?php 
+                            foreach($_SESSION["orderItems"] as $item){
+                                echo $item['itemName'] . " (" . $item['itemPrice'] . "$)". " x" . $item['quantity'] . "<br>";
+                            }
+                        ?>
+                    </ul>
+                    <p>SUBTOTAL: <span id="receiptSubtotal"><?php echo $_SESSION["subtotal"]; ?></span></p>
+                    <p>GST: <span id="receiptGST"><?php echo $_SESSION["gst"]; ?></span></p>
+                    <p>QST: <span id="receiptQST"><?php echo $_SESSION["qst"]; ?></span></p>
+                    <p>TOTAL: <span id="receiptTotal"><?php echo $_SESSION["total"]; ?></span></p>
                     <p>PAID BY: 
-                        <span id="customerPaymentMethod"></span>
-                        <span id="customerCardNum"></span>
+                        <span id="customerPaymentMethod"><?php echo $_SESSION["paymentMethod"]; ?></span>
+                        <span id="customerCardNum"><?php echo $_SESSION["cardNum"]; ?></span>
                     </p>
                 </div>
             </div>

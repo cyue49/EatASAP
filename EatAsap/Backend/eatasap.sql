@@ -1,5 +1,5 @@
 /* ============== CREATING AND USING DATABASE ============== */
-/* DROP DATABASE IF EXISTS eatasap; */
+DROP DATABASE IF EXISTS eatasap;
 
 CREATE DATABASE IF NOT EXISTS eatasap;
 
