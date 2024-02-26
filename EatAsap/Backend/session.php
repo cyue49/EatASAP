@@ -4,6 +4,8 @@ function setTrackingCookies() {
     $expiration_time = 30 * 60; // 30 minutes in seconds
 
     // Set session cookie parameters
+    // Set cookies for tracking or analytics for 1 hour,transmitted over a secure HTTPS,
+    // and will be accessible only through the HTTP protocol not scripting languages 
     session_set_cookie_params($expiration_time, '/', 'localhost', true, true);
 
     // Start the session
