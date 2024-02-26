@@ -6,7 +6,7 @@ function logoutUser()
     $_SESSION = array();
     session_destroy();
 
-    if (isset($_GET["logoutRedirect"])) {
+    if (isset($_GET["redirect"])) {
         // redirect to specific page
         header("Location: " . $_GET["redirect"]);
         exit();
