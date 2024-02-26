@@ -1,5 +1,6 @@
 <?php
 // include php file
+include_once("../../../Backend/session.php");
 include("../../../Backend/screens/cart/order.php");
 ?>
 
@@ -47,9 +48,16 @@ include("../../../Backend/screens/cart/order.php");
                     <li class="nav-item text-center px-5 mx-5">
                         <a class="nav-link" href="../contactus.html">Contact</a>
                     </li>
+                    <!-- Log in or log out -->
+                    <?php if (!isUserLoggedIn()) { ?>
                     <li class="nav-item text-center px-5 mx-5">
-                        <a id="checkoutSignedInOut" class="nav-link" href="../../signin.html">Sign In</a>
+                        <a id="checkoutSignedInOut" class="nav-link" href="../../signin.php">Log In</a>
                     </li>
+                    <?php } else { ?>
+                        <li class="nav-item text-center px-5 mx-5">
+                        <a id="checkoutSignedInOut" class="nav-link" href="../../../Backend/logout.php">Log Out</a>
+                    </li>
+                    <?php } ?>
                 </ul>
 
             </div>
@@ -238,8 +246,13 @@ include("../../../Backend/screens/cart/order.php");
             </div>
             <!-- Quick Checkout Button -->
             <div class="buttonsGroup">
-                <button id="quickOrderSignInButton" class="buttonVar1" onclick="window.location.href ='../../signin.php?redirect=screens/cart/myorders.php'">Sign In for Quick
+                <?php
+                if (!isUserLoggedIn()){?>
+                    <button id="quickOrderSignInButton" class="buttonVar1" onclick="window.location.href ='../../signin.php?redirect=screens/cart/myorders.php'">Sign In for Quick
                     Order</button>
+                <?php
+                }
+                ?>
             </div>
         </div>
     </main>

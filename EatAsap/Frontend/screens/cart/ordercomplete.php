@@ -1,5 +1,5 @@
 <?php
-session_start();
+include_once("../../../Backend/session.php");
 ?>
 
 <!DOCTYPE html>
@@ -54,8 +54,16 @@ session_start();
                     <li class="nav-item text-center px-5 mx-5">
                         <a class="nav-link" href="../contactus.html">Contact</a>
                     </li>
+                    <!-- Log in or log out -->
+                    <?php if (!isUserLoggedIn()) { ?>
                     <li class="nav-item text-center px-5 mx-5">
-                        <a id="receiptSignedInOut" class="nav-link" href="../../signin.html">Sign In</a>
+                        <a id="checkoutSignedInOut" class="nav-link" href="../../signin.php">Log In</a>
+                    </li>
+                    <?php } else { ?>
+                        <li class="nav-item text-center px-5 mx-5">
+                        <a id="checkoutSignedInOut" class="nav-link" href="../../../Backend/logout.php">Log Out</a>
+                    </li>
+                    <?php } ?>
                     </li>
                 </ul>
 
@@ -102,7 +110,7 @@ session_start();
                 <div id="receiptList">
                     <p id="orderDate"><?php echo $_SESSION["orderTime"]; ?></p>
                     <p>ORDER FOR: 
-                        <span id="customerName"><?php echo $_SESSION["customerFullName"]; ?></span>
+                        <span id="customerName"><?php echo $_SESSION["user_name"]; ?></span>
                         <span id="customerPhoneNumber"><?php echo $_SESSION["customerPhone"]; ?></span>
                         <span id="customerEmail"><?php echo $_SESSION["customerEmail"]; ?></span>
                     </p>

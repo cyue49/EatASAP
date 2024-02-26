@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 // user input values
 $email = $pswd = $role = "";
@@ -26,7 +25,7 @@ function checkPassword($email, $password, $role)
     $validUser = false;
 
     // prepare statement and bind variables
-    $sql = "SELECT user_password, user_role, user_id
+    $sql = "SELECT user_password, user_role, user_id, first_name, last_name
             FROM user
             WHERE email = ?;";
 
@@ -44,15 +43,16 @@ function checkPassword($email, $password, $role)
 
         // if has result in database
         if (mysqli_stmt_num_rows($stmt) > 0) {
-            mysqli_stmt_bind_result($stmt, $hashed_password, $roleDB, $userID);
+            mysqli_stmt_bind_result($stmt, $hashed_password, $roleDB, $userID, $firstName, $lastName);
             if (mysqli_stmt_fetch($stmt)) {
                 // role match and correct password
                 /* if ($role == $roleDB && password_verify($password, $hashed_password)) {
-                    $_SESSION["userID"] = $userID;
+                    $_SESSION['user_id'] = $userID;
                 } */
 
                 if ($role == $roleDB && $password == $hashed_password) {
-                    $_SESSION["userID"] = $userID;
+                    $userName = $firstName . " " . $lastName;
+                    setUserLogin($userID, $userName);
                     $validUser = true;
                 }
             }
@@ -101,7 +101,7 @@ if (isset($_POST["signinButton"])) {
     if ($noError) {
         $validUser = checkPassword($email, $pswd, $role);
         if ($validUser) {
-            $_SESSION["loggedin"] = true;
+            $_SESSION["logged_in"] = true;
 
             // if redirect to another page other than user profile
             if (isset($_GET["redirect"])) {
