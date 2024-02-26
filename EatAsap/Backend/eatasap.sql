@@ -1,9 +1,9 @@
 /* ============== CREATING AND USING DATABASE ============== */
-DROP DATABASE IF EXISTS eatasap;
+/* DROP DATABASE IF EXISTS id21924858_eatasap; */
 
-CREATE DATABASE IF NOT EXISTS eatasap;
+CREATE DATABASE IF NOT EXISTS id21924858_eatasap;
 
-USE eatasap; 
+USE id21924858_eatasap; 
 
 
 /* ============== CREATING TABLES ============== */
