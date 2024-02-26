@@ -184,23 +184,8 @@ main {
     border-radius: 25px;
 }
 
-/* Edit user profile Pop up */
-.editPopup {
-    position: fixed;
-    z-index: 15;
-    left: 0;
-    top: 0;
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);;
-    display: none;
-}
-
-.popupContent {
+/* Edit user profile */
+.editUserInfo {
     /* height: 60vmin;
     width: 60vmin; */
     border-radius: 25px;
@@ -209,31 +194,17 @@ main {
     padding: 1em 2em;
 }
 
-.editPopupHeader { 
+.editUserInfoHeader { 
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.editPopupHeader i {
-    font-size: 2em;
-    color: var(--main-orange);
-}
-
-.fa-close {
-    cursor: pointer;
-}
-
-.popupContent button {
-    width: 40%;
-    margin: 1em;
-}
-
-.editPopupForm label {
+.editUserInfoForm label {
     color: var(--font-color);
 }
 
-.editPopupForm input:not([type=radio]) {
+.editUserInfoForm input:not([type=radio]) {
     width: 100%;
     border: 1px solid var(--light-grey);
     padding: 0.7em 1em;
@@ -241,6 +212,14 @@ main {
     border-radius: 20px;
 }
 
+.formButtons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.formButtons button {
+    width: 30%;
+}
 
 /* Removing arrows form number type input */
 input::-webkit-outer-spin-button,
@@ -256,12 +235,31 @@ fieldset {
     margin: 1em;
 }
 
-.paymentRadioInput {
+#paymentRadioSelect {
     display: flex;
-    justify-content: flex-start;
+    flex-flow: column wrap;
     gap: 1em;
 }
 
-.paymentRadioInput i {
-    font-size: 2em;
+#paymentRadioSelect div {
+    display: inline;
+}
+
+#paymentRadioSelect div input[type=radio] {
+    margin: 0 1em;
+    padding: 0;
+    width: min-content;
+}
+
+#paymentRadioSelect i {
+    font-size: 24px;
+}
+
+.requiredAsterisk {
+    color: red;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
 }
