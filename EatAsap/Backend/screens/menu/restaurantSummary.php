@@ -2,7 +2,7 @@
 include_once("../../session.php");
 require_once "../../DB/config.php";
 
-$user_id = $_SESSION["userID"] = 1;
+$user_id = $_SESSION["userID"] = 1; // 1 is for testing purpose
 
 // Prepare a SQL query to retrieve the restaurant name based on user_id
 $sql = "SELECT restaurant_name, logo_url FROM restaurant WHERE user_id = ?";

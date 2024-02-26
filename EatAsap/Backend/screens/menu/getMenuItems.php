@@ -3,7 +3,7 @@ include_once("../../session.php");
 
 header("Content-Type: application/json");
 //$data = json_decode(file_get_contents ("php://input"), true);
-$restaurant_id = intval($_SESSION["userID"]);
+$restaurant_id = 1;//intval($_SESSION["userID"]);
 $category_id = 1 ;//$data["category_id"];
 $item_status = "1";
 
