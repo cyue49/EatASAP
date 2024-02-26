@@ -26,15 +26,15 @@ function addItemToCart($id) {
         $_SESSION["cart"] = array();
     }
     // Check if the item already exists in the cart
-    //$index = itemExistsInCart($id);
+    $index = itemExistsInCart($id);
 
     // If the item exists, increment its quantity by 1
-    //if ($index !== false) {
-    //    $_SESSION["cart"][$index]['quantity']++;
-   // } else {
+    if ($index !== false) {
+        $_SESSION["cart"][$index]['quantity']++;
+    } else {
         // If the item doesn't exist, add it to the cart with a quantity of 1
         $_SESSION["cart"][] = array('id' => $id, 'quantity' => 1);
-   // }
+    }
     return $_SESSION["cart"];
 }
 // function addToCart($item_id) {
@@ -53,7 +53,7 @@ function addItemToCart($id) {
 // };
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-   // $_SESSION["cart"] = array();
+   //$_SESSION["cart"] = array();
     // Retrieve the raw POST data
     $data = file_get_contents("php://input");
 
