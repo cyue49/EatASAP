@@ -37,20 +37,7 @@ function addItemToCart($id) {
     }
     return $_SESSION["cart"];
 }
-// function addToCart($item_id) {
-//     if (!isset($_SESSION['cart']))  {
-//         $_SESSION['cart'] = [];
-//         $itemToAdd = array(array('id' => $item_id, 'quantity' => 1));
-//         array_push($_SESSION['cart'], $itemToAdd);
 
-//     }elseif ($_SESSION['cart']['id'] == $item_id) {
-//         $itemToAdd = array(array('id' => $item_id, 'quantity' => 3));
-//         array_push($_SESSION['cart'], $itemToAdd);
-//     }
-
-//     return $_SESSION['cart'];
-
-// };
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
    //$_SESSION["cart"] = array();

@@ -159,8 +159,7 @@ function addMenuItems() {
                                 } else {
                                     badge.classList.remove('orange-color');
                                 }
-                                // Remove the event listener to prevent multiple calls
-                                //item.removeEventListener('click', this);
+                                
                             }
 
                         }

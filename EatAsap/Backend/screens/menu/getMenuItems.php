@@ -12,14 +12,20 @@ require_once "../../DB/config.php";
 if (/*!empty($data)*/ $restaurant_id == 1) {
    // $sql = "SELECT item_name, price,picture_url FROM menu_items WHERE restaurant_id = ? && category_id = ? && item_status = 1";
     
-    $sql = "SELECT mi.menu_item_id, mi.item_name, mi.picture_url, mi.price, i.ingredient_name
+    // $sql = "SELECT mi.menu_item_id, mi.item_name, mi.picture_url, mi.price, i.ingredient_name
+    // FROM menu_items AS mi
+    // JOIN item_ingredients AS ii ON mi.menu_item_id = ii.menu_item_id
+    // JOIN ingredient AS i ON ii.ingredient_id = i.ingredient_id
+    // WHERE mi.restaurant_id = ?
+    // AND mi.category_id = ?
+    // AND mi.item_status IN ( ? );
+    // ";
+    $sql = "SELECT mi.menu_item_id, mi.item_name, mi.picture_url, mi.price
     FROM menu_items AS mi
-    JOIN item_ingredients AS ii ON mi.menu_item_id = ii.menu_item_id
-    JOIN ingredient AS i ON ii.ingredient_id = i.ingredient_id
     WHERE mi.restaurant_id = ?
     AND mi.category_id = ?
-    AND mi.item_status IN ( ? );
-    ";
+    AND mi.item_status IN ( ? );";
+
     $stmt = mysqli_prepare($link, $sql);
     if ($stmt) {
         mysqli_stmt_bind_param($stmt,"iis", $restaurant_id, $category_id,$item_status);
@@ -37,7 +43,7 @@ if (/*!empty($data)*/ $restaurant_id == 1) {
                     $response[$x]['item_name']= $row['item_name'];
                     $response[$x]['price']= $row['price'];
                     $response[$x]['picture_url']= $row['picture_url'];
-                    $response[$x]['ingredient_name']= $row['ingredient_name'];
+                    //$response[$x]['ingredient_name']= $row['ingredient_name'];
 		            $x++;
 		        }
                 //echo json_encode (array("message" => "All correct before prinitng.", "status" =>true));
