@@ -1,10 +1,10 @@
 
-INSERT INTO user (user_id, first_name, last_name, email, user_password, phone_number, user_role) VALUES
-(1, 'John', 'Doe', 'john@example.com', 'password123', '1234567890', 'owner'),
-(2, 'Jane', 'Doe', 'jane@example.com', 'password456', '0987654321', 'owner'),
-(3, 'Alice', 'Smith', 'alice@example.com', 'password789', '5551234567', 'owner'),
-(4, 'Bob', 'Johnson', 'bob@example.com', 'passwordabc', '9876543210', 'owner'),
-(5, 'Eve', 'Brown', 'eve@example.com', 'passwordxyz', '1112223333', 'customer');
+INSERT INTO user (user_id, first_name, last_name, email, user_password, phone_number, user_address, user_role) VALUES
+(1, 'John', 'Doe', 'john@example.com', 'password123', '1234567890', "123 Spring Street", 'owner'),
+(2, 'Jane', 'Doe', 'jane@example.com', 'password456', '0987654321', "456 Summer Street", 'owner'),
+(3, 'Alice', 'Smith', 'alice@example.com', 'password789', '5551234567', "789 Fall Street", 'owner'),
+(4, 'Bob', 'Johnson', 'bob@example.com', 'passwordabc', '9876543210', "101 Autumn Street", 'owner'),
+(5, 'Eve', 'Brown', 'eve@example.com', 'passwordxyz', '1112223333', "102 Winter Street", 'customer');
 
 INSERT INTO restaurant (user_id, restaurant_name, business_type_id, brand_name, address, phone_number, website, email)
 VALUES 

@@ -26,6 +26,7 @@ last_name VARCHAR(30) NOT NULL,
 email VARCHAR(50) NOT NULL UNIQUE,
 user_password VARCHAR(100) NOT NULL,
 phone_number VARCHAR(13) NOT NULL UNIQUE,
+user_address VARCHAR(255),
 user_role VARCHAR(20) NOT NULL /*owner-customer*/
 );
 
