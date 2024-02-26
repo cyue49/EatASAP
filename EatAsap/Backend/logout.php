@@ -1,0 +1,19 @@
+<?php
+// Function to log out user
+function logoutUser()
+{
+    session_start();
+    $_SESSION = array();
+    session_destroy();
+
+    if (isset($_GET["logoutRedirect"])) {
+        // redirect to specific page
+        header("Location: " . $_GET["redirect"]);
+        exit();
+    } else { // redirect to self
+        header("Location: ../Frontend/index.html");
+        exit();
+    }
+}
+
+logoutUser();

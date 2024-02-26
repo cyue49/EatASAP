@@ -54,8 +54,16 @@ include_once("../../../Backend/session.php");
                     <li class="nav-item text-center px-5 mx-5">
                         <a class="nav-link" href="../contactus.html">Contact</a>
                     </li>
+                    <!-- Log in or log out -->
+                    <?php if (!isUserLoggedIn()) { ?>
                     <li class="nav-item text-center px-5 mx-5">
-                        <a id="receiptSignedInOut" class="nav-link" href="../../signin.html"><?php if (isUserLoggedIn()) {echo "Log Out";} else {echo "Log In"; } ?></a>
+                        <a id="checkoutSignedInOut" class="nav-link" href="../../signin.php">Log In</a>
+                    </li>
+                    <?php } else { ?>
+                        <li class="nav-item text-center px-5 mx-5">
+                        <a id="checkoutSignedInOut" class="nav-link" href="../../../Backend/logout.php">Log Out</a>
+                    </li>
+                    <?php } ?>
                     </li>
                 </ul>
 

@@ -26,10 +26,4 @@ function setUserLogin($user_id, $user_name) {
     $_SESSION['user_id'] = $user_id;
     $_SESSION['user_name'] = $user_name;
 }
-
-// Function to log out user
-function logoutUser() {
-    session_unset();
-    session_destroy();
-}
 ?>
