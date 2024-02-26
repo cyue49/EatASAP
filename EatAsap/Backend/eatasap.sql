@@ -198,7 +198,7 @@ INSERT INTO business_type (business_type_name) VALUES
 ('Ethnic Restaurant'),
 ('Fast Casual');
 
-INSERT INTO Ingredient (ingredient_name, energy)
+INSERT INTO ingredient (ingredient_name, energy)
 VALUES 
     ('Salmon', 220),
     ('Chicken', 180),
