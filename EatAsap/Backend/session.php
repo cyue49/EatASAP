@@ -32,9 +32,4 @@ function logoutUser() {
     session_unset();
     session_destroy();
 }
-
-// Function to get cart items
-function getCartItems() {
-    return isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
-}
 ?>

@@ -1,9 +1,8 @@
 <?php
-session_start();
 
 // for testing
-/* $_SESSION["loggedin"] = true;
-$_SESSION["userID"] = 5;
+/* $_SESSION["logged_in"] = true;
+$_SESSION['user_id'] = 5;
 
 $_SESSION["cart"] = array(
     array('id' => 1, 'quantity' => 3),
@@ -608,8 +607,8 @@ $_SESSION["orderNumber"] = getNextOrderNumber();
 $_SESSION["tempUserID"] = getNextTempUserID();
 
 // if is logged in set user info
-if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-    $userInfo = getUserInfo($_SESSION["userID"]);
+if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true) {
+    $userInfo = getUserInfo($_SESSION['user_id']);
     $firstName = $userInfo['firstName'];
     $lastName = $userInfo['lastName'];
     $phoneNumber = $userInfo['phone'];
@@ -719,7 +718,7 @@ if (isset($_POST["formSubmit"])) {
 
         // customer info to put on receipt
         $_SESSION["orderItems"] = $cartItems;
-        $_SESSION["customerFullName"] = $firstName . " " . $lastName;
+        $_SESSION["user_name"] = $firstName . " " . $lastName;
         $_SESSION["customerEmail"] = $emailAddress;
         $_SESSION["customerPhone"] = $phoneNumber;
         $_SESSION["subtotal"] = $subtotal;
@@ -758,7 +757,7 @@ if (isset($_POST["formSubmit"])) {
         }
 
         // if not logged in create temp user for order
-        if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] === false) {
+        if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] === false) {
             // prepare insert statement and bind variables
             $sql = "INSERT INTO temporary_order_user (temp_user_id, order_id, first_name, last_name, phone, email, payment_method, card_number, cvv, expiration_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
@@ -796,7 +795,7 @@ if (isset($_POST["formSubmit"])) {
             }
 
             // set parameters
-            $param_userID = $_SESSION["userID"];
+            $param_userID = $_SESSION['user_id'];
             $param_orderID = $_SESSION["orderID"];
 
             // execute statement

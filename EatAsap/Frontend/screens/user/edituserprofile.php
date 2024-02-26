@@ -1,5 +1,6 @@
 <?php
 // include php file
+include_once("../../../Backend/session.php");
 include("../../../Backend/screens/user/customeruser.php");
 ?>
 <!DOCTYPE html>

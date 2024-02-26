@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 // user input values
 $email = $pswd = $role = "";
@@ -48,11 +47,11 @@ function checkPassword($email, $password, $role)
             if (mysqli_stmt_fetch($stmt)) {
                 // role match and correct password
                 /* if ($role == $roleDB && password_verify($password, $hashed_password)) {
-                    $_SESSION["userID"] = $userID;
+                    $_SESSION['user_id'] = $userID;
                 } */
 
                 if ($role == $roleDB && $password == $hashed_password) {
-                    $_SESSION["userID"] = $userID;
+                    $_SESSION['user_id'] = $userID;
                     $validUser = true;
                 }
             }
@@ -101,7 +100,7 @@ if (isset($_POST["signinButton"])) {
     if ($noError) {
         $validUser = checkPassword($email, $pswd, $role);
         if ($validUser) {
-            $_SESSION["loggedin"] = true;
+            $_SESSION["logged_in"] = true;
 
             // if redirect to another page other than user profile
             if (isset($_GET["redirect"])) {

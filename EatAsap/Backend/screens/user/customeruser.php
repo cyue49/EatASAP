@@ -1,12 +1,11 @@
 <?php
-session_start();
 
 // for testing
-/* $_SESSION["loggedin"] = true;
-$_SESSION["userID"] = 5; */
+/* $_SESSION["logged_in"] = true;
+$_SESSION["user_id"] = 5; */
 
 // if not logged in, redirect
-if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] === false) {
+if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] === false) {
     // redirect to sign in page
     header("Location: ../../../Frontend/signin.php");
     exit();
@@ -85,7 +84,7 @@ function getOrderIds()
     }
 
     // set parameters
-    $param_userID = $_SESSION["userID"];
+    $param_userID = $_SESSION["user_id"];
 
     // execute statement
     if (mysqli_stmt_execute($stmt)) {
@@ -391,7 +390,7 @@ function printAnOrderHistoryItems($orderID)
 }
 
 // ============================ Set user information for display on frontend ============================
-$userInfo = getUserInfo($_SESSION["userID"]);
+$userInfo = getUserInfo($_SESSION["user_id"]);
 $firstName = $userInfo['firstName'];
 $lastName = $userInfo['lastName'];
 $phoneNumber = $userInfo['phone'];
@@ -474,7 +473,7 @@ if (isset($_POST["editProfileInfoDone"])) {
         $param_lastName = $lastName;
         $param_phone = $phoneNumber;
         $param_email = $emailAddress;
-        $param_userID = $_SESSION["userID"];
+        $param_userID = $_SESSION["user_id"];
 
         // execute statement
         if (mysqli_stmt_execute($stmt)) {
@@ -558,7 +557,7 @@ if (isset($_POST["editPaymentInfoDone"])) {
         $param_cardNumber = $cardNumber;
         $param_cvv = $cvv;
         $param_expirationDate = $expirationDate . "-01";
-        $param_userID = $_SESSION["userID"];
+        $param_userID = $_SESSION["user_id"];
 
         // execute statement
         if (mysqli_stmt_execute($stmt)) {

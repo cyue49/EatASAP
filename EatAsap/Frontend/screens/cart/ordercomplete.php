@@ -1,5 +1,5 @@
 <?php
-session_start();
+include_once("../../../Backend/session.php");
 ?>
 
 <!DOCTYPE html>
@@ -102,7 +102,7 @@ session_start();
                 <div id="receiptList">
                     <p id="orderDate"><?php echo $_SESSION["orderTime"]; ?></p>
                     <p>ORDER FOR: 
-                        <span id="customerName"><?php echo $_SESSION["customerFullName"]; ?></span>
+                        <span id="customerName"><?php echo $_SESSION["user_name"]; ?></span>
                         <span id="customerPhoneNumber"><?php echo $_SESSION["customerPhone"]; ?></span>
                         <span id="customerEmail"><?php echo $_SESSION["customerEmail"]; ?></span>
                     </p>
