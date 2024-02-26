@@ -7,38 +7,32 @@ const submitBtn = document.getElementById("submit-btn");
 const log = document.getElementById("login");
 
 document.addEventListener('DOMContentLoaded', function () {
-    //sessionStorage.setItem("noOfItems", 0);
+    // Use GET request to fetch session.php
+    // var xhr = new XMLHttpRequest();
+    // // Define the callback function to handle the response
+    // xhr.onreadystatechange = function () {
+    //     if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+
+    //         window.alert(xhr.responseText);
+    //     }
+    // };
+    // // Open a GET request to a PHP file in the same folder
+    // xhr.open("GET", "../../../Backend/session.php", true);
+    // // Send the request
+    // xhr.send();
+
+
+    // View Menu Itemns
     addMenuItems();
 
-    //delete events
-    const allDelBtn = document.querySelectorAll("main .card .del-btn");
-    for (let btn of allDelBtn) {
-        btn.addEventListener("click", delCard);
-    }
+    // //delete events
+    // const allDelBtn = document.querySelectorAll("main .card .del-btn");
+    // for (let btn of allDelBtn) {
+    //     btn.addEventListener("click", delCard);
+    // }
 
-    //Basket badge number and color
-    const cartLink = document.querySelectorAll('.submit-btn');
-    const badge = document.querySelector('.custom-badge');
 
-    let count = 0;
-    for (let item of cartLink) {
-        item.addEventListener('click', function () {
-            count++;
-            badge.textContent = count;
-            sessionStorage.setItem("item",item);
-            var snd = new Audio("../../assets/mixkit-correct-answer-tone-2870.wav");
-            snd.play();
-            snd.currentTime=0;
-
-            if (count > 0) {
-                badge.classList.add('orange-color');
-            } else {
-                badge.classList.remove('orange-color');
-            }
-        });
-    } 
-
-    });
+});
 
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -53,25 +47,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
 form.addEventListener("submit", addCard);
 
-//document.addEventListener('DOMContentLoaded', popUpAddItem);
-
-// function popUpAddItem() {
-//     var addButton = document.getElementById('add-btn');
-//     var overlay = document.querySelector('.overlay');
-//     var overlayBg = document.querySelector('.overlay-bg');
-
-//     addButton.addEventListener('click', function () {
-//         overlay.style.display = 'flex';
-//         overlayBg.style.display = 'flex';
-//     });
-
-//     // close the pop-up window
-//     var closeButton = document.querySelector('.close-btn');
-//     closeButton.addEventListener('click', function () {
-//         overlay.style.display = 'none';
-//         overlayBg.style.display = 'none';
-//     });
-// }
+// Functions
+// Ajax Add to cart
+function addItemToCart(item) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '../../../Backend/screens/menu/addToCart.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+            //alert(JSON.parse(xhr.responseText));
+            document.getElementById("response").innerText = xhr.responseText;
+        }
+    };
+    xhr.send(JSON.stringify(item));
+}
 
 function showTab(tabId) {
     //debugger;
@@ -103,48 +92,92 @@ function showTab(tabId) {
 
 // Create a new li element
 function addMenuItems() {
-    const menuItems = [
-        {
-            title: "Grilled Salmon Steak",
-            description: "Salmon steak marinated in herbs and grilled to perfection.",
-            price: "$18.75",
-            imageSrc: "../../assets/pictures/PlatesPictures/plate4.jpg",
-        },
-        {
-            title: "Vegetarian Pad Thai",
-            description: "Stir-fried rice noodles with tofu, bean sprouts, and peanuts.",
-            price: "$11.95",
-            imageSrc: "../../assets/pictures/PlatesPictures/plate5.jpg",
-        },
-        {
-            title: "Classic Margherita Pizza",
-            description: "Tomato sauce, fresh mozzarella, basil, and olive oil on a thin crust.",
-            price: "$14.50",
-            imageSrc: "../../assets/pictures/PlatesPictures/plate6.jpg",
-        },
-    ];
+    var menuItems;
 
-    menuItems.forEach((item) => {
-        const listItem = document.createElement('li');
-        listItem.classList.add('card');
+    if (/*tabId == ""*/ false) {
+        //document.getElementById("txtHint").innerHTML = "";
+        return;
+    } else {
+        var xhr = new XMLHttpRequest();
 
-        // Set the inner HTML for the li element
-        listItem.innerHTML = `
-        <img class="item-image" src="${item.imageSrc}" alt="Item Picture1">
-        <div class="text">
-            <h3 class="i-title">${item.title}</h3>
-            <p class="i-description">${item.description}</p>
-            <h3 class="i-price">${item.price}</h3>
-        </div>
-        <div class="buttons">
-            <div >
-                <button id="add-btn" class="submit-btn">Add</button>
-            </div>
-        </div>`;
+        // Define the callback function to handle the response
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                //Parse JSON to array of objects
+                menuItems = JSON.parse(xhr.responseText);
+                // Create a new li element for each item in the menuItems array    
+                menuItems.forEach((item) => {
+                    const listItem = document.createElement('li');
+                    listItem.classList.add('card');
 
-        const parentContainer = document.getElementById('newmenulist');
-        parentContainer.appendChild(listItem);
-    });
+                    // Set the inner HTML for the li element
+                    listItem.innerHTML = `
+                        <input type="hidden" class="item-id" value="${item.menu_item_id}">
+                        <img class="item-image" src="${item.picture_url}" alt="Item Picture1">
+                        <div class="text">
+                            <h3 class="i-title">${item.item_name}</h3>
+                            <p class="i-description">Ingredients: ${item.ingredient_name}</p>
+                            <h3 class="i-price">$${item.price}</h3>
+                        </div>
+                        <div class="buttons">
+                            <div >
+                                <button id="add-btn" class="submit-btn">Add</button>
+                            </div>
+                        </div>`;
+
+                    const parentContainer = document.getElementById('newmenulist');
+                    parentContainer.appendChild(listItem);
+
+                    
+
+                });
+                //Basket badge number and color
+                const cartLink = document.querySelectorAll('.submit-btn');
+                const badge = document.querySelector('.custom-badge');
+
+                let count = 0;
+                for (let item of cartLink) {
+                    item.addEventListener('click', function (event) {
+                        const card = event.target.closest('.card');
+                        if (card) {
+                            // Find the .item-id element within the .card
+                            const itemID = card.querySelector('.item-id');
+                            if (itemID) {
+                                // Retrieve the text content of the .item-id element
+                                const item_id_value = itemID.value;
+                                console.log(item_id_value);
+
+                                addItemToCart(item_id_value);
+                                count++;
+                                badge.textContent = count;
+                                var snd = new Audio("../../assets/mixkit-correct-answer-tone-2870.wav");
+                                snd.play();
+                                snd.currentTime = 0;
+
+                                if (count > 0) {
+                                    badge.classList.add('orange-color');
+                                } else {
+                                    badge.classList.remove('orange-color');
+                                }
+                                // Remove the event listener to prevent multiple calls
+                                //item.removeEventListener('click', this);
+                            }
+
+                        }
+
+                    });
+
+                }
+
+            }
+        };
+
+        // Open a GET request to a PHP file in the same folder
+        xhr.open("GET", "../../../Backend/screens/menu/getMenuItems.php", true);
+
+        // Send the request
+        xhr.send();
+    }
 
 }
 

@@ -73,6 +73,7 @@ CREATE TABLE restaurant (
     restaurant_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     user_id INT UNIQUE NOT NULL,                          -- one-to-one relationship with user table
     restaurant_name VARCHAR(255) UNIQUE NOT NULL,
+    logo_url VARCHAR(255),
     business_type_id INT NOT NULL,
     brand_name VARCHAR(255) NOT NULL,
     address VARCHAR(255) NOT NULL,
