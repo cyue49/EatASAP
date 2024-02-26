@@ -25,7 +25,7 @@ function checkPassword($email, $password, $role)
     $validUser = false;
 
     // prepare statement and bind variables
-    $sql = "SELECT user_password, user_role, user_id
+    $sql = "SELECT user_password, user_role, user_id, first_name, last_name
             FROM user
             WHERE email = ?;";
 
@@ -43,7 +43,7 @@ function checkPassword($email, $password, $role)
 
         // if has result in database
         if (mysqli_stmt_num_rows($stmt) > 0) {
-            mysqli_stmt_bind_result($stmt, $hashed_password, $roleDB, $userID);
+            mysqli_stmt_bind_result($stmt, $hashed_password, $roleDB, $userID, $firstName, $lastName);
             if (mysqli_stmt_fetch($stmt)) {
                 // role match and correct password
                 /* if ($role == $roleDB && password_verify($password, $hashed_password)) {
@@ -51,7 +51,8 @@ function checkPassword($email, $password, $role)
                 } */
 
                 if ($role == $roleDB && $password == $hashed_password) {
-                    $_SESSION['user_id'] = $userID;
+                    $userName = $firstName . " " . $lastName;
+                    setUserLogin($userID, $userName);
                     $validUser = true;
                 }
             }

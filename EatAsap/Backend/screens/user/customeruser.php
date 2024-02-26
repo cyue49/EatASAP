@@ -5,7 +5,7 @@
 $_SESSION["user_id"] = 5; */
 
 // if not logged in, redirect
-if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] === false) {
+if (!isUserLoggedIn()) {
     // redirect to sign in page
     header("Location: ../../../Frontend/signin.php");
     exit();
@@ -43,6 +43,7 @@ function getUserInfo($userID)
             if (mysqli_stmt_fetch($stmt)) {
                 $response['firstName'] = $firstName;
                 $response['lastName'] = $lastName;
+                $_SESSION['user_name'] = $firstName . " " . $lastName;
                 $response['phone'] = $phone;
                 $response['email'] = $email;
                 $response['paymentMethod'] = $paymentMethod;

@@ -607,7 +607,7 @@ $_SESSION["orderNumber"] = getNextOrderNumber();
 $_SESSION["tempUserID"] = getNextTempUserID();
 
 // if is logged in set user info
-if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true) {
+if (isUserLoggedIn()) {
     $userInfo = getUserInfo($_SESSION['user_id']);
     $firstName = $userInfo['firstName'];
     $lastName = $userInfo['lastName'];

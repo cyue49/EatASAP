@@ -49,7 +49,7 @@ include("../../../Backend/screens/cart/order.php");
                         <a class="nav-link" href="../contactus.html">Contact</a>
                     </li>
                     <li class="nav-item text-center px-5 mx-5">
-                        <a id="checkoutSignedInOut" class="nav-link" href="../../signin.html">Sign In</a>
+                        <a id="checkoutSignedInOut" class="nav-link" href="../../signin.html"><?php if (isUserLoggedIn()) {echo "Log Out";} else {echo "Log In"; } ?></a>
                     </li>
                 </ul>
 
@@ -239,8 +239,13 @@ include("../../../Backend/screens/cart/order.php");
             </div>
             <!-- Quick Checkout Button -->
             <div class="buttonsGroup">
-                <button id="quickOrderSignInButton" class="buttonVar1" onclick="window.location.href ='../../signin.php?redirect=screens/cart/myorders.php'">Sign In for Quick
+                <?php
+                if (!isUserLoggedIn()){?>
+                    <button id="quickOrderSignInButton" class="buttonVar1" onclick="window.location.href ='../../signin.php?redirect=screens/cart/myorders.php'">Sign In for Quick
                     Order</button>
+                <?php
+                }
+                ?>
             </div>
         </div>
     </main>

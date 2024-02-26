@@ -16,12 +16,9 @@ include("../../../Backend/screens/user/customeruser.php");
     <!-- JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js" defer></script>
     <!-- Bootstrap stylesheet -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"
-        defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous" defer></script>
     <!-- CSS -->
     <link href="../../constents/common-styles.css" rel="stylesheet" />
     <link href="css/user-profile-styles.css" rel="stylesheet" />
@@ -33,11 +30,8 @@ include("../../../Backend/screens/user/customeruser.php");
     <!--Navbar-->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="../../index.html"><img src=" ../../assets/icons/Logo.svg" alt="logo"
-                style="height: 50px;"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+            <a class="navbar-brand" href="../../index.html"><img src=" ../../assets/icons/Logo.svg" alt="logo" style="height: 50px;"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -100,26 +94,25 @@ include("../../../Backend/screens/user/customeruser.php");
             <div class="orderHistorySection">
                 <h2>Order History</h2>
                 <!-- orders -->
-                <?php 
+                <?php
                 $orders = getOrderIds();
-                foreach($orders as $orderID) {
+                foreach ($orders as $orderID) {
                 ?>
-                <div class="orderHistory">
-                    <?php printAnOrderHistoryHeader($orderID); ?>
-                    <p class="orderHistoryMoreLink">
-                        <a data-bs-toggle="collapse" href="#collapsedHistory" role="button" aria-expanded="false"
-                            aria-controls="collapsedHistory">
-                            <i class="fa fa-angle-down"></i>
-                            <i class="fa fa-angle-up"></i>
-                        </a>
-                    </p>
-                    <div class="collapse" id="collapsedHistory">
-                        <div class="card card-body">
-                            <?php printAnOrderHistoryItems($orderID); ?>
+                    <div class="orderHistory">
+                        <?php printAnOrderHistoryHeader($orderID); ?>
+                        <p class="orderHistoryMoreLink">
+                            <a data-bs-toggle="collapse" href="#collapsedHistory" role="button" aria-expanded="false" aria-controls="collapsedHistory">
+                                <i class="fa fa-angle-down"></i>
+                                <i class="fa fa-angle-up"></i>
+                            </a>
+                        </p>
+                        <div class="collapse" id="collapsedHistory">
+                            <div class="card card-body">
+                                <?php printAnOrderHistoryItems($orderID); ?>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <?php 
+                <?php
                 }
                 ?>
             </div>
