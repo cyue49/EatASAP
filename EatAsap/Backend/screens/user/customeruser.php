@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 // for testing
 $_SESSION["loggedin"] = true;
 $_SESSION["userID"] = 5;
