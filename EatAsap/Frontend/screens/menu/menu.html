@@ -6,12 +6,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Kawthar Mashkour" />
-    <title>Eat ASAP</title>
+    <title>Menu</title>
     <link rel="icon" href="../../assets/icons/EatASAPlogo.svg" />
     <link rel="stylesheet" href="../../screens/menu/css/menu.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <script src="https://kit.fontawesome.com/20d18bedad.js" crossorigin="anonymous"></script>
+    
+    
 </head>
 
 <body>
@@ -28,7 +30,7 @@
             <button id="login">
                 <p>Sign In</p>
             </button>
-            <a href="../../screens/cart/myorders.html" id="basket">
+            <a href="../../screens/cart/myorders.php" id="basket">
                 <div class="position-relative">
                     <i class="fa fa-shopping-basket custom-icon" style="font-size: 24px;"></i>
                     <span class="badge bg-danger custom-badge">0</span>
@@ -38,10 +40,11 @@
     </header>
 
     <main>
-        <div class="retaurant-card">
-            <img class="restaurant-image" src="../../assets/pictures/restaurantlogo@2x.png" alt="Restaurant Logo">
-            <div class="info-text-block">
-                <h2>Grill Chef Restaurant</h2>
+
+        <div id="retaurant-card" class="retaurant-card">
+            <img id="restaurant-image" class="restaurant-image" src="" alt="Restaurant Logo">
+            <div id="restaurant-name" class="info-text-block">
+                <h2 id="restau_name"></h2>
             </div>
         </div>
         <hr class="line1">
@@ -97,7 +100,7 @@
     </div>
     </div>
 
-
+    
     <script src="./js/menu.js"></script>
 
 </body>
