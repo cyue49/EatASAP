@@ -7,34 +7,6 @@ const submitBtn = document.getElementById("submit-btn");
 const log = document.getElementById("login");
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Use GET request to fetch session.php
-    // var xhr = new XMLHttpRequest();
-    // // Define the callback function to handle the response
-    // xhr.onreadystatechange = function () {
-    //     if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-
-    //         window.alert(xhr.responseText);
-    //     }
-    // };
-    // // Open a GET request to a PHP file in the same folder
-    // xhr.open("GET", "../../../Backend/session.php", true);
-    // // Send the request
-    // xhr.send();
-
-
-    // View Menu Itemns
-    addMenuItems();
-
-    // //delete events
-    // const allDelBtn = document.querySelectorAll("main .card .del-btn");
-    // for (let btn of allDelBtn) {
-    //     btn.addEventListener("click", delCard);
-    // }
-
-
-});
-
-document.addEventListener('DOMContentLoaded', function () {
 
     log.addEventListener('click', function () {
 
@@ -43,11 +15,38 @@ document.addEventListener('DOMContentLoaded', function () {
         login(!currentStatus);
 
     });
+
+    restaurantSummary();
+
+    // View Menu Itemns
+    addMenuItems();
+
 });
+
 
 form.addEventListener("submit", addCard);
 
 // Functions
+// Ajax func. to retrieve restaurant name and logo
+function restaurantSummary() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '../../../Backend/screens/menu/restaurantSummary.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+            text = JSON.parse(xhr.responseText);
+            document.getElementById("restau_name").innerText = text.restaurant_name;
+            // Select the image element by its id
+            var restaurantImage = document.getElementById("restaurant-image");
+
+            // Change the src attribute
+            restaurantImage.src = text.logo_url;
+
+        }
+    };
+    xhr.send();
+}
+
 // Ajax Add to cart
 function addItemToCart(item) {
     var xhr = new XMLHttpRequest();
@@ -56,7 +55,7 @@ function addItemToCart(item) {
     xhr.onreadystatechange = function () {
         if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
             //alert(JSON.parse(xhr.responseText));
-            document.getElementById("response").innerText = xhr.responseText;
+            //document.getElementById("response").innerText = xhr.responseText;
         }
     };
     xhr.send(JSON.stringify(item));
@@ -128,7 +127,7 @@ function addMenuItems() {
                     const parentContainer = document.getElementById('newmenulist');
                     parentContainer.appendChild(listItem);
 
-                    
+
 
                 });
                 //Basket badge number and color
@@ -159,7 +158,7 @@ function addMenuItems() {
                                 } else {
                                     badge.classList.remove('orange-color');
                                 }
-                                
+
                             }
 
                         }

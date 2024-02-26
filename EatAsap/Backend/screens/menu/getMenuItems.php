@@ -3,14 +3,13 @@ include_once("../../session.php");
 
 header("Content-Type: application/json");
 //$data = json_decode(file_get_contents ("php://input"), true);
-$restaurant_id = 1 ; //$data["restaurant_id"];
+$restaurant_id = intval($_SESSION["userID"]);
 $category_id = 1 ;//$data["category_id"];
 $item_status = "1";
 
 require_once "../../DB/config.php";
 
 if (/*!empty($data)*/ $restaurant_id == 1) {
-   // $sql = "SELECT item_name, price,picture_url FROM menu_items WHERE restaurant_id = ? && category_id = ? && item_status = 1";
     
     // $sql = "SELECT mi.menu_item_id, mi.item_name, mi.picture_url, mi.price, i.ingredient_name
     // FROM menu_items AS mi
