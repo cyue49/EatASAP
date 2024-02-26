@@ -24,6 +24,10 @@ include("../Backend/signup.php");
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
     <style>
+        body {
+            background-color: var(--bg-color);
+        }
+
         main {
             flex-flow: column;
             justify-content: center;
@@ -34,7 +38,7 @@ include("../Backend/signup.php");
         }
 
         h1 {
-            margin: 1em 0 2em 0;
+            margin: 1em 0 2em 1em;
         }
 
         form {
@@ -42,6 +46,8 @@ include("../Backend/signup.php");
             flex-flow: column wrap;
             align-items: center;
             justify-content: center;
+            margin: 0;
+            padding: 0;
         }
 
         .wholeform {
@@ -54,11 +60,14 @@ include("../Backend/signup.php");
 
         .leftform,
         .rightform {
-            width: 40%;
+            width: 45%;
             display: flex;
             flex-flow: column wrap;
             justify-content: flex-start;
             gap: 1em;
+            background-color: var(--bg-color);
+            border-radius: 25px;
+            padding: 2em;
         }
 
         .leftform div,
@@ -113,7 +122,8 @@ include("../Backend/signup.php");
 
         .sign-up-form {
             border-radius: 25px;
-            padding: 2em 4em 4em 4em;
+            padding: 2em 2em 4em 2em;
+            background-color: #f7f7f7;
         }
 
         input::-webkit-outer-spin-button,

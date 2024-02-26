@@ -45,7 +45,7 @@
     background-position: 80%;
     background-repeat: no-repeat; */
     box-shadow: 0px 5px 10px rgba(69, 44, 30, 0.3);
-    background-color: var(--navbar-color);
+    background-color: white;
     width: 60%;
     min-width: fit-content;
     height: fit-content;
