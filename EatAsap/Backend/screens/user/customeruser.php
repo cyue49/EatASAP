@@ -1,12 +1,14 @@
 <?php
+session_start();
+
 // for testing
-$_SESSION["loggedin"] = true;
-$_SESSION["userID"] = 5;
+/* $_SESSION["loggedin"] = true;
+$_SESSION["userID"] = 5; */
 
 // if not logged in, redirect
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] === false) {
     // redirect to sign in page
-    header("Location: ../../../Frontend/signin.html");
+    header("Location: ../../../Frontend/signin.php");
     exit();
 }
 
