@@ -2,14 +2,14 @@
 session_start();
 
 // for testing
-$_SESSION["loggedin"] = true;
+/* $_SESSION["loggedin"] = true;
 $_SESSION["userID"] = 5;
 
 $_SESSION["cart"] = array(
     array('id' => 1, 'quantity' => 3),
     array('id' => 2, 'quantity' => 2),
     array('id' => 3, 'quantity' => 2)
-);
+); */
 
 // ============================ Create and get cart items ============================
 // get next cart_id
