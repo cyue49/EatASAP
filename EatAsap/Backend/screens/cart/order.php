@@ -2,8 +2,8 @@
 session_start();
 
 // for testing
-/* $_SESSION["loggedin"] = true;
-$_SESSION["userID"] = 5; */
+$_SESSION["loggedin"] = true;
+$_SESSION["userID"] = 5;
 
 $_SESSION["cart"] = array(
     array('id' => 1, 'quantity' => 3),
