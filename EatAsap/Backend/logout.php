@@ -10,7 +10,7 @@ function logoutUser()
         // redirect to specific page
         header("Location: " . $_GET["redirect"]);
         exit();
-    } else { // redirect to self
+    } else { // redirect to index
         header("Location: ../Frontend/index.html");
         exit();
     }
