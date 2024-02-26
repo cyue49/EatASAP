@@ -1,5 +1,22 @@
 <?php
 
+// if already signed in, redirect to restaurant or user page
+if (isUserLoggedIn()) {
+    if (isset($_GET["redirect"])) {
+        // redirect 
+        header("Location: " . $_GET["redirect"]);
+        exit();
+    } else {
+        if ($_SESSION['user_role'] == "owner") { // redirect to restaurant profile 
+            header("Location: screens/user/RestaurantProfile.html");
+            exit();
+        } else if ($_SESSION['user_role'] == "customer") { // redirect to user profile
+            header("Location: screens/user/userprofile.php");
+            exit();
+        }
+    }
+}
+
 // user input values
 $email = $pswd = $role = "";
 
@@ -52,7 +69,7 @@ function checkPassword($email, $password, $role)
 
                 if ($role == $roleDB && $password == $hashed_password) {
                     $userName = $firstName . " " . $lastName;
-                    setUserLogin($userID, $userName);
+                    setUserLogin($userID, $userName, $role);
                     $validUser = true;
                 }
             }

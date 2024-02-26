@@ -5,7 +5,7 @@
 $_SESSION["user_id"] = 5; */
 
 // if not logged in, redirect
-if (!isUserLoggedIn()) {
+if (!isUserLoggedIn() || $_SESSION['user_role'] !== 'customer') {
     // redirect to sign in page
     header("Location: ../../../Frontend/signin.php");
     exit();
