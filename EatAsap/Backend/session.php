@@ -13,7 +13,7 @@ function setTrackingCookies() {
 }
 
 // Call the function to set tracking cookies
-setTrackingCookies();
+//setTrackingCookies();
 
 
  
