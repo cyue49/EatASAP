@@ -61,7 +61,7 @@ if (isset($_POST["signupButton"])) {
     // user address
     $address = validate_input($_POST["address"]);
     if (!empty($address)) {
-        if (!preg_match("/^[a-zA-Z0-9\-]+$/", $address)) {
+        if (!preg_match("/^[a-zA-Z0-9\- ]+$/", $address)) {
             $addressErr = "Invalid address format.";
             $noError = false;
         }
@@ -84,6 +84,7 @@ if (isset($_POST["signupButton"])) {
     }
 
     if ($noError) {
-        echo "ok";
+        // add user info to database
+
     }
 }
