@@ -201,13 +201,14 @@ if (isset($_POST["signupButton"])) {
         include("dbconnect.php");
 
         // prepare insert statement and bind variables
-        $sql = "INSERT INTO user (first_name, last_name, email, user_password, phone_number, user_address, user_role) VALUES (?, ?, ?, ?, ?, ?, 'owner');";
+        $sql = "INSERT INTO user (user_id, first_name, last_name, email, user_password, phone_number, user_address, user_role) VALUES (?, ?, ?, ?, ?, ?, ?, 'owner');";
 
         if ($stmt = mysqli_prepare($db, $sql)) {
-            mysqli_stmt_bind_param($stmt, "ssssss", $param_firstName, $param_lastName, $param_email, $param_password, $param_phoneNum, $param_addr);
+            mysqli_stmt_bind_param($stmt, "sssssss", $param_userID, $param_firstName, $param_lastName, $param_email, $param_password, $param_phoneNum, $param_addr);
         }
 
         // set parameters
+        $param_userID = getNewestUserID();
         $param_firstName = $firstName;
         $param_lastName = $lastName;
         $param_email = $email;

@@ -14,6 +14,48 @@ function validate_input($data)
     $data = htmlspecialchars($data);
     return $data;
 }
+// get next user id
+function getNewestUserID()
+{
+    // connect to database
+    include("dbconnect.php");
+
+    // response
+    $response;
+
+    // prepare insert statement and bind variables
+    $sql = "SELECT user_id
+            FROM user
+            ORDER BY user_id DESC;";
+
+    $stmt = mysqli_prepare($db, $sql);
+
+    // execute statement
+    if (mysqli_stmt_execute($stmt)) {
+        // Store result
+        mysqli_stmt_store_result($stmt);
+
+        // if has result in database
+        if (mysqli_stmt_num_rows($stmt) > 0) {
+            mysqli_stmt_bind_result($stmt, $userID);
+            if (mysqli_stmt_fetch($stmt)) {
+                $response = $userID + 1;
+            }
+        } else {
+            $response = 1;
+        }
+
+        // close statement
+        mysqli_stmt_close($stmt);
+
+        // disconnect from database
+        mysqli_close($db);
+
+        return $response;
+    } else { // error
+        die(mysqli_error($db));
+    }
+}
 
 if (isset($_POST["signupButton"])) {
     $noError = true;
@@ -106,13 +148,14 @@ if (isset($_POST["signupButton"])) {
         include("dbconnect.php");
 
         // prepare insert statement and bind variables
-        $sql = "INSERT INTO user (first_name, last_name, email, user_password, phone_number, user_address, user_role) VALUES (?, ?, ?, ?, ?, ?, 'customer');";
+        $sql = "INSERT INTO user (user_id, first_name, last_name, email, user_password, phone_number, user_address, user_role) VALUES (?, ?, ?, ?, ?, ?, ?, 'customer');";
 
         if ($stmt = mysqli_prepare($db, $sql)) {
-            mysqli_stmt_bind_param($stmt, "ssssss", $param_firstName, $param_lastName, $param_email, $param_password, $param_phoneNum, $param_addr);
+            mysqli_stmt_bind_param($stmt, "sssssss", $param_userID, $param_firstName, $param_lastName, $param_email, $param_password, $param_phoneNum, $param_addr);
         }
 
         // set parameters
+        $param_userID = getNewestUserID();
         $param_firstName = $firstName;
         $param_lastName = $lastName;
         $param_email = $email;
