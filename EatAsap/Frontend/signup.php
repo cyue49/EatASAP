@@ -39,6 +39,7 @@ include("../Backend/signup.php");
 
         h1 {
             margin: 1em 0 2em 1em;
+            text-align: center;
         }
 
         form {
@@ -125,7 +126,7 @@ include("../Backend/signup.php");
         .sign-up-form {
             border-radius: 25px;
             padding: 2em 2em 4em 2em;
-            background-color: #f7f7f7;
+            background-color: white;
         }
 
         input::-webkit-outer-spin-button,
