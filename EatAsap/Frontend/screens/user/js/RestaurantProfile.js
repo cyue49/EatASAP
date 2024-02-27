@@ -8,6 +8,7 @@ const submitBtn = document.getElementById("submit-btn");
 const log = document.getElementById("login");
 //debugger;
 document.addEventListener('DOMContentLoaded', function () {
+    restaurantinformation()
     addMenuItems();
     
     //delete events
@@ -34,8 +35,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.addEventListener('DOMContentLoaded', function () {
 
-    const isLogin = true; //localStorage.getItem('signedIn') === 'true';
-    login(isLogin);
+    // for testing purposes user is logged in by default
+    login(true);
 
     log.addEventListener('click', function () {
 
@@ -178,18 +179,6 @@ function addMenuItems() {
                                 const item_id_value = itemID.value;
                                 console.log(item_id_value);
 
-                               // addItemToCart(item_id_value);
-                                // count++;
-                                // badge.textContent = count;
-                                // var snd = new Audio("../../assets/mixkit-correct-answer-tone-2870.wav");
-                                // snd.play();
-                                // snd.currentTime = 0;
-
-                                // if (count > 0) {
-                                //     badge.classList.add('orange-color');
-                                // } else {
-                                //     badge.classList.remove('orange-color');
-                                // }
 
                             }
 
@@ -211,55 +200,6 @@ function addMenuItems() {
 
 }
 
-// Create a new li element
-// function addMenuItems() {
-//     const menuItems = [
-//         {
-//             title: "Grilled Salmon Steak",
-//             description: "Salmon steak marinated in herbs and grilled to perfection.",
-//             price: "$18.75",
-//             imageSrc: "../../assets/pictures/PlatesPictures/plate4.jpg",
-//         },
-//         {
-//             title: "Vegetarian Pad Thai",
-//             description: "Stir-fried rice noodles with tofu, bean sprouts, and peanuts.",
-//             price: "$11.95",
-//             imageSrc: "../../assets/pictures/PlatesPictures/plate5.jpg",
-//         },
-//         {
-//             title: "Classic Margherita Pizza",
-//             description: "Tomato sauce, fresh mozzarella, basil, and olive oil on a thin crust.",
-//             price: "$14.50",
-//             imageSrc: "../../assets/pictures/PlatesPictures/plate6.jpg",
-//         },
-//     ];
-
-//     menuItems.forEach((item) => {
-//         const listItem = document.createElement('li');
-//         listItem.classList.add('card');
-
-//         // Set the inner HTML for the li element
-//         listItem.innerHTML = `
-//         <img class="item-image" src="${item.imageSrc}" alt="Item Picture1">
-//         <div class="text">
-//             <h3 class="i-title">${item.title}</h3>
-//             <p class="i-description">${item.description}</p>
-//             <h3 class="i-price">${item.price}</h3>
-//         </div>
-//         <div class="buttons">
-//             <div class="edit-btn">
-//                 <i class='far fa-edit' style='color: var(--secondary-color)'></i>
-//             </div>
-//             <div class="del-btn">
-//                 <i class="fas fa-trash-alt" style="font-size:24px"></i>
-//             </div>
-//         </div>`;
-
-//         const parentContainer = document.getElementById('newmenulist');
-//         parentContainer.appendChild(listItem);
-//     });
-
-// }
 
 function login(isLogin) {
     if (loginBtnTxt.textContent === "Sign In") {
@@ -284,11 +224,52 @@ function delCard(event) {
 
 function addCard(event) {
     event.preventDefault();
+    //send the data to the server
+    
+        const title = document.getElementById("title").value;
+        const price = document.getElementById("price").value;
+        const description = document.querySelector("textarea").value;
+        const imageSrc = "../../assets/pictures/comingSoon.jpg"
+    
+        // Data to send to the server
+        const data = {
+            title: title,
+            price: price,
+            description: description,
+            imageSrc: imageSrc
+        };
+    
+        // AJAX request using fetch API
+        fetch('../../../Backend/screens/menu/addItem.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Handle successful response from server
+            console.log('Success:', data);
+            alert('Item added successfully');
+        })
+        .catch(error => {
+            // Handle error
+            console.error('Error:', error);
+            // Here you can display an error message or perform other error handling actions
+        });
+    
+    
 
-    const title = document.getElementById("title").value;
-    const price = document.getElementById("price").value;
-    const description = document.querySelector("textarea").value;
-    const imageSrc = "../../assets/pictures/comingSoon.jpg"
+    // const title = document.getElementById("title").value;
+    // const price = document.getElementById("price").value;
+    // const description = document.querySelector("textarea").value;
+    // const imageSrc = "../../assets/pictures/comingSoon.jpg"
 
 
     const listItem = document.createElement('li');
@@ -346,4 +327,32 @@ function createNodeWithText(element, content, classes) {
     const ele = createSimpleNode(element, classes);
     ele.textContent = content;
     return ele;
+}
+
+function restaurantinformation() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '../../../Backend/screens/user/restaurantInformation.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+            text = JSON.parse(xhr.responseText);
+            document.getElementById("restaurant_name").innerText = text.restaurant_name;
+            document.getElementById("website").innerText = text.website;
+            document.getElementById("restaurant_phone_number").innerText = text.restaurant_phone_number;
+            document.getElementById("payment_method").innerText = text.payment_method;
+            card_num = text.card_number;
+            // Extract the last 3 digits
+            var lastThreeDigits = card_num.slice(-3);
+            document.getElementById("card_number").innerText = " **** **** **** " + lastThreeDigits;
+            document.getElementById("expiration_date").innerText = text.expiration_date;
+            alert(text.restaurant_name);
+
+            // Select the image element by its id
+            var restaurantImage = document.getElementById("restaurant-image");
+            // Change the src attribute
+            restaurantImage.src = text.logo_url;
+
+        }
+    };
+    xhr.send();
 }
