@@ -63,15 +63,17 @@ function checkPassword($email, $password, $role)
             mysqli_stmt_bind_result($stmt, $hashed_password, $roleDB, $userID, $firstName, $lastName);
             if (mysqli_stmt_fetch($stmt)) {
                 // role match and correct password
-                /* if ($role == $roleDB && password_verify($password, $hashed_password)) {
-                    $_SESSION['user_id'] = $userID;
-                } */
-
-                if ($role == $roleDB && $password == $hashed_password) {
+                if ($role == $roleDB && password_verify($password, $hashed_password)) {
                     $userName = $firstName . " " . $lastName;
                     setUserLogin($userID, $userName, $role);
                     $validUser = true;
                 }
+
+                /* if ($role == $roleDB && $password == $hashed_password) {
+                    $userName = $firstName . " " . $lastName;
+                    setUserLogin($userID, $userName, $role);
+                    $validUser = true;
+                } */
             }
         }
 

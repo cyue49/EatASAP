@@ -278,31 +278,32 @@ include("../Backend/signup.php");
                             <label for="businessType">Business Type<span class="requiredAsterisk">*</span>:</label>
                             <select id="businessType" name="businessType">
                                 <option value="">Select</option>
-                                <option value="fast_food" <?php if (isset($_POST['businessType']) && $businessType == "fast_food") echo "selected"; ?>>Fast Food</option>
-                                <option value="casual_dining" <?php if (isset($_POST['businessType']) && $businessType == "casual_dining") echo "selected"; ?>>Casual Dining</option>
-                                <option value="cafe">Café</option>
-                                <option value="buffet">Buffet</option>
-                                <option value="food_truck">Food Truck</option>
-                                <option value="pop_up">Pop-Up Restaurant</option>
-                                <option value="fast_casual">Fast Casual</option>
-                                <option value="bistro">Bistro</option>
-                                <option value="pub">Pub</option>
-                                <option value="diner">Diner</option>
-                                <option value="family_style">Family Style</option>
-                                <option value="theme">Theme Restaurant</option>
-                                <option value="steakhouse">Steakhouse</option>
-                                <option value="seafood">Seafood Restaurant</option>
-                                <option value="vegetarian_vegan">Vegetarian / Vegan</option>
-                                <option value="ethnic">Ethnic Cuisine</option>
-                                <option value="bakery">Bakery</option>
-                                <option value="deli">Deli</option>
-                                <option value="pizzeria">Pizzeria</option>
+                                <option value="5" <?php if (isset($_POST['businessType']) && $businessType == "5") echo "selected"; ?>>Bakery</option>
+                                <option value="10" <?php if (isset($_POST['businessType']) && $businessType == "10") echo "selected"; ?>>Bistro</option>
+                                <option value="7" <?php if (isset($_POST['businessType']) && $businessType == "7") echo "selected"; ?>>Buffet</option>
+                                <option value="4" <?php if (isset($_POST['businessType']) && $businessType == "4") echo "selected"; ?>>Cafe</option>
+                                <option value="2" <?php if (isset($_POST['businessType']) && $businessType == "2") echo "selected"; ?>>Casual Dining</option>
+                                <option value="15" <?php if (isset($_POST['businessType']) && $businessType == "15") echo "selected"; ?>>Deli</option>
+                                <option value="13" <?php if (isset($_POST['businessType']) && $businessType == "13") echo "selected"; ?>>Diner</option>
+                                <option value="19" <?php if (isset($_POST['businessType']) && $businessType == "19") echo "selected"; ?>>Ethnic Restaurant</option>
+                                <option value="9" <?php if (isset($_POST['businessType']) && $businessType == "9") echo "selected"; ?>>Family Style</option>
+                                <option value="20" <?php if (isset($_POST['businessType']) && $businessType == "20") echo "selected"; ?>>Fast Casual</option>
+                                <option value="1" <?php if (isset($_POST['businessType']) && $businessType == "1") echo "selected"; ?>>Fast Food</option>
+                                <option value="3" <?php if (isset($_POST['businessType']) && $businessType == "3") echo "selected"; ?>>Fine Dining</option>
+                                <option value="6" <?php if (isset($_POST['businessType']) && $businessType == "6") echo "selected"; ?>>Food Truck</option>
+                                <option value="11" <?php if (isset($_POST['businessType']) && $businessType == "11") echo "selected"; ?>>Pizzeria</option>
+                                <option value="8" <?php if (isset($_POST['businessType']) && $businessType == "8") echo "selected"; ?>>Pop-up Restaurant</option>
+                                <option value="14" <?php if (isset($_POST['businessType']) && $businessType == "14") echo "selected"; ?>>Pub</option>
+                                <option value="17" <?php if (isset($_POST['businessType']) && $businessType == "17") echo "selected"; ?>>Sea Food Restaurant</option>
+                                <option value="12" <?php if (isset($_POST['businessType']) && $businessType == "12") echo "selected"; ?>>Steakhouse</option>
+                                <option value="16" <?php if (isset($_POST['businessType']) && $businessType == "16") echo "selected"; ?>>Theme Restaurant</option>
+                                <option value="18" <?php if (isset($_POST['businessType']) && $businessType == "18") echo "selected"; ?>>Vegetarian / Vegan</option>
                             </select>
                             <span class="error"> <?php echo $businessTypeErr ?></span>
                         </div>
                         <!-- Website -->
                         <div>
-                            <label for="website">Website:</label>
+                            <label for="website">Website<span class="requiredAsterisk">*</span>:</label>
                             <input type="text" id="website" name="website" value="<?php echo $website; ?>">
                             <span class="error"> <?php echo $websiteErr ?></span>
                         </div>

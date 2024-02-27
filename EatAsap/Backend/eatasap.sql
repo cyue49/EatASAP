@@ -20,14 +20,15 @@ USE id21924858_eatasap;
 
 /* User */
 CREATE TABLE user (
-user_id INT NOT NULL UNIQUE PRIMARY KEY,
+user_id INT NOT NULL UNIQUE AUTO_INCREMENT,
 first_name VARCHAR(30) NOT NULL,
 last_name VARCHAR(30) NOT NULL,
 email VARCHAR(50) NOT NULL UNIQUE,
 user_password VARCHAR(100) NOT NULL,
 phone_number VARCHAR(13) NOT NULL UNIQUE,
 user_address VARCHAR(255),
-user_role VARCHAR(20) NOT NULL /*owner-customer*/
+user_role VARCHAR(20) NOT NULL, /*owner-customer*/
+PRIMARY KEY(user_id)
 );
 
 

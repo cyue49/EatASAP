@@ -15,6 +15,49 @@ function validate_input($data)
     return $data;
 }
 
+// get next user id
+function getNewestUserID()
+{
+    // connect to database
+    include("dbconnect.php");
+
+    // response
+    $response;
+
+    // prepare insert statement and bind variables
+    $sql = "SELECT user_id
+            FROM user
+            ORDER BY user_id DESC;";
+
+    $stmt = mysqli_prepare($db, $sql);
+
+    // execute statement
+    if (mysqli_stmt_execute($stmt)) {
+        // Store result
+        mysqli_stmt_store_result($stmt);
+
+        // if has result in database
+        if (mysqli_stmt_num_rows($stmt) > 0) {
+            mysqli_stmt_bind_result($stmt, $userID);
+            if (mysqli_stmt_fetch($stmt)) {
+                $response = $userID + 1;
+            }
+        } else {
+            $response = 1;
+        }
+
+        // close statement
+        mysqli_stmt_close($stmt);
+
+        // disconnect from database
+        mysqli_close($db);
+
+        return $response;
+    } else { // error
+        die(mysqli_error($db));
+    }
+}
+
 if (isset($_POST["signupButton"])) {
     $noError = true;
 
@@ -81,7 +124,7 @@ if (isset($_POST["signupButton"])) {
     // user address
     $address = validate_input($_POST["address"]);
     if (!empty($address)) {
-        if (!preg_match("/^[a-zA-Z0-9\-]+$/", $address)) {
+        if (!preg_match("/^[a-zA-Z0-9\- ]+$/", $address)) {
             $addressErr = "Invalid address format.";
             $noError = false;
         }
@@ -92,7 +135,7 @@ if (isset($_POST["signupButton"])) {
     if (empty($restaurantAddress)) {
         $restaurantAddressErr = "Restaurant Address is required.";
         $noError = false;
-    } else if (!preg_match("/^[a-zA-Z0-9\-]+$/", $restaurantAddress)) {
+    } else if (!preg_match("/^[a-zA-Z0-9\- ]+$/", $restaurantAddress)) {
         $restaurantAddressErr = "Invalid last name format.";
         $noError = false;
     }
@@ -118,7 +161,7 @@ if (isset($_POST["signupButton"])) {
     if (empty($restaurantName)) {
         $restaurantNameErr = "Restaurant Name is required.";
         $noError = false;
-    } else if (!preg_match("/^[a-zA-Z0-9\-]+$/", $restaurantName)) {
+    } else if (!preg_match("/^[a-zA-Z0-9 \-]+$/", $restaurantName)) {
         $restaurantNameErr = "Invalid restaurant name format.";
         $noError = false;
     }
@@ -128,7 +171,7 @@ if (isset($_POST["signupButton"])) {
     if (empty($brandName)) {
         $brandNameErr = "Brand Name is required.";
         $noError = false;
-    } else if (!preg_match("/^[a-zA-Z0-9\-]+$/", $brandName)) {
+    } else if (!preg_match("/^[a-zA-Z0-9 \-]+$/", $brandName)) {
         $brandNameErr = "Invalid brand name format.";
         $noError = false;
     }
@@ -143,14 +186,79 @@ if (isset($_POST["signupButton"])) {
 
     // website
     $website = validate_input($_POST["website"]);
-    if (!empty($website)) {
-        if (!preg_match("/^[a-zA-Z\-]+$/", $website)) {
-            $websiteErr = "Invalid website format.";
-            $noError = false;
-        }
+    if (empty($website)) {
+        $websiteErr = "Website is required.";
+        $noError = false;
+    } else if (!preg_match("/^\w+\.\w+\.\w+$/", $website)) {
+        $websiteErr = "Invalid website format.";
+        $noError = false;
     }
 
     if ($noError) {
-        echo "ok";
+        // add user info to database
+
+        // connect to database
+        include("dbconnect.php");
+
+        // prepare insert statement and bind variables
+        $sql = "INSERT INTO user (first_name, last_name, email, user_password, phone_number, user_address, user_role) VALUES (?, ?, ?, ?, ?, ?, 'owner');";
+
+        if ($stmt = mysqli_prepare($db, $sql)) {
+            mysqli_stmt_bind_param($stmt, "ssssss", $param_firstName, $param_lastName, $param_email, $param_password, $param_phoneNum, $param_addr);
+        }
+
+        // set parameters
+        $param_firstName = $firstName;
+        $param_lastName = $lastName;
+        $param_email = $email;
+
+        $options = [
+            'cost' => 12,
+        ];
+        $param_password = password_hash($password, PASSWORD_BCRYPT, $options);
+
+        $param_phoneNum = $phoneNum;
+        $param_addr = $address;
+
+        // execute statement
+        if (mysqli_stmt_execute($stmt)) {
+            // close statement
+            mysqli_stmt_close($stmt);
+
+            // add restaurant info to database
+
+            // prepare insert statement and bind variables
+            $sql = "INSERT INTO restaurant (user_id, restaurant_name, business_type_id, brand_name, address, phone_number, website, email) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+
+            if ($stmt = mysqli_prepare($db, $sql)) {
+                mysqli_stmt_bind_param($stmt, "ssssssss", $param_userID, $param_restaurantName, $param_businessTypeId, $param_brandName, $param_address, $param_phoneNum, $param_website, $param_email);
+            }
+
+            // set parameters
+            $param_userID = getNewestUserID() - 1;
+            $param_restaurantName = $restaurantName;
+            $param_businessTypeId = $businessType;
+            $param_brandName = $brandName;
+            $param_address = $restaurantAddress;
+            $param_phoneNum = $restaurantPhoneNum;
+            $param_website = $website;
+            $param_email = $restaurantEmail;
+
+            if (mysqli_stmt_execute($stmt)) {
+                // close statement
+                mysqli_stmt_close($stmt);
+
+                // disconnect from database
+                mysqli_close($db);
+
+                // redirect to sign in page
+                header("Location: signin.php");
+                exit();
+            } else {
+                die(mysqli_error($db));
+            }
+        } else {
+            die(mysqli_error($db));
+        }
     }
 }
