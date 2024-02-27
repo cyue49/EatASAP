@@ -280,3 +280,4 @@ if (isset($_POST["signupButton"])) {
         }
     }
 }
+?>

@@ -857,3 +857,4 @@ if (isset($_POST["confirmOrder"])) {
         }
     }
 }
+?>

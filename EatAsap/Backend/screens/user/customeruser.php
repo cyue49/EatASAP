@@ -545,7 +545,6 @@ if (isset($_POST["editPaymentInfoDone"])) {
     }
 
     if ($noError) {
-        echo '<script>alert("Here")</script>';
         // connect to database
         include("../../../Backend/dbconnect.php");
 
@@ -580,3 +579,4 @@ if (isset($_POST["editPaymentInfoDone"])) {
         exit();
     }
 }
+?>
