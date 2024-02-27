@@ -55,12 +55,14 @@ include("../Backend/signup.php");
             flex-flow: row wrap;
             align-items: flex-start;
             justify-content: space-around;
+            gap: 2em;
             width: 100%;
         }
 
         .leftform,
         .rightform {
             width: 45%;
+            min-width: fit-content;
             display: flex;
             flex-flow: column wrap;
             justify-content: flex-start;
