@@ -25,16 +25,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $phone = $_POST['phone'];
     $message = $_POST['message'];
-   // Validation
-   if (validateName($first_name) && validateName($last_name) && validateEmail($email) && validatePhone($phone) && validateMessage($message)) {
-    $sql = "INSERT INTO contact_submissions (first_name, last_name, email, phone, message) VALUES (?, ?, ?, ?, ?)";
+    // Validation
+    if (validateName($first_name) && validateName($last_name) && validateEmail($email) && validatePhone($phone) && validateMessage($message)) {
+        $sql = "INSERT INTO contact_submissions (first_name, last_name, email, phone, message) VALUES (?, ?, ?, ?, ?)";
 
-    if ($stmt = $conn->prepare($sql)) {
-        $stmt->bind_param("sssss", $first_name, $last_name, $email, $phone, $message);
+        if ($stmt = $conn->prepare($sql)) {
+            $stmt->bind_param("sssss", $first_name, $last_name, $email, $phone, $message);
 
-        if ($stmt->execute()) {
-            $registration_status_message = "Message has been successfully sent!";
-                ///////// add to a file
+            if ($stmt->execute()) {
+                $registration_status_message = "Message has been successfully sent!";
+             
                 $data = [
                     'email' => $email,
                     'first_name' => $first_name,
@@ -50,7 +50,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
                 file_put_contents($file, $formattedData, FILE_APPEND | LOCK_EX); // Append to file and lock the file while writing
                 
-                
+             
+             
+             
+             
             } else {
                 $registration_status_message = $stmt->error;
             }
@@ -61,7 +64,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     } else {
         $registration_status_message = "Invalid input data.";
-    }
+    
+            }
+
 
 
     //send an email
@@ -93,10 +98,10 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Template Page</title>
     <!-- Icon -->
-    <link rel="icon" type="image/x-icon" href="../assets/icons/Logo.svg" />
+    <link rel="icon" type="image/x-icon" href="../../Frontend/assets/icons/Logo.svg" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- CSS -->
-    <link href="contactus-styles.css" rel="stylesheet" />
+    <link href="../../Frontend/screens/contactus-styles.css" rel="stylesheet" />
     <script src="https://maps.googleapis.com/maps/api/js?sensor=false&callback=myMap"></script>
     <!-- JS -->
 
@@ -107,7 +112,10 @@ $conn->close();
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"
         defer></script>
     <!-- CSS -->
-    <link href="common-styles.css" rel="stylesheet" />
+    <!--<link href="common-styles.css" rel="stylesheet" />-->
+        <link href="../../Frontend/constents/common-styles.css" rel="stylesheet" />
+    
+
     <!--google map api-->
     <!--
       <script async src="https://maps.googleapis.com/maps/api/js?key=&callback=console.debug&libraries=maps,marker&v=beta">
@@ -125,7 +133,7 @@ $conn->close();
     <!-- Top Navigation Bar -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="../../index.html"><img src="../assets/icons/Logo.svg" alt="logo"
+            <a class="navbar-brand" href="../../index.html"><img src="../../Frontend/assets/icons/Logo.svg" alt="logo"
                     style="height: 50px;"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -142,7 +150,7 @@ $conn->close();
                         <a class="nav-link" href="aboutus.html">About</a>
                     </li>
                     <li class="nav-item text-center px-5 mx-5">
-                        <a class="nav-link" href="contactus.html">Contact</a>
+                        <a class="nav-link" href="submit_contact.php">Contact</a>
                     </li>
                     <li class="nav-item text-center px-5 mx-5">
                         <a class="nav-link" href="../signup.html">Add Your Restaurant</a>
@@ -163,26 +171,25 @@ $conn->close();
             <section class="team">
                 <!-- Team member profiles -->
                 <div class="profile">
-                    <img src="../assets/pictures/profile4.jpeg" alt="Team Member"> 
+                    <img src="../../Frontend/assets/pictures/profile4.jpeg" alt="Team Member"> 
                     
               
                     <p><b> Sleiman Abou-Antoun</b> <br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam
                         nonummy nibh</p>
                 </div>
                 <div class="profile">
-                    <img src="../assets/pictures/profile1.jpg" alt="Team Member"> 
+                    <img src="../../Frontend/assets/pictures/profile1.jpg" alt="Team Member"> 
                     
                     <p><b> Chen Yue</b> <br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy
                         nibh</p>
                 </div>
                 <div class="profile">
-                    <img src="../assets/pictures/profile2.png" alt="Team Member"> 
+                    <img src="../../Frontend/assets/pictures/profile2.png" alt="Team Member"> 
                     
-                    <p><b> Kawthar Mashkour</b><br>bLorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam
-                        nonummy nibh</p>
+                    <p><b> Kawthar Mashkour</b><br>MSc. Computer Science/ Full Stack Developer</p>
                 </div>
                 <div class="profile">
-                    <img src="../assets/pictures/profile3.png" alt="Team Member"> 
+                    <img src="../../Frontend/assets/pictures/profile3.png" alt="Team Member"> 
                     
                     <p><b>Ashot Harutyunyan</b><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam
                         nonummy nibh</p>
