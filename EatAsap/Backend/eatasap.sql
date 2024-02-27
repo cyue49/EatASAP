@@ -239,6 +239,6 @@ INSERT INTO menu_categories (category_name) VALUES
 
 -- Insert data into plans table
 INSERT INTO plans (plan_name, plan_price) VALUES 
-('Basic', 10.00),
-('Standard', 20.00),
-('Premium', 30.00);
+('Basic', 0.00),
+('Standard', 10.00),
+('Premium', 20.00);
