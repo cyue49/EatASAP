@@ -133,7 +133,7 @@ $conn->close();
     <!-- Top Navigation Bar -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="../../index.html"><img src="../../Frontend/assets/icons/Logo.svg" alt="logo"
+            <a class="navbar-brand" href="../../Frontend/index.html"><img src="../../Frontend/assets/icons/Logo.svg" alt="logo"
                     style="height: 50px;"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -144,19 +144,19 @@ $conn->close();
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100 justify-content-center">
                     <li class="nav-item text-center px-4 mx-5">
-                        <a class="nav-link active" aria-current="page" href="../index.html">Home</a>
+                        <a class="nav-link active" aria-current="page" href="../../Frontend/index.html">Home</a>
                     </li>
                     <li class="nav-item text-center px-5 mx-5">
-                        <a class="nav-link" href="aboutus.html">About</a>
+                        <a class="nav-link" href="../../Frontend/screens/aboutus.html">About</a>
                     </li>
                     <li class="nav-item text-center px-5 mx-5">
-                        <a class="nav-link" href="submit_contact.php">Contact</a>
+                        <a class="nav-link" href=""submit_contact.php>Contact</a>
                     </li>
                     <li class="nav-item text-center px-5 mx-5">
-                        <a class="nav-link" href="../signup.html">Add Your Restaurant</a>
+                        <a class="nav-link" href="../../Frontend/signup.php">Add Your Restaurant</a>
                     </li>
                     <li class="nav-item text-center px-5 mx-5">
-                        <a class="nav-link" href="./signin.html">Sign In</a>
+                        <a class="nav-link" href="../../Frontend/signin.php">Sign In</a>
                     </li>
                 </ul>
 
@@ -180,8 +180,7 @@ $conn->close();
                 <div class="profile">
                     <img src="../../Frontend/assets/pictures/profile1.jpg" alt="Team Member"> 
                     
-                    <p><b> Chen Yue</b> <br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy
-                        nibh</p>
+                    <p><b> Chen Yue</b> <br>After graduating in Computer Science, Chen is currently studying Mobile Application Development. Full Stack Developer.</p>
                 </div>
                 <div class="profile">
                     <img src="../../Frontend/assets/pictures/profile2.png" alt="Team Member"> 
@@ -191,8 +190,7 @@ $conn->close();
                 <div class="profile">
                     <img src="../../Frontend/assets/pictures/profile3.png" alt="Team Member"> 
                     
-                    <p><b>Ashot Harutyunyan</b><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam
-                        nonummy nibh</p>
+                    <p><b>Ashot Harutyunyan</b><br>Mobile App Developer</p>
                 </div>
             </section>
 
