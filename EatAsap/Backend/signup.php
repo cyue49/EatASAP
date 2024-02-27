@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 // user input values
 $firstName = $lastName = $email = $phoneNum = $address = $restaurantEmail = $restaurantPhoneNum = $restaurantAddress = $usrPassword = $retypePassword = $restaurantName = $brandName = $businessType = $website = "";

@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 // user input values
 $firstName = $lastName = $email = $phoneNum = $address = $usrPassword = $retypePassword = "";
