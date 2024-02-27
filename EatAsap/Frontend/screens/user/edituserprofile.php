@@ -1,5 +1,6 @@
 <?php
 // include php file
+include_once("../../../Backend/session.php");
 include("../../../Backend/screens/user/customeruser.php");
 ?>
 <!DOCTYPE html>
@@ -46,7 +47,7 @@ include("../../../Backend/screens/user/customeruser.php");
                         <a class="nav-link" href="../contactus.html">Contact</a>
                     </li>
                     <li class="nav-item text-center px-5 mx-5">
-                        <a class="nav-link" href="../../index.html">Sign Out</a>
+                        <a class="nav-link" href="../../../Backend/logout.php">Sign Out</a>
                     </li>
                 </ul>
 

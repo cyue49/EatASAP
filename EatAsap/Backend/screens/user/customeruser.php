@@ -1,14 +1,13 @@
 <?php
-session_start();
 
 // for testing
-$_SESSION["loggedin"] = true;
-$_SESSION["userID"] = 5;
+/* $_SESSION["logged_in"] = true;
+$_SESSION["user_id"] = 5; */
 
 // if not logged in, redirect
-if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] === false) {
+if (!isUserLoggedIn() || $_SESSION['user_role'] !== 'customer') {
     // redirect to sign in page
-    header("Location: ../../../Frontend/signin.html");
+    header("Location: ../../../Frontend/signin.php");
     exit();
 }
 
@@ -16,7 +15,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] === false) {
 function getUserInfo($userID)
 {
     // connect to database
-    include("dbconnect.php");
+    include("../../../Backend/dbconnect.php");
 
     // response array
     $response = array();
@@ -44,6 +43,7 @@ function getUserInfo($userID)
             if (mysqli_stmt_fetch($stmt)) {
                 $response['firstName'] = $firstName;
                 $response['lastName'] = $lastName;
+                $_SESSION['user_name'] = $firstName . " " . $lastName;
                 $response['phone'] = $phone;
                 $response['email'] = $email;
                 $response['paymentMethod'] = $paymentMethod;
@@ -70,7 +70,7 @@ function getUserInfo($userID)
 function getOrderIds()
 {
     // connect to database
-    include("dbconnect.php");
+    include("../../../Backend/dbconnect.php");
 
     // response array
     $response = array();
@@ -85,7 +85,7 @@ function getOrderIds()
     }
 
     // set parameters
-    $param_userID = $_SESSION["userID"];
+    $param_userID = $_SESSION["user_id"];
 
     // execute statement
     if (mysqli_stmt_execute($stmt)) {
@@ -118,7 +118,7 @@ function getOrderIds()
 function getOrderInfo($orderID)
 {
     // connect to database
-    include("dbconnect.php");
+    include("../../../Backend/dbconnect.php");
 
     // response array
     $response = array();
@@ -167,7 +167,7 @@ function getOrderInfo($orderID)
 function getRestaurantName($orderID)
 {
     // connect to database
-    include("dbconnect.php");
+    include("../../../Backend/dbconnect.php");
 
     // response
     $response = "";
@@ -213,7 +213,7 @@ function getRestaurantName($orderID)
 function getCartItems($cartID)
 {
     // connect to database
-    include("dbconnect.php");
+    include("../../../Backend/dbconnect.php");
 
     // response array
     $response = array();
@@ -283,7 +283,7 @@ function printAnOrderHistoryHeader($orderID)
 function getSubtotal($cartID)
 {
     // connect to database
-    include("dbconnect.php");
+    include("../../../Backend/dbconnect.php");
 
     // result 
     $subtotal = 0;
@@ -391,7 +391,7 @@ function printAnOrderHistoryItems($orderID)
 }
 
 // ============================ Set user information for display on frontend ============================
-$userInfo = getUserInfo($_SESSION["userID"]);
+$userInfo = getUserInfo($_SESSION["user_id"]);
 $firstName = $userInfo['firstName'];
 $lastName = $userInfo['lastName'];
 $phoneNumber = $userInfo['phone'];
@@ -458,7 +458,7 @@ if (isset($_POST["editProfileInfoDone"])) {
 
     if ($noError) {
         // connect to database
-        include("dbconnect.php");
+        include("../../../Backend/dbconnect.php");
 
         // prepare update statement and bind variables
         $sql = "UPDATE user 
@@ -474,7 +474,7 @@ if (isset($_POST["editProfileInfoDone"])) {
         $param_lastName = $lastName;
         $param_phone = $phoneNumber;
         $param_email = $emailAddress;
-        $param_userID = $_SESSION["userID"];
+        $param_userID = $_SESSION["user_id"];
 
         // execute statement
         if (mysqli_stmt_execute($stmt)) {
@@ -542,7 +542,7 @@ if (isset($_POST["editPaymentInfoDone"])) {
     if ($noError) {
         echo '<script>alert("Here")</script>';
         // connect to database
-        include("dbconnect.php");
+        include("../../../Backend/dbconnect.php");
 
         // prepare update statement and bind variables
         $sql = "UPDATE payment 
@@ -558,7 +558,7 @@ if (isset($_POST["editPaymentInfoDone"])) {
         $param_cardNumber = $cardNumber;
         $param_cvv = $cvv;
         $param_expirationDate = $expirationDate . "-01";
-        $param_userID = $_SESSION["userID"];
+        $param_userID = $_SESSION["user_id"];
 
         // execute statement
         if (mysqli_stmt_execute($stmt)) {

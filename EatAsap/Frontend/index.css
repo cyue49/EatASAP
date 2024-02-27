@@ -78,32 +78,23 @@
     background-image: url(./assets/pictures/signin2.png);
     background-position: 90%;
     box-shadow: 0px 5px 10px rgba(69, 44, 30, 0.3);
-    background-color: #FFFFFF;
-    flex: auto;
     background-repeat: no-repeat;
     text-align: left;
     background-size: contain;
-    margin-left: 20%;
-    margin-right: 20%;
-    margin-top: 150px;
-    margin-bottom: 20px;
-    max-width: auto;
+    width: 60%;
+    min-width: fit-content;
     justify-content: center;
     min-height: 700px;
 }
 
 .sign-in-form input, h1{
-    margin-left: 10%;
-    width: 350px;
-    height: 50px;
     border-radius: 20px;
 }
 
 .sign-in-form button{
-    margin-bottom: 5%;
-    margin-left: 10%;
     width: 250px;
-    border-radius: 20px;
+    border-radius: 25px;
+    margin-top: 1em;
 }
 
 

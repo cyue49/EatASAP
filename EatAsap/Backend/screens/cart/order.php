@@ -1,22 +1,21 @@
 <?php
-session_start();
 
 // for testing
-$_SESSION["loggedin"] = true;
-$_SESSION["userID"] = 5;
+/* $_SESSION["logged_in"] = true;
+$_SESSION['user_id'] = 5;
 
 $_SESSION["cart"] = array(
     array('id' => 1, 'quantity' => 3),
     array('id' => 2, 'quantity' => 2),
     array('id' => 3, 'quantity' => 2)
-);
+); */
 
 // ============================ Create and get cart items ============================
 // get next cart_id
 function getNextCartID()
 {
     // connect to database
-    include("dbconnect.php");
+    include("../../../Backend/dbconnect.php");
 
     // response
     $response;
@@ -59,7 +58,7 @@ function getNextCartID()
 function createCartItems($cartItems)
 {
     // connect to database
-    include("dbconnect.php");
+    include("../../../Backend/dbconnect.php");
 
     // create a cart
     $nextCartID = getNextCartID();
@@ -108,7 +107,7 @@ function createCartItems($cartItems)
 function getCartItems($cartID)
 {
     // connect to database
-    include("dbconnect.php");
+    include("../../../Backend/dbconnect.php");
 
     // response array
     $response = array();
@@ -173,7 +172,7 @@ function updateSubtotal($cartID)
     $subtotal = number_format((float)$subtotal, 2, '.', '');
 
     // connect to database
-    include("dbconnect.php");
+    include("../../../Backend/dbconnect.php");
 
     // prepare update statement and bind variables
     $sql = "UPDATE order_cart 
@@ -201,7 +200,7 @@ function updateSubtotal($cartID)
 function getSubtotal($cartID)
 {
     // connect to database
-    include("dbconnect.php");
+    include("../../../Backend/dbconnect.php");
 
     // result 
     $subtotal = 0;
@@ -266,7 +265,7 @@ function calculateTotal($subtotal)
 function getUserInfo($userID)
 {
     // connect to database
-    include("dbconnect.php");
+    include("../../../Backend/dbconnect.php");
 
     // response array
     $response = array();
@@ -319,7 +318,7 @@ function getUserInfo($userID)
 function getNextOrderID()
 {
     // connect to database
-    include("dbconnect.php");
+    include("../../../Backend/dbconnect.php");
 
     // response
     $response;
@@ -361,7 +360,7 @@ function getNextOrderID()
 function getNextOrderNumber()
 {
     // connect to database
-    include("dbconnect.php");
+    include("../../../Backend/dbconnect.php");
 
     // response
     $response;
@@ -406,7 +405,7 @@ function getNextOrderNumber()
 function getNextTempUserID()
 {
     // connect to database
-    include("dbconnect.php");
+    include("../../../Backend/dbconnect.php");
 
     // response
     $response;
@@ -449,7 +448,7 @@ function getNextTempUserID()
 function addItem($itemID)
 {
     // connect to database
-    include("dbconnect.php");
+    include("../../../Backend/dbconnect.php");
 
     // prepare statement and bind variables
     $sql = "UPDATE cart_item 
@@ -477,7 +476,7 @@ function addItem($itemID)
 function minusItem($itemID)
 {
     // connect to database
-    include("dbconnect.php");
+    include("../../../Backend/dbconnect.php");
 
     // prepare statement and bind variables
     $sql = "UPDATE cart_item 
@@ -540,7 +539,7 @@ function minusItem($itemID)
 function removeItem($itemID)
 {
     // connect to database
-    include("dbconnect.php");
+    include("../../../Backend/dbconnect.php");
 
     // prepare statement and bind variables
     $sql = "DELETE FROM cart_item WHERE cart_item_id = ?;";
@@ -608,8 +607,8 @@ $_SESSION["orderNumber"] = getNextOrderNumber();
 $_SESSION["tempUserID"] = getNextTempUserID();
 
 // if is logged in set user info
-if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-    $userInfo = getUserInfo($_SESSION["userID"]);
+if (isUserLoggedIn()) {
+    $userInfo = getUserInfo($_SESSION['user_id']);
     $firstName = $userInfo['firstName'];
     $lastName = $userInfo['lastName'];
     $phoneNumber = $userInfo['phone'];
@@ -719,7 +718,7 @@ if (isset($_POST["formSubmit"])) {
 
         // customer info to put on receipt
         $_SESSION["orderItems"] = $cartItems;
-        $_SESSION["customerFullName"] = $firstName . " " . $lastName;
+        $_SESSION["user_name"] = $firstName . " " . $lastName;
         $_SESSION["customerEmail"] = $emailAddress;
         $_SESSION["customerPhone"] = $phoneNumber;
         $_SESSION["subtotal"] = $subtotal;
@@ -732,7 +731,7 @@ if (isset($_POST["formSubmit"])) {
         // create order
 
         // connect to database
-        include("dbconnect.php");
+        include("../../../Backend/dbconnect.php");
 
         // prepare insert statement and bind variables
         $sql = "INSERT INTO orders (order_id, cart_id, user_id, order_total, order_datetime, order_number, order_status) VALUES (?, ?, ?, ?, ?, ?, ?);";
@@ -758,7 +757,7 @@ if (isset($_POST["formSubmit"])) {
         }
 
         // if not logged in create temp user for order
-        if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] === false) {
+        if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] === false) {
             // prepare insert statement and bind variables
             $sql = "INSERT INTO temporary_order_user (temp_user_id, order_id, first_name, last_name, phone, email, payment_method, card_number, cvv, expiration_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
@@ -796,7 +795,7 @@ if (isset($_POST["formSubmit"])) {
             }
 
             // set parameters
-            $param_userID = $_SESSION["userID"];
+            $param_userID = $_SESSION['user_id'];
             $param_orderID = $_SESSION["orderID"];
 
             // execute statement
@@ -823,7 +822,7 @@ if (isset($_POST["confirmOrder"])) {
         // update order date time, status & number
 
         // connect to database
-        include("dbconnect.php");
+        include("../../../Backend/dbconnect.php");
 
         // prepare statement and bind variables
         $sql = "UPDATE orders 

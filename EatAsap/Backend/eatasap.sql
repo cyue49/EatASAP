@@ -1,9 +1,9 @@
 /* ============== CREATING AND USING DATABASE ============== */
-DROP DATABASE IF EXISTS eatasap;
+DROP DATABASE IF EXISTS id21924858_eatasap;
 
-CREATE DATABASE IF NOT EXISTS eatasap;
+CREATE DATABASE IF NOT EXISTS id21924858_eatasap;
 
-USE eatasap; 
+USE id21924858_eatasap; 
 
 
 /* ============== CREATING TABLES ============== */
@@ -26,6 +26,7 @@ last_name VARCHAR(30) NOT NULL,
 email VARCHAR(50) NOT NULL UNIQUE,
 user_password VARCHAR(100) NOT NULL,
 phone_number VARCHAR(13) NOT NULL UNIQUE,
+user_address VARCHAR(255),
 user_role VARCHAR(20) NOT NULL /*owner-customer*/
 );
 
@@ -197,7 +198,7 @@ INSERT INTO business_type (business_type_name) VALUES
 ('Ethnic Restaurant'),
 ('Fast Casual');
 
-INSERT INTO Ingredient (ingredient_name, energy)
+INSERT INTO ingredient (ingredient_name, energy)
 VALUES 
     ('Salmon', 220),
     ('Chicken', 180),
