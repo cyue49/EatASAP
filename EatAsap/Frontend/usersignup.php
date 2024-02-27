@@ -10,7 +10,7 @@ include("../Backend/usersignup.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
+    <title>User Sign Up</title>
     <!-- Icon -->
     <link rel="icon" type="image/x-icon" href="Assets/Icons/Logo.svg" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -146,10 +146,10 @@ include("../Backend/usersignup.php");
                         <a class="nav-link" href="./screens/contactus.html">Contact</a>
                     </li>
                     <li class="nav-item text-center px-5 mx-5">
-                        <a class="nav-link" href="./signup.html">Add Your Restaurant</a>
+                        <a class="nav-link" href="signup.php">Add Your Restaurant</a>
                     </li>
                     <li class="nav-item text-center px-5 mx-5">
-                        <a class="nav-link" href="./signin.html">Sign In</a>
+                        <a class="nav-link" href="signin.php">Sign In</a>
                     </li>
                 </ul>
 
