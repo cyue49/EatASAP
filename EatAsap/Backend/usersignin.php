@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 
 // if already signed in, redirect to restaurant or user page
 if (isUserLoggedIn()) {
