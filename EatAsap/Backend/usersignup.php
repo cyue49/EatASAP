@@ -70,7 +70,23 @@ if (isset($_POST["signupButton"])) {
     // password
     $password = validate_input($_POST["password"]);
     if (empty($password)) {
-        $passwordErr = "Please enter your password.";
+        $passwordErr = "Password is required.<br>";
+        $noError = false;
+    }
+    if (strlen($password) < 8) { // less than 8 characters
+        $passwordErr .= "Your password must be at least 8 characters long.<br>";
+        $noError = false;
+    }
+    if (!preg_match("/\d/", $password)) { // doesn't contain one digit
+        $passwordErr .= "Your password must contain a digit.<br>";
+        $noError = false;
+    }
+    if (!preg_match("/\W/", $password)) { // doesn't contain one special character
+        $passwordErr .= "Your password must contain a special character.<br>";
+        $noError = false;
+    }
+    if (!preg_match("/[A-Z]/", $password)) { // doesn't contain one uppercase letter
+        $passwordErr .= "Your password must contain an uppercase letter.<br>";
         $noError = false;
     }
 
@@ -86,5 +102,42 @@ if (isset($_POST["signupButton"])) {
     if ($noError) {
         // add user info to database
 
+        // connect to database
+        include("dbconnect.php");
+
+        // prepare insert statement and bind variables
+        $sql = "INSERT INTO user (first_name, last_name, email, user_password, phone_number, user_address, user_role) VALUES (?, ?, ?, ?, ?, ?, 'customer');";
+
+        if ($stmt = mysqli_prepare($db, $sql)) {
+            mysqli_stmt_bind_param($stmt, "ssssss", $param_firstName, $param_lastName, $param_email, $param_password, $param_phoneNum, $param_addr);
+        }
+
+        // set parameters
+        $param_firstName = $firstName;
+        $param_lastName = $lastName;
+        $param_email = $email;
+
+        $options = [
+            'cost' => 12,
+        ];
+        $param_password = password_hash($password, PASSWORD_BCRYPT, $options);
+
+        $param_phoneNum = $phoneNum;
+        $param_addr = $address;
+
+        // execute statement
+        if (mysqli_stmt_execute($stmt)) {
+            // close statement
+            mysqli_stmt_close($stmt);
+
+            // disconnect from database
+            mysqli_close($db);
+
+            // redirect to sign in page
+            header("Location: signin.php");
+            exit();
+        } else {
+            die(mysqli_error($db));
+        }
     }
 }

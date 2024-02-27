@@ -22,7 +22,7 @@ function getUserInfo($userID)
 
     // prepare insert statement and bind variables
     $sql = "SELECT U.first_name, U.last_name, U.phone_number, U.email, P.payment_method, P.card_number, P.cvv, P.expiration_date
-            FROM user U JOIN payment P ON U.user_id = P.user_id
+            FROM user U LEFT JOIN payment P ON U.user_id = P.user_id
             WHERE U.user_id = ?;";
 
     if ($stmt = mysqli_prepare($db, $sql)) {
@@ -49,7 +49,11 @@ function getUserInfo($userID)
                 $response['paymentMethod'] = $paymentMethod;
                 $response['cardNumber'] = $cardNumber;
                 $response['cvv'] = $cvv;
-                $response['expirationDate'] = explode('-', $expirationDate)[0] . '-' . explode('-', $expirationDate)[1];
+                if ($expirationDate != ""){
+                    $response['expirationDate'] = explode('-', $expirationDate)[0] . '-' . explode('-', $expirationDate)[1];
+                } else {
+                    $response['expirationDate'] = $expirationDate;
+                }
             }
         }
 
