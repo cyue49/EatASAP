@@ -219,10 +219,40 @@ function login(isLogin) {
 }
 
 function delCard(event) {
+    // Delete from the database
+    // const item_id = event.currentTarget.parentElement.parentElement.querySelector('.item-id').value;
+    // const data = {
+    //     item_id: item_id
+    // };
+    // fetch('../../../Backend/screens/menu/deleteItem.php', {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify(data),
+    // })
+    // .then(response => {
+    //     if (!response.ok) {
+    //         throw new Error('Network response was not ok');
+    //     }
+    //     return response.json();
+    // })
+    // .then(data => {
+    //     // Handle successful response from server
+    //     console.log('Success:', data);
+    //     alert('Item deleted successfully');
+    // })
+    // .catch(error => {
+    //     // Handle error
+    //     console.error('Error:', error);
+        
+    // });
+
     event.currentTarget.parentElement.parentElement.remove();
 }
 
 function addCard(event) {
+    item_id = null;
     event.preventDefault();
     //send the data to the server
     
@@ -255,7 +285,8 @@ function addCard(event) {
         })
         .then(data => {
             // Handle successful response from server
-            console.log('Success:', data);
+            item_id = data[0];
+            console.log('Success:', item_id);
             alert('Item added successfully');
         })
         .catch(error => {
@@ -263,13 +294,6 @@ function addCard(event) {
             console.error('Error:', error);
             // Here you can display an error message or perform other error handling actions
         });
-    
-    
-
-    // const title = document.getElementById("title").value;
-    // const price = document.getElementById("price").value;
-    // const description = document.querySelector("textarea").value;
-    // const imageSrc = "../../assets/pictures/comingSoon.jpg"
 
 
     const listItem = document.createElement('li');
@@ -277,6 +301,7 @@ function addCard(event) {
 
     // Set the inner HTML for the li element
     listItem.innerHTML = `
+        <input type="hidden" class="item-id" value="${item_id}">
         <img class="item-image" src="${imageSrc}" alt="Item Picture1">
         <div class="text">
             <h3 class="i-title">${title}</h3>
@@ -339,18 +364,18 @@ function restaurantinformation() {
             document.getElementById("restaurant_name").innerText = text.restaurant_name;
             document.getElementById("website").innerText = text.website;
             document.getElementById("restaurant_phone_number").innerText = text.restaurant_phone_number;
-            document.getElementById("payment_method").innerText = text.payment_method;
+            //document.getElementById("payment_method").innerText = text.payment_method;
             card_num = text.card_number;
             // Extract the last 3 digits
             var lastThreeDigits = card_num.slice(-3);
             document.getElementById("card_number").innerText = " **** **** **** " + lastThreeDigits;
             document.getElementById("expiration_date").innerText = text.expiration_date;
-            alert(text.restaurant_name);
+            //alert(text.restaurant_name);
 
             // Select the image element by its id
-            var restaurantImage = document.getElementById("restaurant-image");
+            //var restaurantImage = document.getElementById("restaurant-image");
             // Change the src attribute
-            restaurantImage.src = text.logo_url;
+           // restaurantImage.src = text.logo_url;
 
         }
     };
