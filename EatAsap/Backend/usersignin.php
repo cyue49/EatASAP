@@ -1,4 +1,5 @@
 <?php
+//session_start();
 
 // if already signed in, redirect to restaurant or user page
 if (isUserLoggedIn()) {
@@ -33,7 +34,7 @@ function validate_input($data)
 }
 
 // verify password, set user id session variable upon success
-function checkPassword($email, $password, $role)
+function checkPassword($email, $pswd, $role)
 {
     // connect to database
     include("dbconnect.php");
@@ -63,15 +64,17 @@ function checkPassword($email, $password, $role)
             mysqli_stmt_bind_result($stmt, $hashed_password, $roleDB, $userID, $firstName, $lastName);
             if (mysqli_stmt_fetch($stmt)) {
                 // role match and correct password
-                /* if ($role == $roleDB && password_verify($password, $hashed_password)) {
-                    $_SESSION['user_id'] = $userID;
-                } */
-
-                if ($role == $roleDB && $password == $hashed_password) {
+                if ($role == $roleDB && password_verify($pswd, $hashed_password)) {
                     $userName = $firstName . " " . $lastName;
                     setUserLogin($userID, $userName, $role);
                     $validUser = true;
                 }
+
+                /* if ($role == $roleDB && $pswd == $hashed_password) {
+                    $userName = $firstName . " " . $lastName;
+                    setUserLogin($userID, $userName, $role);
+                    $validUser = true;
+                } */
             }
         }
 
@@ -139,3 +142,4 @@ if (isset($_POST["signinButton"])) {
         }
     }
 }
+?>

@@ -160,6 +160,7 @@ footer p{
     position: absolute;
     top: 360px;
     width: 40%;
+    left:0;
 }
 
 
@@ -359,7 +360,8 @@ p {
             background: #d6e6e6;
             position: relative;
             top: 0;
-             width: 100%
+             width: 100%;
+             left:0;
         }
         .contact {
              width: 100%

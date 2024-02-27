@@ -1,4 +1,5 @@
 <?php
+//session_start();
 
 // for testing
 /* $_SESSION["logged_in"] = true;
@@ -22,7 +23,7 @@ function getUserInfo($userID)
 
     // prepare insert statement and bind variables
     $sql = "SELECT U.first_name, U.last_name, U.phone_number, U.email, P.payment_method, P.card_number, P.cvv, P.expiration_date
-            FROM user U JOIN payment P ON U.user_id = P.user_id
+            FROM user U LEFT JOIN payment P ON U.user_id = P.user_id
             WHERE U.user_id = ?;";
 
     if ($stmt = mysqli_prepare($db, $sql)) {
@@ -49,7 +50,11 @@ function getUserInfo($userID)
                 $response['paymentMethod'] = $paymentMethod;
                 $response['cardNumber'] = $cardNumber;
                 $response['cvv'] = $cvv;
-                $response['expirationDate'] = explode('-', $expirationDate)[0] . '-' . explode('-', $expirationDate)[1];
+                if ($expirationDate != ""){
+                    $response['expirationDate'] = explode('-', $expirationDate)[0] . '-' . explode('-', $expirationDate)[1];
+                } else {
+                    $response['expirationDate'] = $expirationDate;
+                }
             }
         }
 
@@ -441,8 +446,8 @@ if (isset($_POST["editProfileInfoDone"])) {
     if (empty($phoneNumber)) {
         $phoneNumberErr = "Phone number is required.";
         $noError = false;
-    } else if (!preg_match("/^\d{10}$/", $phoneNumber)) {
-        $phoneNumberErr = "Invalid phone number format. Please make sure to enter exactly 10 digits.";
+    } else if (!preg_match("/^\d{10,13}$/", $phoneNumber)) {
+        $phoneNumberErr = "Invalid phone number format. Please make sure to enter between 10 and 13 digits.";
         $noError = false;
     }
 
@@ -540,7 +545,6 @@ if (isset($_POST["editPaymentInfoDone"])) {
     }
 
     if ($noError) {
-        echo '<script>alert("Here")</script>';
         // connect to database
         include("../../../Backend/dbconnect.php");
 
@@ -575,3 +579,4 @@ if (isset($_POST["editPaymentInfoDone"])) {
         exit();
     }
 }
+?>

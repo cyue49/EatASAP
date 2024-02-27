@@ -1,4 +1,5 @@
 <?php
+//session_start();
 
 // for testing
 /* $_SESSION["logged_in"] = true;
@@ -856,3 +857,4 @@ if (isset($_POST["confirmOrder"])) {
         }
     }
 }
+?>
