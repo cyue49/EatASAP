@@ -441,8 +441,8 @@ if (isset($_POST["editProfileInfoDone"])) {
     if (empty($phoneNumber)) {
         $phoneNumberErr = "Phone number is required.";
         $noError = false;
-    } else if (!preg_match("/^\d{10}$/", $phoneNumber)) {
-        $phoneNumberErr = "Invalid phone number format. Please make sure to enter exactly 10 digits.";
+    } else if (!preg_match("/^\d{10,13}$/", $phoneNumber)) {
+        $phoneNumberErr = "Invalid phone number format. Please make sure to enter between 10 and 13 digits.";
         $noError = false;
     }
 

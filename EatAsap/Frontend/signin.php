@@ -111,10 +111,10 @@ include("../Backend/usersignin.php");
                         <a class="nav-link" href="./screens/contactus.html">Contact</a>
                     </li>
                     <li class="nav-item text-center px-5 mx-5">
-                        <a class="nav-link" href="./signup.html">Add Your Restaurant</a>
+                        <a class="nav-link" href="signup.php">Add Your Restaurant</a>
                     </li>
                     <li class="nav-item text-center px-5 mx-5">
-                        <a class="nav-link" href="./signin.html">Sign In</a>
+                        <a class="nav-link" href="signin.php">Sign In</a>
                     </li>
                 </ul>
 

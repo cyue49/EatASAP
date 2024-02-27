@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// Define a function to validate form input before navigation
+/* // Define a function to validate form input before navigation
 function validateFormAndNavigate() {
 var password = document.getElementById('password').value; // Get the value from the password input
 var retypePassword = document.getElementById('retypePassword').value; // Get the value from the retype password input
@@ -50,4 +50,4 @@ localStorage.setItem("restaurantName", restaurantName)
 // Redirect to another page if the passwords match
 window.location.href = './screens/user/RestaurantProfile.html';
 return false; // Prevent default form submission behavior
-}
+} */
