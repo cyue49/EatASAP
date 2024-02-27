@@ -1,8 +1,9 @@
 <?php
+// production connection
 $servername = "localhost";
-$username = ""; // Update with your database username
-$password = ""; // Update with your database password
-$dbname = "";
+$username = "id21930259_root";
+$password = "Eatasap1@";
+$dbname = "id21930259_eatasap";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);

@@ -2,10 +2,10 @@
 //session_start();
 
 // user input values
-$firstName = $lastName = $email = $phoneNum = $address = $restaurantEmail = $restaurantPhoneNum = $restaurantAddress = $usrPassword = $retypePassword = $restaurantName = $brandName = $businessType = $website = "";
+$firstName = $lastName = $email = $phoneNum = $address = $usrPassword = $retypePassword = "";
 
 // user input errors
-$firstNameErr = $lastNameErr = $emailErr = $phoneNumErr = $addressErr = $restaurantEmailErr = $restaurantPhoneNumErr = $restaurantAddressErr = $usrPasswordErr = $retypePasswordErr = $restaurantNameErr = $brandNameErr = $businessTypeErr = $websiteErr = "";
+$firstNameErr = $lastNameErr = $emailErr = $phoneNumErr = $addressErr = $usrPasswordErr = $retypePasswordErr = "";
 
 // trim data, remove slashes, etc.
 function validate_input($data)
@@ -15,7 +15,6 @@ function validate_input($data)
     $data = htmlspecialchars($data);
     return $data;
 }
-
 // get next user id
 function getNewestUserID()
 {
@@ -92,16 +91,6 @@ if (isset($_POST["signupButton"])) {
         $noError = false;
     }
 
-    // restaurant email
-    $restaurantEmail = validate_input($_POST["restaurantEmail"]);
-    if (empty($restaurantEmail)) {
-        $restaurantEmailErr = "Restaurant Email address is required.";
-        $noError = false;
-    } else if (!preg_match("/^[\w\.\-_]+@[a-zA-Z]+\.[a-zA-Z]+$/", $restaurantEmail)) {
-        $restaurantEmailErr = "Invalid Email format.";
-        $noError = false;
-    }
-
     // user phone number
     $phoneNum = validate_input($_POST["phoneNum"]);
     if (empty($phoneNum)) {
@@ -112,16 +101,6 @@ if (isset($_POST["signupButton"])) {
         $noError = false;
     }
 
-    // restaurant phone number
-    $restaurantPhoneNum = validate_input($_POST["restaurantPhoneNum"]);
-    if (empty($restaurantPhoneNum)) {
-        $restaurantPhoneNumErr = "Restaurant Phone number is required.";
-        $noError = false;
-    } else if (!preg_match("/^\d{10,13}$/", $restaurantPhoneNum)) {
-        $restaurantPhoneNumErr = "Invalid phone number format. Please make sure to enter between 10 and 13 digits.";
-        $noError = false;
-    }
-
     // user address
     $address = validate_input($_POST["address"]);
     if (!empty($address)) {
@@ -129,16 +108,6 @@ if (isset($_POST["signupButton"])) {
             $addressErr = "Invalid address format.";
             $noError = false;
         }
-    }
-
-    // restaurant address
-    $restaurantAddress = validate_input($_POST["restaurantAddress"]);
-    if (empty($restaurantAddress)) {
-        $restaurantAddressErr = "Restaurant Address is required.";
-        $noError = false;
-    } else if (!preg_match("/^[a-zA-Z0-9\- ]+$/", $restaurantAddress)) {
-        $restaurantAddressErr = "Invalid last name format.";
-        $noError = false;
     }
 
     // password
@@ -173,44 +142,6 @@ if (isset($_POST["signupButton"])) {
         $retypePasswordErr = "Your retyped password doesn't match your password.";
     }
 
-    // restaurant name
-    $restaurantName = validate_input($_POST["restaurantName"]);
-    if (empty($restaurantName)) {
-        $restaurantNameErr = "Restaurant Name is required.";
-        $noError = false;
-    } else if (!preg_match("/^[a-zA-Z0-9 \-]+$/", $restaurantName)) {
-        $restaurantNameErr = "Invalid restaurant name format.";
-        $noError = false;
-    }
-
-    // brand name
-    $brandName = validate_input($_POST["brandName"]);
-    if (empty($brandName)) {
-        $brandNameErr = "Brand Name is required.";
-        $noError = false;
-    } else if (!preg_match("/^[a-zA-Z0-9 \-]+$/", $brandName)) {
-        $brandNameErr = "Invalid brand name format.";
-        $noError = false;
-    }
-
-    // business type
-    if ($_POST['businessType'] == "") {
-        $businessTypeErr = "This field is required.";
-        $noError = false;
-    } else {
-        $businessType = validate_input($_POST['businessType']);
-    }
-
-    // website
-    $website = validate_input($_POST["website"]);
-    if (empty($website)) {
-        $websiteErr = "Website is required.";
-        $noError = false;
-    } else if (!preg_match("/^\w+\.\w+\.\w+$/", $website)) {
-        $websiteErr = "Invalid website format.";
-        $noError = false;
-    }
-
     if ($noError) {
         // add user info to database
 
@@ -218,7 +149,7 @@ if (isset($_POST["signupButton"])) {
         include("dbconnect.php");
 
         // prepare insert statement and bind variables
-        $sql = "INSERT INTO user (user_id, first_name, last_name, email, user_password, phone_number, user_address, user_role) VALUES (?, ?, ?, ?, ?, ?, ?, 'owner');";
+        $sql = "INSERT INTO user (user_id, first_name, last_name, email, user_password, phone_number, user_address, user_role) VALUES (?, ?, ?, ?, ?, ?, ?, 'customer');";
 
         if ($stmt = mysqli_prepare($db, $sql)) {
             mysqli_stmt_bind_param($stmt, "sssssss", $param_userID, $param_firstName, $param_lastName, $param_email, $param_password, $param_phoneNum, $param_addr);
@@ -243,38 +174,12 @@ if (isset($_POST["signupButton"])) {
             // close statement
             mysqli_stmt_close($stmt);
 
-            // add restaurant info to database
+            // disconnect from database
+            mysqli_close($db);
 
-            // prepare insert statement and bind variables
-            $sql = "INSERT INTO restaurant (user_id, restaurant_name, business_type_id, brand_name, address, phone_number, website, email) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
-
-            if ($stmt = mysqli_prepare($db, $sql)) {
-                mysqli_stmt_bind_param($stmt, "ssssssss", $param_userID, $param_restaurantName, $param_businessTypeId, $param_brandName, $param_address, $param_phoneNum, $param_website, $param_email);
-            }
-
-            // set parameters
-            $param_userID = getNewestUserID() - 1;
-            $param_restaurantName = $restaurantName;
-            $param_businessTypeId = $businessType;
-            $param_brandName = $brandName;
-            $param_address = $restaurantAddress;
-            $param_phoneNum = $restaurantPhoneNum;
-            $param_website = $website;
-            $param_email = $restaurantEmail;
-
-            if (mysqli_stmt_execute($stmt)) {
-                // close statement
-                mysqli_stmt_close($stmt);
-
-                // disconnect from database
-                mysqli_close($db);
-
-                // redirect to sign in page
-                header("Location: signin.php");
-                exit();
-            } else {
-                die(mysqli_error($db));
-            }
+            // redirect to sign in page
+            header("Location: signin.php");
+            exit();
         } else {
             die(mysqli_error($db));
         }

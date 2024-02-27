@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
     //edit Profile events
     for (let epbtn of allEditProfileBtn) {
         epbtn.addEventListener("click", function() {
-            window.location.href = '../../signup.html';
+            window.location.href = '../user/restaurantInformation.html';
         });
     }
 
@@ -118,56 +118,148 @@ function showTab(tabId) {
     addMenuItems();
 }
 
-
 // Create a new li element
 function addMenuItems() {
-    const menuItems = [
-        {
-            title: "Grilled Salmon Steak",
-            description: "Salmon steak marinated in herbs and grilled to perfection.",
-            price: "$18.75",
-            imageSrc: "../../assets/pictures/PlatesPictures/plate4.jpg",
-        },
-        {
-            title: "Vegetarian Pad Thai",
-            description: "Stir-fried rice noodles with tofu, bean sprouts, and peanuts.",
-            price: "$11.95",
-            imageSrc: "../../assets/pictures/PlatesPictures/plate5.jpg",
-        },
-        {
-            title: "Classic Margherita Pizza",
-            description: "Tomato sauce, fresh mozzarella, basil, and olive oil on a thin crust.",
-            price: "$14.50",
-            imageSrc: "../../assets/pictures/PlatesPictures/plate6.jpg",
-        },
-    ];
+    var menuItems;
 
-    menuItems.forEach((item) => {
-        const listItem = document.createElement('li');
-        listItem.classList.add('card');
+    if (/*tabId == ""*/ false) {
+        //document.getElementById("txtHint").innerHTML = "";
+        return;
+    } else {
+        var xhr = new XMLHttpRequest();
 
-        // Set the inner HTML for the li element
-        listItem.innerHTML = `
-        <img class="item-image" src="${item.imageSrc}" alt="Item Picture1">
-        <div class="text">
-            <h3 class="i-title">${item.title}</h3>
-            <p class="i-description">${item.description}</p>
-            <h3 class="i-price">${item.price}</h3>
-        </div>
-        <div class="buttons">
-            <div class="edit-btn">
-                <i class='far fa-edit' style='color: var(--secondary-color)'></i>
-            </div>
-            <div class="del-btn">
-                <i class="fas fa-trash-alt" style="font-size:24px"></i>
-            </div>
-        </div>`;
+        // Define the callback function to handle the response
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                //Parse JSON to array of objects
+                menuItems = JSON.parse(xhr.responseText);
+                // Create a new li element for each item in the menuItems array    
+                menuItems.forEach((item) => {
+                    const listItem = document.createElement('li');
+                    listItem.classList.add('card');
 
-        const parentContainer = document.getElementById('newmenulist');
-        parentContainer.appendChild(listItem);
-    });
+                    // Set the inner HTML for the li element
+                    listItem.innerHTML = `
+                        <input type="hidden" class="item-id" value="${item.menu_item_id}">
+                        <img class="item-image" src="${item.picture_url}" alt="Item Picture1">
+                        <div class="text">
+                            <h3 class="i-title">${item.item_name}</h3>
+                            <p class="i-description">Ingredients: ${item.ingredient_name}</p>
+                            <h3 class="i-price">$${item.price}</h3>
+                        </div>
+                        <div class="buttons">
+                            <div class="edit-btn">
+                                <i class='far fa-edit' style='color: var(--secondary-color)'></i>
+                            </div>
+                            <div class="del-btn">
+                                <i class="fas fa-trash-alt" style="font-size:24px"></i>
+                            </div>
+                        </div>`;
+
+                    const parentContainer = document.getElementById('newmenulist');
+                    parentContainer.appendChild(listItem);
+
+
+
+                });
+                //Basket badge number and color
+                const cartLink = document.querySelectorAll('.submit-btn');
+                const badge = document.querySelector('.custom-badge');
+
+                let count = 0;
+                for (let item of cartLink) {
+                    item.addEventListener('click', function (event) {
+                        const card = event.target.closest('.card');
+                        if (card) {
+                            // Find the .item-id element within the .card
+                            const itemID = card.querySelector('.item-id');
+                            if (itemID) {
+                                // Retrieve the text content of the .item-id element
+                                const item_id_value = itemID.value;
+                                console.log(item_id_value);
+
+                               // addItemToCart(item_id_value);
+                                // count++;
+                                // badge.textContent = count;
+                                // var snd = new Audio("../../assets/mixkit-correct-answer-tone-2870.wav");
+                                // snd.play();
+                                // snd.currentTime = 0;
+
+                                // if (count > 0) {
+                                //     badge.classList.add('orange-color');
+                                // } else {
+                                //     badge.classList.remove('orange-color');
+                                // }
+
+                            }
+
+                        }
+
+                    });
+
+                }
+
+            }
+        };
+
+        // Open a GET request to a PHP file in the same folder
+        xhr.open("GET", "../../../Backend/screens/menu/getMenuItems.php", true);
+
+        // Send the request
+        xhr.send();
+    }
 
 }
+
+// Create a new li element
+// function addMenuItems() {
+//     const menuItems = [
+//         {
+//             title: "Grilled Salmon Steak",
+//             description: "Salmon steak marinated in herbs and grilled to perfection.",
+//             price: "$18.75",
+//             imageSrc: "../../assets/pictures/PlatesPictures/plate4.jpg",
+//         },
+//         {
+//             title: "Vegetarian Pad Thai",
+//             description: "Stir-fried rice noodles with tofu, bean sprouts, and peanuts.",
+//             price: "$11.95",
+//             imageSrc: "../../assets/pictures/PlatesPictures/plate5.jpg",
+//         },
+//         {
+//             title: "Classic Margherita Pizza",
+//             description: "Tomato sauce, fresh mozzarella, basil, and olive oil on a thin crust.",
+//             price: "$14.50",
+//             imageSrc: "../../assets/pictures/PlatesPictures/plate6.jpg",
+//         },
+//     ];
+
+//     menuItems.forEach((item) => {
+//         const listItem = document.createElement('li');
+//         listItem.classList.add('card');
+
+//         // Set the inner HTML for the li element
+//         listItem.innerHTML = `
+//         <img class="item-image" src="${item.imageSrc}" alt="Item Picture1">
+//         <div class="text">
+//             <h3 class="i-title">${item.title}</h3>
+//             <p class="i-description">${item.description}</p>
+//             <h3 class="i-price">${item.price}</h3>
+//         </div>
+//         <div class="buttons">
+//             <div class="edit-btn">
+//                 <i class='far fa-edit' style='color: var(--secondary-color)'></i>
+//             </div>
+//             <div class="del-btn">
+//                 <i class="fas fa-trash-alt" style="font-size:24px"></i>
+//             </div>
+//         </div>`;
+
+//         const parentContainer = document.getElementById('newmenulist');
+//         parentContainer.appendChild(listItem);
+//     });
+
+// }
 
 function login(isLogin) {
     if (loginBtnTxt.textContent === "Sign In") {

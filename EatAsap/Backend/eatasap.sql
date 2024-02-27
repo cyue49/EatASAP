@@ -1,9 +1,9 @@
 /* ============== CREATING AND USING DATABASE ============== */
-/* DROP DATABASE IF EXISTS eatasap; */
+/* DROP DATABASE IF EXISTS id21924858_eatasap; */
 
-CREATE DATABASE IF NOT EXISTS eatasap;
+CREATE DATABASE IF NOT EXISTS id21924858_eatasap;
 
-USE eatasap; 
+USE id21924858_eatasap; 
 
 
 /* ============== CREATING TABLES ============== */
@@ -26,6 +26,7 @@ last_name VARCHAR(30) NOT NULL,
 email VARCHAR(50) NOT NULL UNIQUE,
 user_password VARCHAR(100) NOT NULL,
 phone_number VARCHAR(13) NOT NULL UNIQUE,
+user_address VARCHAR(255),
 user_role VARCHAR(20) NOT NULL /*owner-customer*/
 );
 
@@ -73,6 +74,7 @@ CREATE TABLE restaurant (
     restaurant_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     user_id INT UNIQUE NOT NULL,                          -- one-to-one relationship with user table
     restaurant_name VARCHAR(255) UNIQUE NOT NULL,
+    logo_url VARCHAR(255),
     business_type_id INT NOT NULL,
     brand_name VARCHAR(255) NOT NULL,
     address VARCHAR(255) NOT NULL,
@@ -196,7 +198,7 @@ INSERT INTO business_type (business_type_name) VALUES
 ('Ethnic Restaurant'),
 ('Fast Casual');
 
-INSERT INTO Ingredient (ingredient_name, energy)
+INSERT INTO ingredient (ingredient_name, energy)
 VALUES 
     ('Salmon', 220),
     ('Chicken', 180),
@@ -237,6 +239,6 @@ INSERT INTO menu_categories (category_name) VALUES
 
 -- Insert data into plans table
 INSERT INTO plans (plan_name, plan_price) VALUES 
-('Basic', 10.00),
-('Standard', 20.00),
-('Premium', 30.00);
+('Basic', 0.00),
+('Standard', 10.00),
+('Premium', 20.00);
