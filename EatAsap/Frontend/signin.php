@@ -24,6 +24,10 @@ include("../Backend/usersignin.php");
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
     <style>
+        body {
+            background-color: var(--bg-color);
+        }
+
         main {
             flex-flow: column;
             justify-content: flex-start;
@@ -33,6 +37,20 @@ include("../Backend/usersignin.php");
             box-sizing: border-box;
         }
 
+        .sign-in-form {
+            border-radius: 25px;
+            padding: 2em;
+            background-color: white;
+            box-shadow: 0px 5px 10px rgba(69, 44, 30, 0.3);
+            display: flex;
+            flex-flow: column wrap;
+            align-items: center;
+            justify-content: center;
+            width: 50%;
+            min-width: fit-content;
+            min-height: 700px;
+        }
+
         h1 {
             margin: 1em 0 2em 0;
         }
@@ -40,8 +58,10 @@ include("../Backend/usersignin.php");
         form {
             display: flex;
             flex-flow: column wrap;
-            justify-content: flex-start;
+            justify-content: center;
             gap: 1em;
+            width: 70%;
+            min-width: fit-content;
         }
 
         form div {
@@ -53,9 +73,9 @@ include("../Backend/usersignin.php");
         input {
             margin: 0.5em 0 0 0;
             padding: 0.7em 1em;
-            border-radius: 15px;
+            border-radius: 20px;
             border: 1px solid #3d3d3d;
-            width: 40%;
+            width: 100%;
             min-width: 250px;
         }
 
@@ -63,8 +83,15 @@ include("../Backend/usersignin.php");
             padding: 0.7em 1em;
             border-radius: 20px;
             border: 1px solid #3d3d3d;
-            width: 40%;
+            width: 100%;
             min-width: 250px;
+        }
+
+        .sign-in-form button {
+            width: 100%;
+            min-width: 250px;
+            border-radius: 25px;
+            margin: 2em 0;
         }
 
         .requiredAsterisk {
@@ -83,9 +110,9 @@ include("../Backend/usersignin.php");
             gap: 1em;
         }
 
-        .sign-in-form {
-            border-radius: 25px;
-            padding: 2em 4em 4em 4em;
+        #donthaveaccount {
+            width: 100%;
+            text-align: center;
         }
     </style>
 </head>
@@ -163,7 +190,13 @@ include("../Backend/usersignin.php");
                 <button type="submit" class="buttonVar1" name="signinButton">Sign In</button>
                 <span class="error"> <?php echo $loginErr ?></span>
             </form>
-
+            <div id="donthaveaccount">
+                <p>Don't have an account? <br>
+                    <a href="usersignup.php">Sign up as a customer</a>
+                    <br> or <br>
+                    <a href="signup.php">Sign up as a restaurant</a>
+                </p>
+            </div>
         </div>
     </main>
 

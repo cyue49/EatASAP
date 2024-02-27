@@ -67,28 +67,28 @@
 }
 
 /*sign in*/
-.sign-in-form{
+/* .sign-in-form{
     background-image: url(./assets/pictures/signin2.png);
     background-position: 90%;
-    box-shadow: 0px 5px 10px rgba(69, 44, 30, 0.3);
     background-repeat: no-repeat;
     text-align: left;
     background-size: contain;
+    box-shadow: 0px 5px 10px rgba(69, 44, 30, 0.3);
     width: 60%;
     min-width: fit-content;
-    justify-content: center;
     min-height: 700px;
-}
+} */
 
-.sign-in-form input{
+/* .sign-in-form input{
     border-radius: 20px;
-}
+} */
 
-.sign-in-form button{
-    width: 250px;
+/* .sign-in-form button{
+    width: 80%;
+    min-width: 250px;
     border-radius: 25px;
     margin-top: 1em;
-}
+} */
 
 
 .how-it-works{
