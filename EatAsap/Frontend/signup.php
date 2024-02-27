@@ -154,7 +154,7 @@ include("../Backend/signup.php");
                         <a class="nav-link" href="./screens/aboutus.html">About</a>
                     </li>
                     <li class="nav-item text-center px-5 mx-5">
-                        <a class="nav-link" href="./screens/contactus.html">Contact</a>
+                        <a class="nav-link" href="../Backend/screens/submit_contact.php">Contact</a>
                     </li>
                     <li class="nav-item text-center px-5 mx-5">
                         <a class="nav-link" href="signup.php">Add Your Restaurant</a>
