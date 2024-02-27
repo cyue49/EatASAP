@@ -1,10 +1,10 @@
 <?php
 
 // user input values
-$firstName = $lastName = $email = $phoneNum = $address = $password = $retypePassword = "";
+$firstName = $lastName = $email = $phoneNum = $address = $usrPassword = $retypePassword = "";
 
 // user input errors
-$firstNameErr = $lastNameErr = $emailErr = $phoneNumErr = $addressErr = $passwordErr = $retypePasswordErr = "";
+$firstNameErr = $lastNameErr = $emailErr = $phoneNumErr = $addressErr = $usrPasswordErr = $retypePasswordErr = "";
 
 // trim data, remove slashes, etc.
 function validate_input($data)
@@ -110,25 +110,25 @@ if (isset($_POST["signupButton"])) {
     }
 
     // password
-    $password = validate_input($_POST["password"]);
-    if (empty($password)) {
-        $passwordErr = "Password is required.<br>";
+    $usrPassword = validate_input($_POST["usrPassword"]);
+    if (empty($usrPassword)) {
+        $usrPasswordErr = "Password is required.<br>";
         $noError = false;
     }
-    if (strlen($password) < 8) { // less than 8 characters
-        $passwordErr .= "Your password must be at least 8 characters long.<br>";
+    if (strlen($usrPassword) < 8) { // less than 8 characters
+        $usrPasswordErr .= "Your password must be at least 8 characters long.<br>";
         $noError = false;
     }
-    if (!preg_match("/\d/", $password)) { // doesn't contain one digit
-        $passwordErr .= "Your password must contain a digit.<br>";
+    if (!preg_match("/\d/", $usrPassword)) { // doesn't contain one digit
+        $usrPasswordErr .= "Your password must contain a digit.<br>";
         $noError = false;
     }
-    if (!preg_match("/\W/", $password)) { // doesn't contain one special character
-        $passwordErr .= "Your password must contain a special character.<br>";
+    if (!preg_match("/\W/", $usrPassword)) { // doesn't contain one special character
+        $usrPasswordErr .= "Your password must contain a special character.<br>";
         $noError = false;
     }
-    if (!preg_match("/[A-Z]/", $password)) { // doesn't contain one uppercase letter
-        $passwordErr .= "Your password must contain an uppercase letter.<br>";
+    if (!preg_match("/[A-Z]/", $usrPassword)) { // doesn't contain one uppercase letter
+        $usrPasswordErr .= "Your password must contain an uppercase letter.<br>";
         $noError = false;
     }
 
@@ -137,7 +137,7 @@ if (isset($_POST["signupButton"])) {
     if (empty($retypePassword)) {
         $retypePasswordErr = "Retype Password is required.";
         $noError = false;
-    } else if ($retypePassword != $password) {
+    } else if ($retypePassword != $usrPassword) {
         $retypePasswordErr = "Your retyped password doesn't match your password.";
     }
 
@@ -163,7 +163,7 @@ if (isset($_POST["signupButton"])) {
         $options = [
             'cost' => 12,
         ];
-        $param_password = password_hash($password, PASSWORD_BCRYPT, $options);
+        $param_password = password_hash($usrPassword, PASSWORD_BCRYPT, $options);
 
         $param_phoneNum = $phoneNum;
         $param_addr = $address;

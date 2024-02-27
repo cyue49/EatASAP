@@ -213,12 +213,12 @@ include("../Backend/signup.php");
                         </div>
                         <!-- Password -->
                         <div>
-                            <label for="password">Password<span class="requiredAsterisk">*</span>:</label>
+                            <label for="usrPassword">Password<span class="requiredAsterisk">*</span>:</label>
                             <div id="showPassword">
-                                <input type="password" id="password" name="password" value="<?php echo $password; ?>">
+                                <input type="password" id="usrPassword" name="usrPassword" value="<?php echo $usrPassword; ?>">
                                 <i class="fa fa-eye"></i>
                             </div>
-                            <span class="error"> <?php echo $passwordErr ?></span>
+                            <span class="error"> <?php echo $usrPasswordErr ?></span>
                         </div>
                         <!-- Retype Password -->
                         <div>
@@ -314,7 +314,7 @@ include("../Backend/signup.php");
         document.getElementsByClassName("fa-eye")[1].addEventListener("click", showPswd2);
 
         function showPswd() {
-            var x = document.getElementById("password");
+            var x = document.getElementById("usrPassword");
             if (x.type == "password") {
                 x.type = "text";
             } else {
