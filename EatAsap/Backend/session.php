@@ -6,7 +6,10 @@ function setTrackingCookies() {
     // Set session cookie parameters
     // Set cookies for tracking or analytics for 1 hour,transmitted over a secure HTTPS,
     // and will be accessible only through the HTTP protocol not scripting languages 
-    session_set_cookie_params($expiration_time, '/', 'eatasap1.000webhostapp.com', true, true);
+  
+  // for production environment
+   session_set_cookie_params($expiration_time, '/', 'eatasap1.000webhostapp.com', true, true);
+
 
     // Start the session
     session_start();

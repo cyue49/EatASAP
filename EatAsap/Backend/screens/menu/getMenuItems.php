@@ -28,7 +28,7 @@ if (/*!empty($data)*/ $restaurant_id == 1) {
     $stmt = mysqli_prepare($link, $sql);
     if ($stmt) {
         mysqli_stmt_bind_param($stmt,"iis", $restaurant_id, $category_id,$item_status);
-        $success = mysqli_stmt_execute($stmt) or die("Update query failed.".mysqli_error($link));
+        $success = mysqli_stmt_execute($stmt) or die(" Query failed.".mysqli_error($link));
         
         if ($success) {
             $result = mysqli_stmt_get_result($stmt);
