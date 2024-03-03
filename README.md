@@ -16,12 +16,14 @@ Customers can order with or without an account. If they have an account, they ca
 
 ---
 
-The homepage of the website is found in Frontend/index.html.  
-The menu page where customers can order is found at Frontend/Screens/Menu/menu.html  
-The sign in page is found at Frontend/signin.php  
-The sign up page for restaurant owners is found at Frontend/signup.php
-The sign up page for customers is found at Frontend/usersignup.php
-The checkout page is found at Frontend/Screens/Cart/myorders.php
+* The homepage of the website is found in Frontend/index.html.  
+* The menu page where customers can order is found at Frontend/Screens/Menu/menu.html  
+* The sign in page is found at Frontend/signin.php  
+* The sign up page for restaurant owners is found at Frontend/signup.php
+* The sign up page for customers is found at Frontend/usersignup.php
+* The checkout page is found at Frontend/Screens/Cart/myorders.php
+* The user profile page is found at Frontend/Screens/User/userprofile.php.php
+* The restaurant profile page is found at Frontend/Screens/User/RestaurantProfile.html
 
 The frontend of the website is implemented using mostly HTML, CSS and Javascript, while the backend is implemented using mostly PHP. Some Ajax was also used to communicate between the frontend and backend.  
 
